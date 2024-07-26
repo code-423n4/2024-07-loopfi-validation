@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bozwkd",
+  "risk": "2",
+  "title": "Tokens can be lost when transferring to zero address",
+  "issueId": 4,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/4"
+}
