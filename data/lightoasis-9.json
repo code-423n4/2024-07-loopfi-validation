@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "lightoasis",
+  "risk": "2",
+  "title": "_modifyPosition is using block.number intead of block.timestamp when modifiying a position which will result in an incorrect lastDebtUpdate time.",
+  "issueId": 9,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/9"
+}
