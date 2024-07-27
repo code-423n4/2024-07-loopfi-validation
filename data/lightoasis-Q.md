@@ -1,5 +1,5 @@
 ## Low Bugs.
-### 1. Unused return values are redundant and can be removed
+### 1. Unused return values are redundant and can be removed.
 [PoolV3.sol#L223](https://github.com/code-423n4/2024-07-loopfi/blob/4f508781a49ffa53511e7e5ed6cda0ff0eb5bdc5/src/PoolV3.sol#L223)
 ```solidity
     function totalAssets() public view override(ERC4626, IERC4626) returns (uint256 assets) {
@@ -13,7 +13,7 @@
     }
 ```
 
-### 2. The liquidator's amount; repayAmount is not scaled
+### 2. The liquidator's amount; repayAmount is not scaled.
 
 The underlying token may not be the same decimal as the collateral token. Hence, collateral tokens are scaled, to prevent their value from being too small or inconsistent. The liquidator's amount; `takeCollateral`, is gottent from `repayAmount` which is not scaled. This might make it to be smaller than expected or inconsistent with the borrowed underlying token amount.
 
