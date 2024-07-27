@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "MFaizal14",
+  "risk": "2",
+  "title": "contract are vulnerable to feeontransfer accounting related issue",
+  "issueId": 11,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/11"
+}
