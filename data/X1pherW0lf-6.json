@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "X1pherW0lf",
+  "risk": "2",
+  "title": "Chainlink’s latestRoundData might return stale or incorrect results",
+  "issueId": 6,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/6"
+}
