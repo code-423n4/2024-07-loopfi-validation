@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "boraichodrunkenmaster",
+  "risk": "2",
+  "title": "Withdrawals and Deposits are meant to be pausable, but it is not possible in practice",
+  "issueId": 27,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/27"
+}
