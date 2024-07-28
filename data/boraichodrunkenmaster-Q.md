@@ -7,6 +7,12 @@ Current Implementation of Cooldown Period:
 cooldowns[msg.sender].cooldownEnd = uint104(block.timestamp) + cooldownDuration;
 
 ---
+### Recommendation
+---
+
+Introduce an ID variable to track individual user stakes. This approach enables users to have multiple stakes simultaneously, each reflecting a unique deposit and timing. Users can interact with each specific stake entry using its unique ID.
+
+---
 
 ### Source Code References
 
