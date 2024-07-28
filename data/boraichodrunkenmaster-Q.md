@@ -6,8 +6,6 @@ When an EOA or contract makes multiple deposits during an ongoing staking period
 Current Implementation of Cooldown Period:
 cooldowns[msg.sender].cooldownEnd = uint104(block.timestamp) + cooldownDuration;
 
-The current explanation doesn’t explicitly state that the problem only occurs when a user makes additional deposits. Here’s a revised explanation that includes this detail:
-
 ---
 
 ### Source Code References
