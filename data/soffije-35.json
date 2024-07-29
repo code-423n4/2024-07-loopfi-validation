@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "soffije",
+  "risk": "2",
+  "title": "Incorrect Use of safePermit Instead of permit in ERC-20 Permit Functionality",
+  "issueId": 35,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/35"
+}
