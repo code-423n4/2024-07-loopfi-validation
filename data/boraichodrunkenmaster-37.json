@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "boraichodrunkenmaster",
+  "risk": "2",
+  "title": "CDPVault Contract is Not Working due to overflow when Opening new position",
+  "issueId": 37,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/37"
+}
