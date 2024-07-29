@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xjoaovpsantos",
+  "risk": "2",
+  "title": "[M-01] ChainlinkOracle::_fetchAndValidate will use incorrect price when underlying aggregator reaches minAnswer or maxAnswer",
+  "issueId": 40,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/40"
+}
