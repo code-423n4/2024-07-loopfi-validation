@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Kaysoft",
+  "risk": "2",
+  "title": "INFLATION_PROTECTION_TIME can not be up to a year as intended because it is hardcoded to `1749120350`",
+  "issueId": 41,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/41"
+}
