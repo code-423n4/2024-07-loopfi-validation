@@ -58,3 +58,15 @@ In the `src/oracle/BalancerOracle.sol` add this code:
         token2 = (len > 2) ? tokens[2] : address(0);
     }
 ```
+
+## [L-03] The `Storage Gaps` or `Namespaced Storage Layout` for the upgradeable contracts are not followed wich can affect layout of future child contracts in the `MultiFeeDistribution` contract.
+
+### Description
+`Storage Gaps` and `Namespaced Storage Layout` are patterns to reserving slots in a base contract. This allows future versions of that contract to use up those slots without affecting the storage layout of child contracts.
+
+### Impact
+The missing of the pattern like `Storage Gaps` and `Namespaced Storage Layout` will affect the storage layout of future child contracts. This is due to an unfollowed convention for implementation of upgradeable contracts.
+
+
+### Recommended Mitigation
+Implement [`Storage Gaps` like in the OpenZeppelin Docs](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#storage-gaps) or [`Namespaced Storage Layout` like in the OpenZeppelin Docs](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#namespaced-storage-layout) in the `src/reward/MultiFeeDistribution.sol`.
