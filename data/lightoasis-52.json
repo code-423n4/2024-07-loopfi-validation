@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "lightoasis",
+  "risk": "2",
+  "title": "Slippage check enforces max slippage on all users.",
+  "issueId": 52,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/52"
+}
