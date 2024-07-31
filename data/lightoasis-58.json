@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "lightoasis",
+  "risk": "2",
+  "title": "Deposits and withdrawals are rounded down in the same direction which is incorrect.",
+  "issueId": 58,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/58"
+}
