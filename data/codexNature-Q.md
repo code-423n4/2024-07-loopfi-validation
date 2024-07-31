@@ -1,4 +1,4 @@
-## L-2: Deprecated OpenZeppelin functions should not be used
+## Deprecated OpenZeppelin functions should not be used
 
 Openzeppelin has deprecated several functions and replaced them with newer versions. Please consult: https://github.com/OpenZeppelin/openzeppelin-contracts/issues/3488  and  https://docs.openzeppelin.com/contracts/5.x/api/access#AccessControl for setUpRole and https://docs.openzeppelin.com/contracts/3.x/api/token/erc20#SafeERC20 for safeApprove
 
@@ -39,4 +39,34 @@ Openzeppelin has deprecated several functions and replaced them with newer versi
 	```solidity
             -      IERC20(asset()).safeApprove(rewardPool, amountIn);
             +      IERC20(asset()).safeDecreaseAllowance(rewardPool, amountIn)
+	```
+
+
+
+## Unsafe ERC20 Operations should not be used
+
+ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended that OpenZeppelin's SafeERC20 library be used.
+
+3 Instances Found
+
+
+- Found in src/Flashlender.sol [Line: 105](src/Flashlender.sol#L105)
+
+	```solidity
+           -      underlyingToken.transferFrom(address(receiver), address(pool), total);
+           +      underlyingToken.safeTransferFrom(address(receiver), address(pool), total);
+	```
+
+- Found in src/Flashlender.sol [Line: 133](src/Flashlender.sol#L133)
+
+	```solidity
+           -      underlyingToken.transferFrom(address(receiver), address(pool), total);
+           +      underlyingToken.safeTransferFrom(address(receiver), address(pool), total);
+	```
+
+- Found in src/interfaces/IFlashlender.sol [Line: 115](src/interfaces/IFlashlender.sol#L115)
+
+	```solidity
+           -      flashlender.underlyingToken().approve(address(flashlender), amount);
+           +      flashlender.underlyingToken().safeApprove(address(flashlender), amount);
 	```
