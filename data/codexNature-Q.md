@@ -1,4 +1,119 @@
-## L-4: Solidity pragma should be specific, not wide
+## Define and use `constant` variables instead of using literals
+
+If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.
+
+### 11 Instances Found
+
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 733](src/reward/MultiFeeDistribution.sol#L733)
+
+	```diff
+	    -           uint256 reward = rewards[onBehalf][token] / 1e12;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +           uint256 reward = rewards[onBehalf][token] / ONE_SZABO;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 823](src/reward/MultiFeeDistribution.sol#L823)
+
+	```diff
+	   -     return (rewardData[rewardToken].rewardPerSecond * rewardsDuration) / 1e12;
+
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +    return (rewardData[rewardToken].rewardPerSecond * rewardsDuration) / ONE_SZABO;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1040](src/reward/MultiFeeDistribution.sol#L1040)
+
+	```solidity
+	    -        rptStored = rptStored + ((newReward * 1e18) / lockedSupplyWithMultiplier);
+
+        +           uint256 public constant ONE_ETHER = 1e18;
+	    +        rptStored = rptStored + ((newReward * ONE_ETHER) / lockedSupplyWithMultiplier);
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1062](src/reward/MultiFeeDistribution.sol#L1062)
+
+	```diff
+	    -           rewardPerToken(rewardsData[i].token)) / 1e12;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +           rewardPerToken(rewardsData[i].token)) / ONE_SZABO;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1200](src/reward/MultiFeeDistribution.sol#L1200)
+
+	```diff
+	    -       r.rewardPerSecond = (reward * 1e12) / rewardsDuration;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +       r.rewardPerSecond = (reward * ONE_SZABO) / rewardsDuration;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1203](src/reward/MultiFeeDistribution.sol#L1203)
+
+	```diff
+	    -       uint256 leftover = (remaining * r.rewardPerSecond) / 1e12;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +       uint256 leftover = (remaining * r.rewardPerSecond) / ONE_SZABO;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1204](src/reward/MultiFeeDistribution.sol#L1204)
+
+	```diff
+	    -        r.rewardPerSecond = ((reward + leftover) * 1e12) / rewardsDuration;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    -        r.rewardPerSecond = ((reward + leftover) * ONE_SZABO) / rewardsDuration;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1251](src/reward/MultiFeeDistribution.sol#L1251)
+
+	```diff
+	    -       uint256 reward = rewards[user][token] / 1e12;
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +       uint256 reward = rewards[user][token] / ONE_SZABO;
+	```
+
+- Found in src/reward/MultiFeeDistribution.sol [Line: 1447](src/reward/MultiFeeDistribution.sol#L1447)
+
+	```diff
+	    -    earnings = earnings + ((balance * realRPT) / 1e18);
+
+        +           uint256 public constant ONE_SZABO = 1e12;
+	    +    earnings = earnings + ((balance * realRPT) / ONE_SZABO);
+	```
+
+- Found in src/vendor/AuraVault.sol [Line: 183](src/vendor/AuraVault.sol#L183)
+
+	```diff
+	    -    return assets.mulDiv(totalSupply() + 10 ** _decimalsOffset(), totalAssets() + 1, rounding);
+
+        +       uint256 public constant ONE = 1;
+        +       uint256 public constant TEN = 10;
+	    +    return assets.mulDiv(totalSupply() + TEN ** _decimalsOffset(), totalAssets() + ONE, rounding);
+	```
+
+- Found in src/vendor/AuraVault.sol [Line: 190](src/vendor/AuraVault.sol#L190)
+
+	```diff
+	        return shares.mulDiv(totalAssets() + 1, totalSupply() + 10 ** _decimalsOffset(), rounding);
+
+        +       uint256 public constant ONE = 1;
+        +       uint256 public constant TEN = 10;
+	    +   return shares.mulDiv(totalAssets() + ONE, totalSupply() + TEN ** _decimalsOffset(), rounding);
+	```
+
+
+
+
+
+
+
+## Solidity pragma should be specific, not wide
 
 Consider using a specific version of Solidity instead of a wide version in your contracts. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;` Only the below list of contracts did not use `pragma solidity 0.8.19;`
 
@@ -116,3 +231,5 @@ ERC20 functions may not behave as expected. For example: return values are not a
            -      flashlender.underlyingToken().approve(address(flashlender), amount);
            +      flashlender.underlyingToken().safeApprove(address(flashlender), amount);
 	```
+
+
