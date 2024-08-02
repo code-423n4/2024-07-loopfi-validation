@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "zzebra83",
+  "risk": "2",
+  "title": "persisting RewardPerSecond will DOS reward claims",
+  "issueId": 69,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/69"
+}
