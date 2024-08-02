@@ -1,4 +1,4 @@
-### Explanation of Withdrawal Period Timing Issue
+### StakingLPEth : Withdrawal Period Timing Issue
 ___
 
 When an EOA or contract makes multiple deposits during an ongoing staking period, the unlock duration for all previous deposits is updated to match the latest deposit, disregarding their individual timings. Consequently, users who increase their stake cannot withdraw earlier deposits based on their original staking times but must wait until the latest deposit's unlock period.
