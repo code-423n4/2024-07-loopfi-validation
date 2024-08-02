@@ -60,13 +60,6 @@ Instead of marking a function as `public`, consider marking it as `external` if 
 	    +  function previewMint(uint256 shares) external view override(ERC4626, IERC4626) returns (uint256) {
 	```
 
-- Found in src/PoolV3.sol [Line: 346](src/PoolV3.sol#L346)
-
-	```diff
-	    -  function previewWithdraw(uint256 assets) public view override(ERC4626, IERC4626) returns (uint256) {
-	    +  function previewWithdraw(uint256 assets) external view override(ERC4626, IERC4626) returns (uint256) {
-	```
-
 - Found in src/PoolV3.sol [Line: 351](src/PoolV3.sol#L351)
 
 	```diff
