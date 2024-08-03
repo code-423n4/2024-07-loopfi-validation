@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "boraichodrunkenmaster",
+  "risk": "3",
+  "title": "PositionAction Contract: Lack of Input Sanitization On Deposit Function",
+  "issueId": 78,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/78"
+}
