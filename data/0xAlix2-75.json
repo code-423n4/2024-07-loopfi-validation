@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xAlix2",
+  "risk": "3",
+  "title": "`PositionAction4626::_onDecreaseLever` wrongly updates `tokenOut` forcing user's funds to be stuck in the position contract",
+  "issueId": 75,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/75"
+}
