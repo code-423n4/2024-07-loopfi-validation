@@ -73,4 +73,37 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 Avoid using deprecated functions. Replace _setupRole with _grantRole
 
+## L3 Lack of Validation for Zero Address and Zero Amount in CDPVault financial Operations
+
+* Impact
+
+This issue highlights the absence of necessary validation checks for zero address and zero amount in the deposit, withdraw, repay and borrow functions. The lack of these checks can lead to unintended behaviors, such as sending funds to an invalid address or processing transactions with no effect.
+
+
+
+This line of code to the function :
+
+  https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L223C1-L233C6
+
+ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L239C5-L249C6
+
+ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L256C1-L265C6
+
+ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L272C1-L281C6
+
+
+
+* Recommended Mitigation
+
+1. Add Validation Checks for Zero Address:
+
+    Ensure that the to and borrower addresses are not zero addresses by adding require statements to validate that they are valid non-zero addresses.
+
+2. Add Validation Checks for Zero Amount:
+
+    Ensure that the amount parameter is greater than zero by adding require statements to validate that the amount is a positive non-zero value.
+
+
+
+
 
