@@ -1,8 +1,10 @@
-## Lack of Withdrawal Limit Check in CDPVault::modifyCollateralAndDebt Function
+## Lack of Withdrawal Limit Check in modifyCollateralAndDebt Function
 
-When a user attempts to withdraw collateral using the `modifyCollateralAndDebt` function, the position data should be retrieved to ensure that position.collateral >= withdrawAmount.
+When a user attempts to withdraw collateral using the modifyCollateralAndDebt function, the position data should be retrieved to ensure that position.collateral >= withdrawAmount.
 
 Current implementation:
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L440C16-L442C56
 
 ```js
     if (deltaCollateral < 0) {
@@ -21,13 +23,15 @@ In the scenario where a user has a position with 100 Ether as collateral and 80 
 
 Then, the collateral amount is updated:
 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L315
+
 ```js
     position.collateral = add(position.collateral, deltaCollateral);
 ```
 
 This transaction will revert due to an overflow caused by the addition function.
 
-Proposed Solution:
+## Proposed Solution:
 
 Implement an explicit check to ensure the user cannot withdraw more collateral than they have. 
 
@@ -41,3 +45,5 @@ Implement an explicit check to ensure the user cannot withdraw more collateral t
 ```
 
 or modify the position before actually sending the funds  to apply the checks-effects-interactions pattern. 
+
+
