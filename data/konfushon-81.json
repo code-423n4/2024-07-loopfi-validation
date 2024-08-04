@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "konfushon",
+  "risk": "2",
+  "title": "Mistakes done by deployer of `Flashlender.sol` aren't validated which leads to loss of funds",
+  "issueId": 81,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/81"
+}
