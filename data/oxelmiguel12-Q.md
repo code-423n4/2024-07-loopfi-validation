@@ -1,4 +1,4 @@
-## Lack of Withdrawal Limit Check in modifyCollateralAndDebt Function
+## L1 Lack of Withdrawal Limit Check in modifyCollateralAndDebt Function
 
 When a user attempts to withdraw collateral using the modifyCollateralAndDebt function, the position data should be retrieved to ensure that position.collateral >= withdrawAmount.
 
@@ -31,7 +31,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 This transaction will revert due to an overflow caused by the addition function.
 
-## Proposed Solution:
+* Proposed Solution:
 
 Implement an explicit check to ensure the user cannot withdraw more collateral than they have. 
 
@@ -45,5 +45,32 @@ Implement an explicit check to ensure the user cannot withdraw more collateral t
 ```
 
 or modify the position before actually sending the funds  to apply the checks-effects-interactions pattern. 
+
+
+## L2 Deprecated _setupRole function used
+
+* Impact
+
+The _setupRole function is deprecated according to the Open Zeppelin comment
+
+`
+NOTE: This function is deprecated in favor of {_grantRole}`
+
+Use the recommended _grantRole function instead.
+
+
+
+
+Where _setupRole is used in loopfi
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/VaultRegistry.sol#L33
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/VaultRegistry.sol#L34
+
+
+
+* Recommended Mitigation Steps
+
+Avoid using deprecated functions. Replace _setupRole with _grantRole
 
 
