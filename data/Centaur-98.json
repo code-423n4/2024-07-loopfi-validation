@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "2",
+  "title": "Misssing QueryJoin Pre-Check for maxAmountIn In `transferAndJoin` funtion leads to potential slippage",
+  "issueId": 98,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/98"
+}
