@@ -52,3 +52,17 @@ Using `!=` for time checks can lead to scenarios where the function does not upd
 
 ### Mitigation
 Replace the `!=` checks with `>=` to ensure that the updates occur if and only if the current timestamp is greater than or equal to the last recorded update time.
+
+## C. Missing whenNotLocked Check in deposit and mint Functions
+[PoolV3.sol#L261-L275](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L261-L275)
+[PoolV3.sol#L231-L245](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L231-L245)
+The `deposit` and `mint` functions in the provided smart contract are missing the whenNotLocked modifier. This could allow users to deposit or mint tokens even when the pool is in a locked state, potentially leading to undesired behavior.
+Both functions perform critical operations: `deposit` allows users to deposit underlying tokens in exchange for pool `shares`, and `mint` allows minting a specified number of pool `shares`. Without the `whenNotLocked` check, these operations can be performed even when the pool should not accept deposits or mint new shares, which could disrupt the intended functionality and integrity of the pool.
+
+### Impact:
+
+Allowing deposits and mints while the pool is locked can lead to unwanted token transactions and state changes, potentially causing inconsistencies in the pool's state and affecting other users who expect the pool to be in a non-active state during the lock period.
+
+### Mitigation:
+
+Add the `whenNotLocked` modifier to both the `deposit` and `mint` functions to ensure they can only be executed when the pool is not locked.
