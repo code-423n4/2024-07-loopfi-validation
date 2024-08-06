@@ -1,3 +1,24 @@
+## `IBalancerVault`:`swap` function is meant to emit an event but no event was set up.
+
+`IBalancerVault`:`swap` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
+
+### Proof of concept
+
+```diff
++     event Swapped(SwapKind kind, address assetIn, address assetOut, uint256 amount);
+
+       function swap(
+            SingleSwap memory singleSwap,
+            FundManagement memory funds,
+            uint256 limit,
+            uint256 deadline
+      )     external payable returns (uint256) {
++           emit Swapped(singleSwap, assetIn, assetOut, amount)
+    };
+	
+```
+
+
 ## Define and use `constant` variables instead of using literals
 
 If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.
