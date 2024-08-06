@@ -38,3 +38,17 @@ If the token transfer to the receiver occurs after the callback, it could lead t
 ### Mitigation:
 
 Ensure that the tokens are transferred to the receiver before executing the callback. 
+
+## B. Inadequate Time Checks for Updating Base Interest and Quota Revenue
+[PoolV3.sol#L642-L668](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L642-L668)
+Vulnerability Detail
+The current implementation of the `_updateBaseInterest` function uses `!=` to check if the current time (`block.timestamp`) is different from the last recorded update time ([lastBaseInterestUpdate_](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L651) and [lastQuotaRevenueUpdate](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L656)). This check can lead to incorrect updates if the function is called multiple times within the same block or before sufficient time has passed.
+The function checks if the current block timestamp is different from `lastBaseInterestUpdate_` and `lastQuotaRevenueUpdate`.
+If the condition is true, it updates `_baseInterestIndexLU` and sets `lastBaseInterestUpdate` to the current timestamp. Similarly, it updates `lastQuotaRevenueUpdate`.
+The use of `!=` may not correctly handle cases where the function is called in rapid succession or if it is invoked before the intended update interval has elapsed.
+
+### Impact
+Using `!=` for time checks can lead to scenarios where the function does not update the interest or revenue correctly, especially if multiple updates are attempted within the same block or if the function is called before the designated update time. This could result in stale interest or revenue values, which may affect the accuracy of calculations and financial operations dependent on these values.
+
+### Mitigation
+Replace the `!=` checks with `>=` to ensure that the updates occur if and only if the current timestamp is greater than or equal to the last recorded update time.
