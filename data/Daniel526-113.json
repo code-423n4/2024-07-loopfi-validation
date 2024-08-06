@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Daniel526",
+  "risk": "2",
+  "title": "Inconsistent Conversion from `uint128` to `uint256` in `_convertToU256` Function",
+  "issueId": 113,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/113"
+}
