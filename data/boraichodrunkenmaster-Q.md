@@ -21,3 +21,6 @@ Introduce an ID variable to track individual user stakes. This approach enables 
 
 2. **Full Contract Implementation**:
    [StakingLPEth.sol](https://github.com/code-423n4/2024-07-loopfi/blob/4f508781a49ffa53511e7e5ed6cda0ff0eb5bdc5/src/StakingLPEth.sol)
+
+### 2.
+### Positions which should only be liquidatable can be liquidated under bad debt liquidations
