@@ -1,3 +1,28 @@
+## `IBalancerVault`:`joinPool` function is meant to emit an event but no event was set up.
+
+`IBalancerVault`:`joinPool` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
+
+### Proof of concept
+
+```diff
+
++    event JoinedPool(address sender, address[] assets, uint256[] maxAmountsIn, bytes userData);
+
+
+    function joinPool(
+        bytes32 poolId,
+        address sender,
+        address recipient,
+        JoinPoolRequest memory request
+    ) external payable{
++       emit JoinedPool(sender, assets, maxAmountsIn, userData)
+    };
+```
+
+
+
+
+
 ## `IBalancerVault`:`swap` function is meant to emit an event but no event was set up.
 
 `IBalancerVault`:`swap` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
