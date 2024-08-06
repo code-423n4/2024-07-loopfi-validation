@@ -3,6 +3,7 @@
 This is another instance of the Incomplete NatSpec non-critical QA issue from the automated findings report. 
 
 The calcDecrease() function in CDPVault.sol is missing a @param NatSpec for the uint128 cumulativeQuotaInterest parameter. However, it is not included as an instance in the provided Automated Report : 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L657
 
 ```
  /// @dev Computes new debt principal and interest index (and other values) after decreasing debt
