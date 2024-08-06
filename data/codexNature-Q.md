@@ -1,3 +1,28 @@
+## `IBalancerVault`:`exitPool` function is meant to emit an event but no event was set up.
+
+`IBalancerVault`:`exitPool` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
+
+### Proof of concept
+
+
+```diff
++    event ExitedPool(address recipeint, address[] assets, uint256[] maxAmountsIn, bytes userData);
+
+
+    function exitPool(
+        bytes32 poolId,
+        address sender,
+        address payable recipient,
+        ExitPoolRequest memory request
+    ) external{
++        emit ExitedPool(recipeint, assets, maxAmountsIn, userData)
+    };
+```
+
+
+
+
+
 ## `IBalancerVault`:`joinPool` function is meant to emit an event but no event was set up.
 
 `IBalancerVault`:`joinPool` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
