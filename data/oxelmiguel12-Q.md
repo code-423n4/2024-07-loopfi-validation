@@ -31,6 +31,8 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 This transaction will revert due to an overflow caused by the addition function.
 
+However, a user can still repeatedly attempt to withdraw all the balance of the CDPVault, potentially affecting the withdrawals of other users.
+
 * Proposed Solution:
 
 Implement an explicit check to ensure the user cannot withdraw more collateral than they have. 
@@ -54,8 +56,6 @@ or modify the position before actually sending the funds  to apply the checks-ef
 * Impact
 
 This issue highlights the absence of necessary validation checks for zero address and zero amount in the deposit, withdraw, repay and borrow functions. The lack of these checks can lead to unintended behaviors, such as sending funds to an invalid address or processing transactions with no effect.
-
-
 
 This line of code to the function :
 
