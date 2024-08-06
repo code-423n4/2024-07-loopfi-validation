@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Rhaydden",
+  "risk": "2",
+  "title": "Unfair cooldown duration due to time-setting of global `cooldown` period",
+  "issueId": 122,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/122"
+}
