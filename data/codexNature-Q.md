@@ -6,7 +6,7 @@
 
 
 ```diff
-+    event ExitedPool(address recipeint, address[] assets, uint256[] maxAmountsIn, bytes userData);
++    event ExitedPool(address indexed recipeint, address[] indexed assets, uint256[] maxAmountsIn, bytes userData);
 
 
     function exitPool(
@@ -31,7 +31,7 @@
 
 ```diff
 
-+    event JoinedPool(address sender, address[] assets, uint256[] maxAmountsIn, bytes userData);
++    event JoinedPool(address indexed sender, address[] indexed assets, uint256[] maxAmountsIn, bytes userData);
 
 
     function joinPool(
@@ -55,7 +55,7 @@
 ### Proof of concept
 
 ```diff
-+     event Swapped(SwapKind kind, address assetIn, address assetOut, uint256 amount);
++     event Swapped(SwapKind kind, address indexed assetIn, address indexed assetOut, uint256 amount);
 
        function swap(
             SingleSwap memory singleSwap,
