@@ -66,3 +66,25 @@ Allowing deposits and mints while the pool is locked can lead to unwanted token 
 ### Mitigation:
 
 Add the `whenNotLocked` modifier to both the `deposit` and `mint` functions to ensure they can only be executed when the pool is not locked.
+
+## D. Potential Denial of Service (DoS) Due to Out-of-Gas (OOG) Error in transferAndJoin Function
+[PoolAction.sol#L75-L110](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L75-L110)
+The `transferAndJoin` function in the `PoolAction` contract is designed to facilitate the transfer of tokens from an externally owned account (EOA) and subsequently join a liquidity pool using the specified protocol (Balancer or Pendle). This function processes multiple token transfers and interactions within loops, potentially leading to high gas consumption and an Out-of-Gas (OOG) error.
+```solidity
+            for (uint256 i = 0; i < assets.length; ) {
+                if (maxAmountsIn[i] != 0) {
+                    _transferFrom(assets[i], from, address(this), maxAmountsIn[i], permitParams[i]);
+                }
+
+                unchecked {
+                    ++i;
+                }
+            }
+```
+The function decodes `poolActionParams.args` to obtain the list of assets and their corresponding maximum amounts to be transferred. It then iterates over the `assets` and `permitParams` arrays to execute `_transferFrom` operations, transferring tokens from the `from` address to the contract. If these arrays are large, the cumulative gas usage can exceed the block gas limit, causing an OOG error and failing the transaction.
+
+### Impact:
+A Denial of Service (DoS) can occur if the transaction runs out of gas due to the high number of token transfers and approvals. This prevents users from successfully executing the `transferAndJoin` function, potentially disrupting the contract's intended operations and affecting user experience.
+
+### Mitigation:
+To mitigate the risk of an OOG error, impose a limit on the maximum length of `assets` and `permitParams` arrays.
