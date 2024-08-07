@@ -88,3 +88,43 @@ A Denial of Service (DoS) can occur if the transaction runs out of gas due to th
 
 ### Mitigation:
 To mitigate the risk of an OOG error, impose a limit on the maximum length of `assets` and `permitParams` arrays.
+
+## E. Array Length Mismatch in `updateLeverJoin` Function
+The `updateLeverJoin` function in the `PoolAction` contract is designed to update the `join` parameters for a levered position when using the Balancer protocol. It decodes `poolActionParams.args` into `poolId`, `assets`, `assetsIn`, and `maxAmountsIn`, and then updates these arrays based on the provided input parameters. However, there is a potential issue where the lengths of `assets`, `assetsIn`, and `maxAmountsIn` may not be equal, leading to out-of-bounds array access and subsequent reversion of the transaction.
+
+```solidity
+        if (poolActionParams.protocol == Protocol.BALANCER) {
+            (bytes32 poolId, address[] memory assets, uint256[] memory assetsIn, uint256[] memory maxAmountsIn) = abi
+                .decode(poolActionParams.args, (bytes32, address[], uint256[], uint256[]));
+
+            uint256 len = assets.length;
+            // the offset is needed because of the BPT token that needs to be skipped from the join
+            bool skipIndex = false;
+            uint256 joinAmount = flashLoanAmount;
+            if (upFrontToken == joinToken) {
+                joinAmount += upfrontAmount;
+            }
+
+            // update the join parameters with the new amounts // @audit array lengths mismatch
+            for (uint256 i = 0; i < len; ) {
+                uint256 assetIndex = i - (skipIndex ? 1 : 0);
+                if (assets[i] == joinToken) {
+                    maxAmountsIn[i] = joinAmount;
+                    assetsIn[assetIndex] = joinAmount;
+                } else if (assets[i] == upFrontToken && assets[i] != poolToken) {
+                    maxAmountsIn[i] = upfrontAmount;
+                    assetsIn[assetIndex] = upfrontAmount;
+                } else {
+                    skipIndex = skipIndex || assets[i] == poolToken;
+                }
+                unchecked {
+                    i++;
+                }
+            }
+```
+The primary issue lies in the assumption that `assetsIn` and `maxAmountsIn` have the same length as `assets`, which may not always be the case. This mismatch can cause out-of-bounds errors when accessing or modifying elements of these arrays.
+
+### Impact:
+An array length mismatch can lead to out-of-bounds array access, causing the transaction to revert. This disrupts the normal functionality of the `updateLeverJoin` function, preventing users from successfully updating their join parameters for leveraged positions. It can also potentially lock funds or create inconsistencies in the protocol's state.
+### Mitigation:
+To mitigate this issue, explicitly check that the lengths of assets, assetsIn, and maxAmountsIn are equal before performing any operations on these arrays. This ensures that any mismatch is caught early, preventing out-of-bounds errors and ensuring the function operates correctly.
