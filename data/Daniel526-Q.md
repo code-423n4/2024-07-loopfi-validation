@@ -69,6 +69,7 @@ Add the `whenNotLocked` modifier to both the `deposit` and `mint` functions to e
 
 ## D. Potential Denial of Service (DoS) Due to Out-of-Gas (OOG) Error in transferAndJoin Function
 [PoolAction.sol#L75-L110](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L75-L110)
+[Also Here](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L269-L286)
 The `transferAndJoin` function in the `PoolAction` contract is designed to facilitate the transfer of tokens from an externally owned account (EOA) and subsequently join a liquidity pool using the specified protocol (Balancer or Pendle). This function processes multiple token transfers and interactions within loops, potentially leading to high gas consumption and an Out-of-Gas (OOG) error.
 ```solidity
             for (uint256 i = 0; i < assets.length; ) {
@@ -90,6 +91,8 @@ A Denial of Service (DoS) can occur if the transaction runs out of gas due to th
 To mitigate the risk of an OOG error, impose a limit on the maximum length of `assets` and `permitParams` arrays.
 
 ## E. Array Length Mismatch in `updateLeverJoin` Function
+[PoolAction.sol#L181-L223](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L181-L223)
+[Also Here](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L269-L286)
 The `updateLeverJoin` function in the `PoolAction` contract is designed to update the `join` parameters for a levered position when using the Balancer protocol. It decodes `poolActionParams.args` into `poolId`, `assets`, `assetsIn`, and `maxAmountsIn`, and then updates these arrays based on the provided input parameters. However, there is a potential issue where the lengths of `assets`, `assetsIn`, and `maxAmountsIn` may not be equal, leading to out-of-bounds array access and subsequent reversion of the transaction.
 
 ```solidity
