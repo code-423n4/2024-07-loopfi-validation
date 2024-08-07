@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "ElCid",
+  "risk": "3",
+  "title": "Unhealthy positions with no bad debt can be liquidated as if they have bad debt",
+  "issueId": 140,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/140"
+}
