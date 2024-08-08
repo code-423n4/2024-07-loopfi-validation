@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "josephxander",
+  "risk": "2",
+  "title": "Lack of extra validations when using `Chainlink::latestRoundData` in `AuraVault::_chainlinkSpot` and `AuraVault::_getAuraSpot` will allow for stale or incorrect results to be used",
+  "issueId": 163,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/163"
+}
