@@ -28,3 +28,10 @@ Introduce an ID variable to track individual user stakes. This approach enables 
 ### 3.
 ### Withdawal Fee must be clean
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L819-L833
+
+### 4.
+### check the use of stablecoin in contract comments
+
+### 5.
+### Make max duration a constant
+
