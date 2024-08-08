@@ -35,5 +35,4 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 ### 5.
 ### Make max duration a constant
 
-### 6.
-### Asset and shares mixed up https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L104-L126
+
