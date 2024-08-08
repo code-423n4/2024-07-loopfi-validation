@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "jigster",
+  "risk": "2",
+  "title": "Attacker can potentially manipulate FlashLender into a profitable attack",
+  "issueId": 145,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/145"
+}
