@@ -191,3 +191,7 @@ function modifyCollateralAndDebt(
 Here the calculations for the collateralValue variable is moved inside an if statement to avoid having to perform the calculation in situations where it is unnecessary. 
 
 Running "forge snapshot --diff" on the testing suite with the only difference being that the new more gas optimized implementation is used shows that this approach leads to a small gas cost decrease in a large number of tests which utilize the modifyCollateralAndDebt() function while not showing an increase in gas costs for any test. 
+
+For example we can see that we save 110 gas in the test_deposit() and 230 gas in the test_repay() functions just by using the new implementation : 
+test_deposit() (gas: 110 (0.029%)) 
+test_repay() (gas: 230 (0.035%)) 
