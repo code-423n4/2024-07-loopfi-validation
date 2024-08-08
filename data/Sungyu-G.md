@@ -116,3 +116,78 @@ Here is an edit more efficient implementation of the same function. The only dif
 
 When doing "forge snapshot --diff" on some of the test functions which uses the calcDecrease() function, we notice that all tests pass and a small reduction in gas costs was made when using the new implementation which just removes the unnecessary variable assignment : 
 test_modifyCollateralAndDebt_repayPositionAndWithdraw() (gas: -600 (-0.012%)) 
+
+
+
+## Unnecessary computation performed in CDPVault.sol on calls to deposit() and repay() leading to higher gas costs
+
+The CDPVault::modifyCollateralAndDebt() function is the function responsible for modifying a Position's collateral and debt balances. This function is the core logic behind the external repay(), withdraw(), deposit(), and borrow() functions. 
+
+```
+function modifyCollateralAndDebt(
+        address owner,
+        address collateralizer,
+        address creditor,
+        int256 deltaCollateral,
+        int256 deltaDebt
+    ) public {
+
+         ..........
+
+        uint256 collateralValue = wmul(position.collateral, spotPrice_);
+
+        if (
+            (deltaDebt > 0 || deltaCollateral < 0) &&
+            !_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio)
+        ) revert CDPVault__modifyCollateralAndDebt_notSafe();
+
+        //quotaRevenueChange will always be equal to default uint value 0 for call originating from deposit. 
+        if (quotaRevenueChange != 0) {
+            IPoolV3(pool).updateQuotaRevenue(quotaRevenueChange); // U:[PQK-15]
+        }
+        emit ModifyCollateralAndDebt(owner, collateralizer, creditor, deltaCollateral, deltaDebt);
+    }
+```
+
+Notice the following variable declaration : 
+```
+uint256 collateralValue = wmul(position.collateral, spotPrice_);
+```
+
+The variable collateralValue is declared outside the scope of the following if statement, but this variable is not utilized in the code anywhere else except for inside the scope of the following if statement. 
+
+The if statement is only executed when the provided deltaDebt parameter is greater than 0 or if the provided deltaCollateral parameter is less than 0. Otherwise, it will short circuit the && and therefore also short circuit the following !_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio), which happens to be the only place in the code that the collateralValue memory variable is used. Therefore, in situations where the if statement short circuits, the computation done to initialize the collateralValue memory variable was a waste since the variable is never used in the code. 
+
+The function calls to CDPVault::deposit() and CDPVault::repay() will always call modifyCollateralAndDebt() with a deltaDebt value <=0 and a deltaCollateral parameter >= 0. Therefore, calls to CDPVault::deposit() and CDPVault::repay() will always short circuit the logic in the if statement and therefore there is no need to compute the value of collateralValue for these variables. In doing so we can save gas on the opcodes that would have been used to compute the value of collateralValue as well as avoid potential memory expansion costs. 
+
+A more gas efficient implementation of the modifyCollateralAndDebt() is provided below. 
+
+```
+function modifyCollateralAndDebt(
+        address owner,
+        address collateralizer,
+        address creditor,
+        int256 deltaCollateral,
+        int256 deltaDebt
+    ) public {
+        
+    .......
+
+        if ((deltaDebt > 0 || deltaCollateral < 0)){
+            uint256 collateralValue = wmul(position.collateral, spotPrice_);
+            if(!_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio)){
+                revert CDPVault__modifyCollateralAndDebt_notSafe();
+            }
+        }
+
+        //quotaRevenueChange will always be equal to default uint value 0 for call originating from deposit. 
+        if (quotaRevenueChange != 0) {
+            IPoolV3(pool).updateQuotaRevenue(quotaRevenueChange); // U:[PQK-15]
+        }
+        emit ModifyCollateralAndDebt(owner, collateralizer, creditor, deltaCollateral, deltaDebt);
+    }
+``` 
+
+Here the calculations for the collateralValue variable is moved inside an if statement to avoid having to perform the calculation in situations where it is unnecessary. 
+
+Running "forge snapshot --diff" on the testing suite with the only difference being that the new more gas optimized implementation is used shows that this approach leads to a small gas cost decrease in a large number of tests which utilize the modifyCollateralAndDebt() function while not showing an increase in gas costs for any test. 
