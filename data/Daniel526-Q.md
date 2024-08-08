@@ -53,7 +53,7 @@ Using `!=` for time checks can lead to scenarios where the function does not upd
 ### Mitigation
 Replace the `!=` checks with `>=` to ensure that the updates occur if and only if the current timestamp is greater than or equal to the last recorded update time.
 
-## C. Missing whenNotLocked Check in deposit and mint Functions
+## C. Missing `whenNotLocked` Check in `deposit` and `mint` Functions
 [PoolV3.sol#L261-L275](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L261-L275)
 [PoolV3.sol#L231-L245](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L231-L245)
 The `deposit` and `mint` functions in the provided smart contract are missing the whenNotLocked modifier. This could allow users to deposit or mint tokens even when the pool is in a locked state, potentially leading to undesired behavior.
@@ -93,6 +93,7 @@ To mitigate the risk of an OOG error, impose a limit on the maximum length of `a
 ## E. Array Length Mismatch in `updateLeverJoin` Function
 [PoolAction.sol#L181-L223](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L181-L223)
 [Also Here](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L269-L286)
+[Also Here](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/GaugeV3.sol#L97-L118)
 The `updateLeverJoin` function in the `PoolAction` contract is designed to update the `join` parameters for a levered position when using the Balancer protocol. It decodes `poolActionParams.args` into `poolId`, `assets`, `assetsIn`, and `maxAmountsIn`, and then updates these arrays based on the provided input parameters. However, there is a potential issue where the lengths of `assets`, `assetsIn`, and `maxAmountsIn` may not be equal, leading to out-of-bounds array access and subsequent reversion of the transaction.
 
 ```solidity
