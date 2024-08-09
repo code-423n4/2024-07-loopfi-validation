@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Daniel526",
+  "risk": "2",
+  "title": " Incorrect Loop Termination in `setScheduledRewardsPerSecond` Function Due to Zero Offset",
+  "issueId": 173,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/173"
+}
