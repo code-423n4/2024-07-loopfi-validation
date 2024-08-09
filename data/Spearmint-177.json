@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "2",
+  "title": "Users that initially cooldown a portion of their shares, then later cooldown some more shares will update the cooldownEnd for all their shares",
+  "issueId": 177,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/177"
+}
