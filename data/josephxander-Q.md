@@ -26,3 +26,44 @@ However, the permission status of `Agent`s recorded in mapping `Permission::_per
 ## MITIGATION
 * Create own unique `agentHasPermission` getter function
 * Include `_permittedAgents[owner][caller];` in `Permission::hasPermission`.
+
+
+# `PoolQuotaKeeperV3::setCreditManagers` and `PoolQuotaKeeperV3::setGauge` can be set to address(0)
+
+There are no address(0) checks in `PoolQuotaKeeperV3::setCreditManagers` and `PoolQuotaKeeperV3::setGuage`
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/PoolQuotaKeeperV3.sol#L225-L247
+
+```
+//src/quotas/PoolQuotaKeeperV3.sol
+
+    function setGauge(
+        address _gauge
+    )
+        external
+        override
+        configuratorOnly // U:[PQK-2]
+    {
+        if (gauge != _gauge) {
+            gauge = _gauge; // U:[PQK-8]
+            emit SetGauge(_gauge); // U:[PQK-8]
+        }
+    }
+
+
+    function setCreditManager(
+        address token,
+        address vault
+    )
+        external
+        override
+        configuratorOnly // U:[PQK-2]
+    {
+        creditManagers[token] = vault;
+    }
+```
+
+## MITIGATION
+
+Implement checks that `guage != address(0)` in  `PoolQuotaKeeperV3::setGuage`. And that `vault != address(0)` in `PoolQuotaKeeperV3::setCreditManagers`.
+
