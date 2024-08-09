@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Daniel526",
+  "risk": "2",
+  "title": "`_processEligibility` Always Returning True Causes Universal User Disqualification in `afterLockUpdate`",
+  "issueId": 180,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/180"
+}
