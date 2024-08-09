@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "josephxander",
+  "risk": "2",
+  "title": "Potential DoS as `Silo::withdraw` lacks balance checks before transferring `unstaked` assets to `owner` ",
+  "issueId": 185,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/185"
+}
