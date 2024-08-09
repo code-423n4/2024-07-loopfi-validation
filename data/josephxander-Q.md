@@ -1,6 +1,6 @@
-Set `Agent`s cannot verify their permission status via `Permission::hasPermission`
+# Set `Agent`s cannot verify their permission status via `Permission::hasPermission`
 
-SUMMARY
+## SUMMARY
 
 Permission status of an `Agent` cannot be viewed.
 
@@ -23,6 +23,6 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 However, the permission status of `Agent`s recorded in mapping `Permission::_permittedAgents` via the `Permission::setPermissionAgent` is not checked in `Permission::hasPermission`. And there is no checker for such either.
 
-MITIGATION
+## MITIGATION
 * Create own unique `agentHasPermission` getter function
 * Include `_permittedAgents[owner][caller];` in `Permission::hasPermission`.
