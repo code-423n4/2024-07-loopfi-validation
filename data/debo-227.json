@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "debo",
+  "risk": "2",
+  "title": "StakingLPEth contract has accumulation of Cooldowns in cooldownAssets and cooldownShares Functions",
+  "issueId": 227,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/227"
+}
