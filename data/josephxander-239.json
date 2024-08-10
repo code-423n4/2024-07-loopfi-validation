@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "josephxander",
+  "risk": "2",
+  "title": "Liquidator looking to liquidate a single unsafe position will be subject to paying liquidation penalty even if they don't own the position or lack `owner` permission in `CDPVault::liquidatePosition`.",
+  "issueId": 239,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/239"
+}
