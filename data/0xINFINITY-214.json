@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xINFINITY",
+  "risk": "2",
+  "title": "`Transferaction::_transferFrom` is vulnerable via DOS if the approval type is `PERMIT`",
+  "issueId": 214,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/214"
+}
