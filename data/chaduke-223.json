@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "chaduke",
+  "risk": "3",
+  "title": "CDPVault.liquidatePosition() calculates ```deltaDebt``` and ```penalty``` wrongly, as a result, either the liquidator or the protocol will lost funds.  ",
+  "issueId": 223,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/223"
+}
