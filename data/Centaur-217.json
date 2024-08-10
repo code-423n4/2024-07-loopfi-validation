@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "3",
+  "title": "Undercollateralized borrowers and those incurring bad debt cannot be liquidated while the system is in a paused state.",
+  "issueId": 217,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/217"
+}
