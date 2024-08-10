@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "3",
+  "title": "BalancerOracle.update() uses the hugely inaccurate totalSupply() function when calculating the balancer LP token price which will lead to an inaccurate price for all non-legacy pools",
+  "issueId": 226,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/226"
+}
