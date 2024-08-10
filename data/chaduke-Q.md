@@ -24,6 +24,71 @@ Therefore, when asset/share != 1, it will be a problem.
 
 Mitigation: convert assets to shares when minting shares to the treasury for the pentalty part. 
 
+QA4: CDPVault.liquidatePositionBadDebt() will call pool.repayCreditAccount() at L624 to: 
+)
+1) deal with Bad debt accounting, in particular, it will try to burn shares from the treasury to cover the loss;
 
+2) The problm is that inside poolrepayCreditAccount(), it will deduct ```debtData.debt``` from ``` _totalDebt.borrowed``` and ```cmdDebt.borrowed``` as if the whole debt is recovered from the liquidator and the treasury. This is not true since the treasury might not have sufficient shares to burn to cover the loss. In this case, ``` _totalDebt.borrowed``` and ```cmdDebt.borrowed``` should be deducted by an amount less than ```debtData.debt``` - by considering ```uncoveredLoss```.
 
- 
+[https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L529-L576](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L529-L576)
+
+Mitigation: 
+we need to adjust the amount to deduct from ```_totalDebt.borrowed``` and ```cmdDebt.borrowed``` when the burning from the treasury cannot cover the whole loss. See the code as follows:
+
+```diff
+function repayCreditAccount(
+        uint256 repaidAmount,
+        uint256 profit,
+        uint256 loss
+    )
+        external
+        override
+        creditManagerOnly // U:[LP-2C]
+        whenNotPaused // U:[LP-2A]
+        nonReentrant // U:[LP-2B]
+    {
++       uint256 uncoveredLoss;
+
+        uint128 repaidAmountU128 = repaidAmount.toUint128();
+
+        DebtParams storage cmDebt = _creditManagerDebt[msg.sender];
+        uint128 cmBorrowed = cmDebt.borrowed;
+        if (cmBorrowed == 0) {
+            revert CallerNotCreditManagerException(); // U:[LP-2C,14A]
+        }
+
+        if (profit > 0) {
+            _mint(treasury, convertToShares(profit)); // U:[LP-14B]
+        } else if (loss > 0) {
+            address treasury_ = treasury;
+            uint256 sharesInTreasury = balanceOf(treasury_);
+            uint256 sharesToBurn = convertToShares(loss);
+            if (sharesToBurn > sharesInTreasury) {
++               uncoveredLoss = convertToAssets(sharesToBurn - sharesInTreasury);
+                unchecked {
+                    emit IncurUncoveredLoss({
+                        creditManager: msg.sender,
+                        loss: convertToAssets(sharesToBurn - sharesInTreasury)
+                    }); // U:[LP-14D]
+                }
+                sharesToBurn = sharesInTreasury;
+            }
+            _burn(treasury_, sharesToBurn); // U:[LP-14C,14D]
+        }
+
+        _updateBaseInterest({
+            expectedLiquidityDelta: -loss.toInt256(),
+            availableLiquidityDelta: 0,
+            checkOptimalBorrowing: false
+        }); // U:[LP-14B,14C,14D]
+
+-       _totalDebt.borrowed -= repaidAmountU128; // U:[LP-14B,14C,14D]
+-       cmDebt.borrowed = cmBorrowed - repaidAmountU128; // U:[LP-14B,14C,14D]
+
++       _totalDebt.borrowed = _totalDebt.borrowed + uncoveredLoss.toUint128()  repaidAmountU128; // U:[LP-14B,14C,14D]
++       cmDebt.borrowed = cmBorrowed + uncoveredLoss.toUint128() - repaidAmountU128; // U:[LP-14B,14C,14D]
+
+        emit Repay(msg.sender, repaidAmount, profit, loss); // U:[LP-14B,14C,14D]
+    }
+
+```
