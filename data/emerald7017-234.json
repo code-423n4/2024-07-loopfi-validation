@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "emerald7017",
+  "risk": "2",
+  "title": "Incorrect Minting of Shares in _deposit() Function Violates Expected Behavior",
+  "issueId": 234,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/234"
+}
