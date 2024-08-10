@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Akay",
+  "risk": "2",
+  "title": "Insufficient collateral check in `withdraw` function",
+  "issueId": 208,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/208"
+}
