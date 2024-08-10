@@ -1,8 +1,0 @@
-{
-  "contest": 415,
-  "handle": "Aristos",
-  "risk": "3",
-  "title": "PoolAction, PositionAction, and SwapAction permit signature does not check receiving token address is the exact token.",
-  "issueId": 196,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/196"
-}
