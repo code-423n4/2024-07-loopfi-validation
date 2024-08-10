@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xINFINITY",
+  "risk": "2",
+  "title": " `PendleLPOracle::_fetchAndValidate` will return incorrect latest price data from chainlink",
+  "issueId": 225,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/225"
+}
