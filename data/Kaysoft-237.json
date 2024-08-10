@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Kaysoft",
+  "risk": "3",
+  "title": "`transferAndJoin(...)` function of PoolAction.sol can be used to steal tokens from users",
+  "issueId": 237,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/237"
+}
