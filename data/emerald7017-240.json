@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "emerald7017",
+  "risk": "2",
+  "title": "Incorrect Liquidity Update in _withdraw() Can Lead to Liquidity Underflow",
+  "issueId": 240,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/240"
+}
