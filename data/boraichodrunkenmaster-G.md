@@ -58,4 +58,5 @@ The function makes two transferFrom calls where as one could be made
 ### 3. You can remove the calcAccruedInterest function not needed.
 ---
 
-### 4. 
+### 4. Initialization not needed 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L672
