@@ -38,3 +38,33 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
         ....
     }
 ```
+
+
+
+## Inaccurate comments/function names in ChefIncentivesController, EligibilityDataProvider, and MultiFeeDistribution
+
+LoopFi implements its reward contracts heavily based on the Radiant protocol. However, it is mentioned in the documentation that it does not use the Radiant token for rewards but instead uses its own dLP token. However, it looks like the comments in many of these contracts were just directly copied over from the Radiant protocol. This leads to inaccurate comments regarding the functionality of many of the functions in the listed contracts. The comments found in these contracts should be updated to reflect the expected behavior in the Loopfi protocol instead of directly copying over the comments from the Radiant protocol. This will drastically help improve the readability of these contracts. 
+
+A quick example is listed below : 
+```
+    /// @notice Duration of vesting RDNT
+    uint256 public vestDuration;
+```
+The RDNT token is not the actual token that is vested in this contract. Instead it is the dLP token. Therefore, the comment should be updated to "Duration of vesting dLP". Directly copying the comments over from the Radiant protocol hurts the readability of the code, which goes against the core purpose of adding comments to our code which is to improve readability.
+
+The same applies for many of the function names provided in these contracts. Even if the functionality stays the same, the variable/function names should be updated to reflect the behavior of the LoopFi protocol to improve the readability of the code. 
+
+Instances : 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L75
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L64
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L209
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L1218C8-L1221C28
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L213
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L289
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L389
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L787
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L851
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L947
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/EligibilityDataProvider.sol#L39
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/EligibilityDataProvider.sol#L48
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/EligibilityDataProvider.sol#L174
