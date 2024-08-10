@@ -1,4 +1,4 @@
-## Another instance of [NC-24] Incomplete NatSpec: @param is missing on actually documented functions.
+## Additional instances of [NC-24] Incomplete NatSpec: @param is missing on actually documented functions.
 
 This is another instance of the Incomplete NatSpec non-critical QA issue from the automated findings report. 
 
@@ -39,7 +39,21 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
     }
 ```
 
+The manualStopEmissionsFor() function in ChefIncentivesController.sol is also missing an @param for the _tokens parameter
 
+```
+  /**
+     * @notice function to stop user emissions
+     * @param _user address of user to stop emissions for
+     */
+    function manualStopEmissionsFor(address _user, address[] memory _tokens) public isWhitelisted {
+
+    ..........
+
+}
+```
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L813
 
 ## Inaccurate comments/function names in ChefIncentivesController, EligibilityDataProvider, and MultiFeeDistribution
 
