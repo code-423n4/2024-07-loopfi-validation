@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Naresh",
+  "risk": "2",
+  "title": "Inadequate Initiator Validation in `onFlashLoan()` Function",
+  "issueId": 222,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/222"
+}
