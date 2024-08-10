@@ -35,4 +35,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 ### 5.
 ### Make max duration a constant
 
+### 6
+### Tokens may not be applicable for some cdp vaults
+
 
