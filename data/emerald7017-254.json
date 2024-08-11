@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "emerald7017",
+  "risk": "2",
+  "title": "Incorrect Total Debt Reduction Handling in `repayCreditAccount()`",
+  "issueId": 254,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/254"
+}
