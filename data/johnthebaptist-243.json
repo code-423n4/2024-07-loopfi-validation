@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "johnthebaptist",
+  "risk": "3",
+  "title": "Unauthorized Contract Upgrades Due to Weak Authorization Checks",
+  "issueId": 243,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/243"
+}
