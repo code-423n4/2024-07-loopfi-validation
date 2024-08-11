@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "hassan-truscova",
+  "risk": "3",
+  "title": "Over-Leverage Risk in depositWithReferral Function Due to Missing Asset Limit Checks",
+  "issueId": 296,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/296"
+}
