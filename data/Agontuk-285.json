@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Malicious users can manipulate quota rates through multiple votes within the same epoch (`GaugeV3::_vote()`)",
+  "issueId": 285,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/285"
+}
