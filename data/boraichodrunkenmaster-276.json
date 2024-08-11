@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "boraichodrunkenmaster",
+  "risk": "3",
+  "title": "PositionActions.sol : CreditFlashloan function should be checked as well for fix ",
+  "issueId": 276,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/276"
+}
