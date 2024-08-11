@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Improper Permission Checks Allow Unauthorized Modifications of Collateral and Debt (`CDPVault::modifyCollateralAndDebt`)",
+  "issueId": 289,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/289"
+}
