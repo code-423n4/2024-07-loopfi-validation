@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Unbounded Credit Manager Debt Limit Allows Violation of Assets >= Borrowed Invariant",
+  "issueId": 298,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/298"
+}
