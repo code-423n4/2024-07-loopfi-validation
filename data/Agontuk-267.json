@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Incorrect Order of Operations in `PoolQuotaKeeperV3::updateRates()` May Lead to Financial Discrepancies",
+  "issueId": 267,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/267"
+}
