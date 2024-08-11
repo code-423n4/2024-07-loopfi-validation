@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Attacker can manipulate share-to-asset ratio to drain pool funds (`PoolV3::_convertToShares` and `PoolV3::_convertToAssets`)",
+  "issueId": 259,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/259"
+}
