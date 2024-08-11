@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Agontuk",
+  "risk": "2",
+  "title": "Lack of Slippage Control in `AuraVault::deposit` and `AuraVault::mint` Functions Can Lead to Unexpected Financial Losses for Users",
+  "issueId": 279,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/279"
+}
