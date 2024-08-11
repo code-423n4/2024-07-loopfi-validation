@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "jolah1",
+  "risk": "2",
+  "title": "No fall back for price feeds oracle if Chainlink's aggregators fails.",
+  "issueId": 261,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/261"
+}
