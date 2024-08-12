@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Akay",
+  "risk": "3",
+  "title": "Missing deposit call in `_onIncreaseLever` function",
+  "issueId": 359,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/359"
+}
