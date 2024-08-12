@@ -133,3 +133,26 @@ The primary issue lies in the assumption that `assetsIn` and `maxAmountsIn` have
 An array length mismatch can lead to out-of-bounds array access, causing the transaction to revert. This disrupts the normal functionality of the `updateLeverJoin` function, preventing users from successfully updating their join parameters for leveraged positions. It can also potentially lock funds or create inconsistencies in the protocol's state.
 ### Mitigation:
 To mitigate this issue, explicitly check that the lengths of assets, assetsIn, and maxAmountsIn are equal before performing any operations on these arrays. This ensures that any mismatch is caught early, preventing out-of-bounds errors and ensuring the function operates correctly.
+
+## F. Unsafe Casting in `setParameter` Function
+[AuraVault.sol#L145-L150](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L145-L150)
+The `setParameter` function in the provided contract allows the assignment of critical addresses based on the input parameter. However, the function performs an unsafe cast from `uint256` to address, which can lead to potential issues if the input data exceeds the size of an Ethereum address (160 bits).
+
+Here’s the relevant code snippet:
+```solidity
+function setParameter(bytes32 parameter, uint256 data) external onlyRole(VAULT_CONFIG_ROLE) {
+    if (parameter == "feed") feed = address(uint160(data));
+    else if (parameter == "auraPriceOracle") auraPriceOracle = address(uint160(data));
+    else revert AuraVault__setParameter_unrecognizedParameter();
+    emit SetParameter(parameter, data);
+}
+```
+The function accepts a `uint256` input (`data`) and attempts to cast it to an address using `address(uint160(data)`).
+`uint160` truncates the `uint256` value to fit into the size of an address (`160 bits`). However, if the data passed to the function exceeds `160` bits, the higher bits will be discarded.
+This truncation can result in an incorrect or unintended address being assigned to the feed or `auraPriceOracle` variables, potentially leading to misconfigurations or vulnerabilities within the contract.
+
+### Impact:
+Incorrect or unintended addresses may be assigned to the feed or `auraPriceOracle` parameters, which could result in the contract interacting with an unexpected address. This could lead to incorrect data being retrieved or transferred, causing financial loss or unintended behavior in the contract.
+
+### Mitigation:
+use OpenZeppelin’s `SafeCast` library. 
