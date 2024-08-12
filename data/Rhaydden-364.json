@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Rhaydden",
+  "risk": "2",
+  "title": "Users can transfer non-intended tokens using Permit2 in TransferAction",
+  "issueId": 364,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/364"
+}
