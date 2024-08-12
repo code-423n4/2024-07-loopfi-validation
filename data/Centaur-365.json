@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "2",
+  "title": "`updateLeverJoin opens door for possible under-collaterized pool when providing liquidity to Balancer pool.",
+  "issueId": 365,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/365"
+}
