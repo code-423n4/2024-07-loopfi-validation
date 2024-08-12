@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "hassan-truscova",
+  "risk": "2",
+  "title": "recoverERC20 can be used as a backdoor",
+  "issueId": 361,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/361"
+}
