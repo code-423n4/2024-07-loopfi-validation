@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "hassan-truscova",
+  "risk": "2",
+  "title": "Pausing `ChefIncentivesController` contract by the owner can unexpectedly block the users from claiming the reward",
+  "issueId": 362,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/362"
+}
