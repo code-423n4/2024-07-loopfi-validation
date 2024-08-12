@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bigsam",
+  "risk": "2",
+  "title": "Users can still deposit and withdraw in the CDPVAULT even when the contract is paused.",
+  "issueId": 334,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/334"
+}
