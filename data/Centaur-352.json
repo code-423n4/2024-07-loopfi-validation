@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "2",
+  "title": "ExitPool:: allows users to withdraw lesser single token if Balancer Pool is imbalanced",
+  "issueId": 352,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/352"
+}
