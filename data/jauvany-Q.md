@@ -4,4 +4,25 @@
 
 # Low Impact Vulnerabilities
 
-## 
+## 1: Avoid making withdraw/unstake functions Pausable
+
+Vulnerability details
+
+## Context:
+
+Making withdraw or unstake functions pausable can create a risk by potentially locking users' funds indefinitely, especially in scenarios where the contract is paused for a prolonged period. This design could undermine trust and may not align with the decentralization principles of blockchain. It's advisable to design these functions with user security and accessibility in mind, ensuring that pausing capabilities are used judiciously and transparently, with clear conditions for resuming normal operations.
+
+## Proof of Concept
+
+> ***Num of Instances: 1***
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L239
+```
+	function withdraw(address to, uint256 amount) external whenNotPaused returns (uint256 tokenAmount) {
+```
+
+## Tools Used
+Manual Analysis
+
+### Recommended Mitigation Steps
+Avoid making withdraw/unstake functions Pausable
+
