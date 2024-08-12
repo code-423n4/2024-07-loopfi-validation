@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "2",
+  "title": "The `JoinToken`, `upfrontToken` and `upFrontAmount` was not validated, allowing users to proceed even if there is no amount of the token specified",
+  "issueId": 332,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/332"
+}
