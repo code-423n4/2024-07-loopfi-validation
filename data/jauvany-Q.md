@@ -51,4 +51,19 @@ Manual Analysis
 ### Recommended Mitigation Steps
 Avoid making withdraw/unstake functions Pausable
 
+## 2: Solidity version 0.8.23 won't work on all chains due to MCOPY
+
+Vulnerability details
+
+## Context:
+
+Solidity version 0.8.23 introduces the MCOPY opcode, this may not be implemented on all chains and L2 thus reducing the portability and compatibility of the code. Consider using an earlier solidity version.
+
+## Proof of Concept
+
+All files in scope
+
+### Tools Used
+
+Manual Analysis
 
