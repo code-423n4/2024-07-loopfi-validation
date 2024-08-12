@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "web3km",
+  "risk": "2",
+  "title": "Front-running `Permit2::permitTransferFrom` will cause users funds to be stucked in the contract ",
+  "issueId": 318,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/318"
+}
