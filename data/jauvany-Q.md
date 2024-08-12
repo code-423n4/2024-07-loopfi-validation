@@ -67,30 +67,134 @@ All files in scope
 
 Manual Analysis
 
-# 3: The call abi.encodeWithSelector is not type safe
+## 3: Missing zero address check in constructor
 
 Vulnerability details
 
 ## Context:
 
-In Solidity, `abi.encodeWithSelector` is a function used for encoding data along with a function selector, but it is not type-safe. This means it does not enforce type checking at compile time, potentially leading to errors if arguments do not match the expected types. Starting from version 0.8.13, Solidity introduced `abi.encodeCall`, which offers a safer alternative. `abi.encodeCall` ensures type safety by performing a full type check, aligning the types of the arguments with the function signature. This reduces the risk of bugs caused by typographical errors or mismatched types. Using `abi.encodeCall` enhances the reliability and security of the code by ensuring that the encoded data strictly conforms to the specified types, making it a preferable choice in Solidity versions 0.8.13 and above.
+In Solidity, constructors often take address parameters to initialize important components of a contract, such as owner or linked contracts. However, without a check, there's a risk that an address parameter could be mistakenly set to the zero address (0x0). This could occur due to a mistake or oversight during contract deployment. A zero address in a crucial role can cause serious issues, as it cannot perform actions like a normal address, and any funds sent to it are irretrievable. Therefore, it's crucial to include a zero address check in constructors to prevent such potential problems. If a zero address is detected, the constructor should revert the transaction.
 
 ## Findings
 
 > ***Num of Instances: 9***
 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction4626.sol#L115
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction4626.sol#L149 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L54C1-L61C6
+```
+	constructor(
+    	address _liquidityPool,
+    	string memory _name,
+    	string memory _symbol
+	) ERC4626(IERC20(_liquidityPool)) ERC20(_name, _symbol) {
+    	silo = new Silo(address(this), _liquidityPool);
+    	cooldownDuration = MAX_COOLDOWN_DURATION;
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/Silo.sol#L18C1-L21C6
+```
+	constructor(address _stakingVault, address _lpEth) {
+    	STAKING_VAULT = _stakingVault;
+    	lpETH = IERC20(_lpEth);
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction4626.sol#L25C1-L30C81
+```
+	constructor(
+    	address flashlender_,
+    	address swapActions_,
+    	address poolAction_,
+    	address vaultRegistry_
+	) PositionAction(flashlender_, swapActions_, poolAction_, vaultRegistry_) {}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction20.sol#L24C1-L29C80
+```
+	constructor(
+    	address flashlender_,
+    	address swapAction_,
+    	address poolAction_,
+    	address vaultRegistry_
+	) PositionAction(flashlender_, swapAction_, poolAction_, vaultRegistry_) {}
+```
 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L397 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L405 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L461 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L478
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L540 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L561 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L601 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/PoolQuotaKeeperV3.sol#L79C1-L84C6
+```
+	constructor(
+    	address _pool
+	) ACLNonReentrantTrait(IPoolV3(_pool).addressProvider()) ContractsRegisterTrait(IPoolV3(_pool).addressProvider()) {
+    	pool = _pool; // U:[PQK-1]
+    	underlying = IPoolV3(_pool).asset(); // U:[PQK-1]
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L61C1-L64C6
+```
+	constructor(address balancerVault_, address _pendleRouter) {
+    	balancerVault = IVault(balancerVault_);
+    	pendleRouter = IPActionAddRemoveLiqV3(_pendleRouter);
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/GaugeV3.sol#L52C1-L64C6
+```
+	constructor(
+    	address _pool,
+    	address _voter
+	)
+    	ACLNonReentrantTrait(IPoolV3(_pool).addressProvider())
+    	nonZeroAddress(_voter) // U:[GA-01]
+	{
+    	pool = _pool; // U:[GA-01]
+    	voter = _voter; // U:[GA-01]
+    	epochLastUpdate = IGearStakingV3(_voter).getCurrentEpoch(); // U:[GA-01]
+    	epochFrozen = true; // U:[GA-01]
+    	emit SetFrozenEpoch(true); // U:[GA-01]
+	}
+```
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L68C1-L89C6
+```
+	constructor(
+    	address balancerVault_,
+    	address chainlinkOracle_,
+    	address pool_,
+    	uint256 updateWaitWindow_,
+    	uint256 stalePeriod_
+	) initializer {
+    	balancerVault = IVault(balancerVault_);
+    	updateWaitWindow = updateWaitWindow_;
+    	stalePeriod = stalePeriod_;
+    	chainlinkOracle = IOracle(chainlinkOracle_);
+    	pool = pool_;
+    	poolId = IWeightedPool(pool).getPoolId();
+
+    	(address[] memory tokens, , ) = balancerVault.getPoolTokens(poolId);
+
+    	// store the tokens
+    	uint256 len = tokens.length;
+    	token0 = (len > 0) ? tokens[0] : address(0);
+    	token1 = (len > 1) ? tokens[1] : address(0);
+    	token2 = (len > 2) ? tokens[2] : address(0);
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L120C1-L135C6
+```
+	constructor(
+    	address rewardPool_,
+    	address asset_,
+    	address feed_,
+    	address auraPriceOracle_,
+    	uint32 maxClaimerIncentive_,
+    	uint32 maxLockerIncentive_,
+    	string memory tokenName_,
+    	string memory tokenSymbol_
+	) ERC4626(IERC20(asset_)) ERC20(tokenName_, tokenSymbol_) {
+    	rewardPool = rewardPool_;
+    	feed = feed_;
+    	auraPriceOracle = auraPriceOracle_;
+    	maxClaimerIncentive = maxClaimerIncentive_;
+    	maxLockerIncentive = maxLockerIncentive_;
+	}
+```
+
 
 ## Tools Used
 
 Manual Analysis
-
