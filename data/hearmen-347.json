@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "hearmen",
+  "risk": "2",
+  "title": "Incorrect calculation of `newCumulativeIndex` in function `calcDecrease`",
+  "issueId": 347,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/347"
+}
