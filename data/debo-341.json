@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "debo",
+  "risk": "2",
+  "title": "Lack of Input Validation in setCreditManager Function within PoolQuotaKeeperV3 contract",
+  "issueId": 341,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/341"
+}
