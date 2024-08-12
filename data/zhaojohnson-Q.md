@@ -64,3 +64,25 @@
     ...
 }
 ```
+[L03] Improper decimal convert between PositionAction and CDPVault.
+In CDPVault, the return value of withdraw() is tokenAmount [wad].
+```javascript
+    /// @param amount Amount of tokens to withdraw [tokenScale]
+    /// @return tokenAmount Amount of tokens withdrawn [wad]
+    // decrease the collateral.
+    function withdraw(address to, uint256 amount) external whenNotPaused returns (uint256 tokenAmount) {
+        tokenAmount = wdiv(amount, tokenScale);
+        ...
+    }
+```
+In PositionAction, the _onWithdraw()'s expected token amount is token amount [scale].
+```javascript
+    /// @return Amount of collateral (or dst) withdrawn [CDPVault.tokenScale()]
+    function _onWithdraw(address vault, address position, address dst, uint256 amount) internal virtual returns (uint256);
+    function _onWithdraw(address vault, address position, address /*dst*/, uint256 amount) internal override returns (uint256) {
+        return ICDPVault(vault).withdraw(position, amount);
+    }
+```
+Considering that the underlying token in CDPVault is Pendle LPT token. And these Pendle LPT Token's decimal is 18. So the wad amount equals the scale amount. This vulnerability will not have one big effect based on this contest's scope.
+Considering that LoopFi may integrate with some other underlying tokens, it's better to fix this to avoid all kinds of unexpected behaviour.
+
