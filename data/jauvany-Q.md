@@ -19,10 +19,36 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 ```
 	function withdraw(address to, uint256 amount) external whenNotPaused returns (uint256 tokenAmount) {
 ```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L292C1-L304C6
+```
+	function withdraw( // <= Found
+    	uint256 assets,
+    	address receiver,
+    	address owner
+	)
+    	public
+    	override(ERC4626, IERC4626)
+    	whenNotPaused // U:[LP-2A] // <= Found
+    	whenNotLocked
+    	nonReentrant // U:[LP-2B]
+    	nonZeroAddress(receiver) // U:[LP-5]
+    	returns (uint256 shares)
+	{
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L1351C1-L1356C56
+```
+	function _withdrawExpiredLocksFor( // <= Found
+    	address address_,
+    	bool isRelockAction,
+    	bool doTransfer,
+    	uint256 limit
+	) internal whenNotPaused returns (uint256 amount) { // <= Found
+```
 
 ## Tools Used
 Manual Analysis
 
 ### Recommended Mitigation Steps
 Avoid making withdraw/unstake functions Pausable
+
 
