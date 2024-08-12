@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bigsam",
+  "risk": "2",
+  "title": "A user can Borrow and Repay when the contract is paused but the liquidation function cannot be used putting the contract at risk of accumulating bad debt.",
+  "issueId": 337,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/337"
+}
