@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Depositing/withdrawing in the pool is done without any slippage protection",
+  "issueId": 435,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/435"
+}
