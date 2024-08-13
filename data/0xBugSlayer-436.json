@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xBugSlayer",
+  "risk": "3",
+  "title": "Vault inflation attack in `AuraVault`",
+  "issueId": 436,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/436"
+}
