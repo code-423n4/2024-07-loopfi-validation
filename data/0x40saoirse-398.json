@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0x40saoirse",
+  "risk": "3",
+  "title": "The for-loop in the `withdraw` function in `MultiFeeDistribution.sol` could get into an infinite loop leading to gas exhaustion and DoS",
+  "issueId": 398,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/398"
+}
