@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "chaduke",
+  "risk": "2",
+  "title": "PositionAction.decreaseLever() fails to consider the loan fee in Flashlender when calculating loanAmount, as a result, the functionanlity will not work when protocolFee != 0. ",
+  "issueId": 396,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/396"
+}
