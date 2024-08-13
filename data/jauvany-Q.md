@@ -14,7 +14,8 @@ Making withdraw or unstake functions pausable can create a risk by potentially l
 
 ## Proof of Concept
 
-> ***Num of Instances: 1***
+> ***Num of Instances: 3***
+
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L239
 ```
 	function withdraw(address to, uint256 amount) external whenNotPaused returns (uint256 tokenAmount) {
@@ -402,6 +403,44 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
     	_grantRole(DEFAULT_ADMIN_ROLE, admin);
     	// Credit Manager
     	_grantRole(MANAGER_ROLE, manager);
+	}
+```
+
+### Tools Used
+
+Manual Analysis
+
+## 7: Missing contract-existence checks before low-level calls
+
+Vulnerability details
+
+## Context:
+
+Low-level calls in Solidity, when made to addresses without contract code, don't fail but return a successful status. This behavior can be misleading, leading to unintended consequences in dApps. Ignoring this can potentially mean acting on false positive results. To address this, apart from the conventional zero-address check, developers should verify the existence of contract code at the target address by ensuring that the code length at the specified address (`<address>.code.length`) is greater than zero. By doing so, it provides a more robust validation before executing low-level calls, safeguarding against unintentional interactions with empty addresses.
+
+## Findings
+
+> ***Num of Instances: 1***
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L269C1-L286C6
+```
+	function multisend(
+    	address[] calldata targets,
+    	bytes[] calldata data,
+    	bool[] calldata delegateCall
+	) external onlyDelegatecall {
+    	uint256 totalTargets = targets.length;
+    	for (uint256 i; i < totalTargets; ) {
+        	if (delegateCall[i]) {
+            	_delegateCall(targets[i], data[i]);
+        	} else {
+            	(bool success, bytes memory response) = targets[i].call(data[i]);
+            	if (!success) _revertBytes(response);
+        	}
+        	unchecked {
+            	++i;
+        	}
+    	}
 	}
 ```
 
