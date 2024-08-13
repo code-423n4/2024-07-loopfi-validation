@@ -28,3 +28,13 @@ Which means while borrowing a flashloan a user could borrow the amount `max(borr
 ## Recomendation
 Query the `maxFlashloan` function in `flashloan`
 Also query the flashloanFee function in the flashloan, instead of calculating it
+
+# [L-2] Admin can set arbitrary `vaultConfig` /`LiquidityConfig` value
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L195
+Admin can set the parameters for a particular vault by calling `setparameter` , but there is very little to no sanitisation done to protect it from arbitrary values.
+## Impact 
+Having a high `liqdiscount` will result in high discount in case of liquidation
+Having a high `liqrate` will result in high chances of getting liquidated
+
+## Recommendation
+Have a threshold for the values, which if set outside the threshold should revert
