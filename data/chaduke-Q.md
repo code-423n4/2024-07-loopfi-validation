@@ -92,3 +92,10 @@ function repayCreditAccount(
     }
 
 ```
+
+QA5. PositionAction.deposit() will first swap input tokens to the vault tokens first and then perform a deposit to the vault.  However, it fails to check whether the output token of the swap is the same as the vault collatral tokens below: 
+
+[https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L511-L514](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L511-L514)
+
+Mitigation: make sure they are the same token.
+
