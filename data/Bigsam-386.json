@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bigsam",
+  "risk": "2",
+  "title": " function _chainlinkSpot() in the Auravault uses  latestRoundData which might return stale or incorrect result",
+  "issueId": 386,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/386"
+}
