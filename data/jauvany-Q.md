@@ -372,3 +372,39 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 Manual Analysis
 
+## 6: Missing zero address check in initializer
+
+Vulnerability details
+
+## Context:
+
+Initializer functions in contracts often set important parameters or addresses. Failing to check for the zero address (0x0000000000000000000000000000000000000000) in initializers can lead to unintended behavior, as this address typically signifies an unset or default value. Transfers to or interactions with the zero address can result in permanent loss of assets or broken functionality. It's crucial to add checks using `require(targetAddress != address(0), "Address cannot be zero")` in initializers to prevent accidentally setting important state variables or parameters to this address, ensuring the system's integrity and user asset safety.
+
+## Findings
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L98C1-L105C6
+```
+	function initialize(address admin, address manager) external initializer {
+    	// init. Access Control
+    	__AccessControl_init();
+    	// Role Admin
+    	_grantRole(DEFAULT_ADMIN_ROLE, admin);
+    	// Credit Manager
+    	_grantRole(MANAGER_ROLE, manager);
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/ChainlinkOracle.sol#L58C1-L65C6
+```
+	function initialize(address admin, address manager) external initializer {
+    	// init. Access Control
+    	__AccessControl_init();
+    	// Role Admin
+    	_grantRole(DEFAULT_ADMIN_ROLE, admin);
+    	// Credit Manager
+    	_grantRole(MANAGER_ROLE, manager);
+	}
+```
+
+### Tools Used
+
+Manual Analysis
