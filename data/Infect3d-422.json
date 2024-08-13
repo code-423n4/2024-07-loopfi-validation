@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Infect3d",
+  "risk": "2",
+  "title": "`maxRedeem` and `maxWithdraw` Partially Comply with EIP-4626 And Should Also Return 0 When `locked = true`",
+  "issueId": 422,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/422"
+}
