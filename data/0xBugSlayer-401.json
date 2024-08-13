@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xBugSlayer",
+  "risk": "3",
+  "title": "Users can compute Permit2 signature for any ERC20 token, ultimately stealing from `PositionAction`'s Ether",
+  "issueId": 401,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/401"
+}
