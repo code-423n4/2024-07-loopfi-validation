@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "MSaptarshi",
+  "risk": "2",
+  "title": "recoverERC20() can be used as a backdoor by the owner to retrieve rewardsToken ",
+  "issueId": 371,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/371"
+}
