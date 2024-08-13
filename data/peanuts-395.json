@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "Some functions will not work in PoolV3.sol as it uses the access control of GearBox",
+  "issueId": 395,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/395"
+}
