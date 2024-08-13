@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "oxelmiguel12",
+  "risk": "2",
+  "title": "ERC20 transferFrom return values not checked in FlashLender contract",
+  "issueId": 383,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/383"
+}
