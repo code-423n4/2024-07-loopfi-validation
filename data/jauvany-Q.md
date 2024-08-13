@@ -257,7 +257,118 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L293 
 
-
 ## Tools Used
 
 Manual Analysis
+
+## 5: Incorrect withdraw declaration
+
+Vulnerability details
+
+## Context:
+
+In Solidity, it's essential for clarity and interoperability to correctly specify return types in function declarations. If the `withdraw` function is expected to return a `bool` to indicate success or failure, its omission could lead to ambiguity or unexpected behavior when interacting with or calling this function from other contracts or off-chain systems. Missing return values can mislead developers and potentially lead to contract integrations built on incorrect assumptions. To resolve this, the function declaration for `withdraw` should be modified to explicitly include the `bool` return type, ensuring clarity and correctness in contract interactions.
+
+## Findings
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L66C1-L72C6
+```
+	function withdraw(
+    	uint256 assets,
+    	address receiver,
+    	address _owner
+	) public virtual override ensureCooldownOff returns (uint256) {
+    	return super.withdraw(assets, receiver, _owner);
+	}
+```
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L166C1-L175C6
+```
+	function _withdraw(
+    	address caller,
+    	address receiver,
+    	address _owner,
+    	uint256 assets,
+    	uint256 shares
+	) internal override nonReentrant {
+    	super._withdraw(caller, receiver, _owner, assets, shares);
+    	_checkMinShares();
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/Silo.sol#L28C1-L30C6
+```
+	function withdraw(address to, uint256 amount) external onlyStakingVault {
+    	lpETH.safeTransfer(to, amount);
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L401C1-L416C26
+```
+	function _withdraw(
+    	address receiver,
+    	address owner,
+    	uint256 assetsSent,
+    	uint256 assetsReceived,
+    	uint256 amountToUser,
+    	uint256 shares
+	) internal {
+    	if (msg.sender != owner) _spendAllowance({owner: owner, spender: msg.sender, amount: shares}); // U:[LP-8,9]
+    	_burn(owner, shares); // U:[LP-8,9]
+
+    	_updateBaseInterest({
+        	expectedLiquidityDelta: -assetsSent.toInt256(),
+        	availableLiquidityDelta: -assetsSent.toInt256(),
+        	checkOptimalBorrowing: false
+    	}); // U:[LP-8,9]
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L292
+```
+	function withdraw(
+    	uint256 assets,
+    	address receiver,
+    	address owner
+	)
+    	public
+    	override(ERC4626, IERC4626)
+    	whenNotPaused // U:[LP-2A]
+    	whenNotLocked
+    	nonReentrant // U:[LP-2B]
+    	nonZeroAddress(receiver) // U:[LP-5]
+    	returns (uint256 shares)
+	{
+    	uint256 assetsToUser = _amountWithFee(assets);
+    	uint256 assetsSent = _amountWithWithdrawalFee(assetsToUser); // U:[LP-8]
+    	shares = _convertToShares(assetsSent); // U:[LP-8]
+    	_withdraw(receiver, owner, assetsSent, assets, assetsToUser, shares); // U:[LP-8]
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L537C1-L537C49
+```
+	function withdraw(uint256 amount) external {
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L239
+```
+	function withdraw(address to, uint256 amount) external whenNotPaused returns (uint256 tokenAmount) {
+    	tokenAmount = wdiv(amount, tokenScale);
+    	int256 deltaCollateral = -toInt256(tokenAmount);
+    	modifyCollateralAndDebt({
+        	owner: to,
+        	collateralizer: msg.sender,
+        	creditor: msg.sender,
+        	deltaCollateral: deltaCollateral,
+        	deltaDebt: 0
+    	});
+	}
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L233C1-L237C69
+```
+	function withdraw(
+    	uint256 assets,
+    	address receiver,
+    	address owner
+	) public virtual override(IERC4626, ERC4626) returns (uint256) {
+```
+ 
+### Tools Used
+
+Manual Analysis
+
