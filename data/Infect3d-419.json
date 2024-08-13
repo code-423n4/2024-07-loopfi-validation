@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Infect3d",
+  "risk": "2",
+  "title": "`CDPVault::withdraw` Should Not Have the `whenNotPaused` Modifier as it Prevent Users From Accessing Their Funds",
+  "issueId": 419,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/419"
+}
