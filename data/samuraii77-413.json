@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "samuraii77",
+  "risk": "3",
+  "title": "Insufficient validation allows users to flashloan and bypass `increaseLever()`",
+  "issueId": 413,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/413"
+}
