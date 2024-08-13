@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bauchibred",
+  "risk": "2",
+  "title": "Unsafe/ wrong current prices could be ingested when a token gets deregistered from a pool",
+  "issueId": 375,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/375"
+}
