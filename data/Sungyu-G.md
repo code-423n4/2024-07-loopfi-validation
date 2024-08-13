@@ -134,6 +134,8 @@ function modifyCollateralAndDebt(
 
          ..........
 
+        VaultConfig memory config = vaultConfig;
+        uint256 spotPrice_ = spotPrice();
         uint256 collateralValue = wmul(position.collateral, spotPrice_);
 
         if (
@@ -154,11 +156,11 @@ Notice the following variable declaration :
 uint256 collateralValue = wmul(position.collateral, spotPrice_);
 ```
 
-The variable collateralValue is declared outside the scope of the following if statement, but this variable is not utilized in the code anywhere else except for inside the scope of the following if statement. 
+Note that the variables collateralValue, spotPrice_ and config are declared outside the scope of the following if statement, but these variables are not utilized in the code anywhere else except for inside the scope of the following if statement. 
 
-The if statement is only executed when the provided deltaDebt parameter is greater than 0 or if the provided deltaCollateral parameter is less than 0. Otherwise, it will short circuit the && and therefore also short circuit the following !_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio), which happens to be the only place in the code that the collateralValue memory variable is used. Therefore, in situations where the if statement short circuits, the computation done to initialize the collateralValue memory variable was a waste since the variable is never used in the code. 
+The if statement is only executed when the provided deltaDebt parameter is greater than 0 or if the provided deltaCollateral parameter is less than 0. Otherwise, it will short circuit the && and therefore also short circuit the following !_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio), which happens to be the only place in the code that the mentioned variables are used. Therefore, in situations where the if statement short circuits, the computation done to initialize the config, spotPrice_, and collateralValue memory variable were a waste since the variables are never used in the code. 
 
-The function calls to CDPVault::deposit() and CDPVault::repay() will always call modifyCollateralAndDebt() with a deltaDebt value <=0 and a deltaCollateral parameter >= 0. Therefore, calls to CDPVault::deposit() and CDPVault::repay() will always short circuit the logic in the if statement and therefore there is no need to compute the value of collateralValue for these variables. In doing so we can save gas on the opcodes that would have been used to compute the value of collateralValue as well as avoid potential memory expansion costs. 
+The function calls to CDPVault::deposit() and CDPVault::repay() will always call modifyCollateralAndDebt() with a deltaDebt value <=0 and a deltaCollateral parameter >= 0. Therefore, calls to CDPVault::deposit() and CDPVault::repay() will always short circuit the logic in the if statement and therefore there is no need to compute the values of config, spotPrice_, and collateralValue for these functions. In doing so we can save gas on the opcodes that would have been used to load the vaultConfig value from storage, get the price from the oracle, and compute the value of collateralValue as well as avoid potential memory expansion costs. 
 
 A more gas efficient implementation of the modifyCollateralAndDebt() is provided below. 
 
@@ -174,6 +176,8 @@ function modifyCollateralAndDebt(
     .......
 
         if ((deltaDebt > 0 || deltaCollateral < 0)){
+            VaultConfig memory config = vaultConfig;
+            uint256 spotPrice_ = spotPrice();
             uint256 collateralValue = wmul(position.collateral, spotPrice_);
             if(!_isCollateralized(calcTotalDebt(_calcDebt(position)), collateralValue, config.liquidationRatio)){
                 revert CDPVault__modifyCollateralAndDebt_notSafe();
@@ -188,10 +192,13 @@ function modifyCollateralAndDebt(
     }
 ``` 
 
-Here the calculations for the collateralValue variable is moved inside an if statement to avoid having to perform the calculation in situations where it is unnecessary. 
+Here the computation for initializing the config, spotPrice_, and collateralValue variables are moved inside an if statement to avoid having to perform the calculation in situations where it is unnecessary. 
 
 Running "forge snapshot --diff" on the testing suite with the only difference being that the new more gas optimized implementation is used shows that this approach leads to a small gas cost decrease in a large number of tests which utilize the modifyCollateralAndDebt() function while not showing an increase in gas costs for any test. 
 
-For example we can see that we save 110 gas in the test_deposit() and 230 gas in the test_repay() functions just by using the new implementation : 
-test_deposit() (gas: 110 (0.029%)) 
-test_repay() (gas: 230 (0.035%)) 
+For example we can see that we save 6836 gas in the test_deposit() and 2135 gas in the test_repay() functions just by using the new implementation : 
+test_deposit() (gas: -6836 (-0.136%)) 
+test_deposit_from_proxy_collateralizer() (gas: -6262 (-1.895%)) 
+test_repay() (gas: -2135 (-0.323%)) 
+test_repay_with_interest() (gas: -2135 (-0.264%)) 
+Overall gas change: -99458 (-0.045%)
