@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "peanuts",
+  "risk": "2",
+  "title": "Liquidators calling liquidatePositionBadDebt should not be earning any profit through liquidation discount at the costs of staker's profits",
+  "issueId": 397,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/397"
+}
