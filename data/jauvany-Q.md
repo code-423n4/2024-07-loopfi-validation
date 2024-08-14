@@ -1,6 +1,49 @@
 # Non Critical Issues
 
-## Spelling Errors
+## 1: Spelling Errors
+
+## 2: Open TODO in comments
+
+Vulnerability details
+
+## Context:
+
+Production code should not have open TODOs as this makes code appear incomplete at production deployment
+
+## Findings
+
+> ***Num of Instances: 6***
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L44
+```
+	// todo: can be packed in a single struct
+```
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L119
+```
+	// TODO: check inputs
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L197
+```
+ 	* TODO: account for unclaimed rewards
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L214
+```
+ 	* TODO: account for unclaimed rewards
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L231
+```
+ 	* TODO: account for unclaimed rewards
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L254
+```
+ 	* TODO account for unclaimed rewards
+```
+
+### Tools Used
+
+Manual Analysis
+
 
 # Low Impact Vulnerabilities
 
