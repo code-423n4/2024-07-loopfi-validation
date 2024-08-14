@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "crypticdefense",
+  "risk": "2",
+  "title": "`AuraVault` lacks slippage protection for deposit, mint, withdraw, redeem",
+  "issueId": 460,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/460"
+}
