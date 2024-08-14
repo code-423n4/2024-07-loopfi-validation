@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "thisvishalsingh",
+  "risk": "3",
+  "title": "Improper liquidation validation in liquidatePosition function, allows unauthorized liquidations and loss of collateral",
+  "issueId": 450,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/450"
+}
