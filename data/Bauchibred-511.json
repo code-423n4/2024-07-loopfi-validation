@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Bauchibred",
+  "risk": "3",
+  "title": "Malicious users can put protocol in a bad state when the vault is paused, potentially causing a bank run",
+  "issueId": 511,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/511"
+}
