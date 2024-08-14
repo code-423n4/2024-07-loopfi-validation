@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "2",
+  "title": "An attacker can frontrun a liquidation by liquidating just 1 wei to revert the whole liquidation, this increases the chance of bad debt occurring and discourages liquidators from liquidating in the future",
+  "issueId": 444,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/444"
+}
