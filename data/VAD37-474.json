@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "VAD37",
+  "risk": "3",
+  "title": "Typo in `PoolV3.repayCreditAccount()`. `convertToShares` and `_convertToShares`",
+  "issueId": 474,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/474"
+}
