@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "VAD37",
+  "risk": "2",
+  "title": "`PoolAction.transferAndJoin()` can be used to steal token from user make approval to `PoolAction` contract directly instead of through `PRBProxy`",
+  "issueId": 475,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/475"
+}
