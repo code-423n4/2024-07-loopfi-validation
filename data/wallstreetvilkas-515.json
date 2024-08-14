@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "wallstreetvilkas",
+  "risk": "3",
+  "title": "Debt repayment logic yields entirely different results if the user chooses to repay <= quotaInterest instead of the whole accrued interest at once",
+  "issueId": 515,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/515"
+}
