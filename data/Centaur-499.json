@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "3",
+  "title": "UniswapV3:: ExactOutputParams and ExactInputParams swapParams recipient will be unable to receive ETH it's a secondary or primary token to be swapped",
+  "issueId": 499,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/499"
+}
