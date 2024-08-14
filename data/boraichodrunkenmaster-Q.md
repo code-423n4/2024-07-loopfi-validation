@@ -14,28 +14,5 @@ Introduce an ID variable to track individual user stakes. This approach enables 
 
 ---
 
-### Source Code References
-
-1. **Cooldown Period Calculation**:
-   [StakingLPEth.sol#L88-L113](https://github.com/code-423n4/2024-07-loopfi/blob/4f508781a49ffa53511e7e5ed6cda0ff0eb5bdc5/src/StakingLPEth.sol#L88-L113)
-
-2. **Full Contract Implementation**:
-   [StakingLPEth.sol](https://github.com/code-423n4/2024-07-loopfi/blob/4f508781a49ffa53511e7e5ed6cda0ff0eb5bdc5/src/StakingLPEth.sol)
-
-### 2.
-### Positions which should only be liquidatable can be liquidated under bad debt liquidations
-
-### 3.
-### Withdawal Fee must be clean
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L819-L833
-
-### 4.
-### check the use of stablecoin in contract comments
-
-### 5.
-### Make max duration a constant
-
-### 6
-### Tokens may not be applicable for some cdp vaults
 
 
