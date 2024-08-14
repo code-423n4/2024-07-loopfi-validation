@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "la-arana-inteligente",
+  "risk": "2",
+  "title": "Incorrect debt data calculation due to Invalid Validation of the address parameter of liquidatePosition() and liquidatePositionBadDebt().",
+  "issueId": 480,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/480"
+}
