@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "crypticdefense",
+  "risk": "3",
+  "title": "Liquidation doesn't account for penalty when calculating collateral to give, allowing users to profit by borrowing and self-liquidating",
+  "issueId": 456,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/456"
+}
