@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Inspecktor",
+  "risk": "2",
+  "title": "The absence of the whenNotPaused modifier in some functions may lead to a deterioration in contract security",
+  "issueId": 505,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/505"
+}
