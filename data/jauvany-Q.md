@@ -490,3 +490,36 @@ https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7822
 ### Tools Used
 
 Manual Analysis
+
+## 8: Inconsistent use of _msgSender() and msg.sender in contract
+
+Vulnerability details
+
+## Context:
+
+For the sake of consistency, stick to using only one of these values throughout the contract. Not doing so in this case can be quite harmful as _msgSender and msg.sender do have some differences, one being that msgSender cannot be used to determine if an account is a EOA but msg.sender can. Differences like these can introduce vulnerabilities is they are not properly acknowledged by the dev team.
+
+## Proof of Concept
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L201
+```
+    	_deposit(_msgSender(), receiver, assets, shares);
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L218
+```
+    	_deposit(_msgSender(), receiver, assets, shares);
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L245
+```
+    	_withdraw(_msgSender(), receiver, owner, assets, shares);
+```
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L266
+```
+    	_withdraw(_msgSender(), receiver, owner, assets, shares);
+```
+
+### Tools Used
+Manual Analysis
+
+### Recommended Mitigation steps
+Use msg.Sender all along
