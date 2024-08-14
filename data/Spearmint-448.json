@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "3",
+  "title": "AuraVault inherits AccessControl BUT does not call the _setupRole() function in it's constructor to set the initial roles, this leads to a complete DOS of the important claim function rendering the contract unable to claim rewards",
+  "issueId": 448,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/448"
+}
