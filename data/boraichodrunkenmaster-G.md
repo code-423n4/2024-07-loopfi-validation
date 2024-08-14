@@ -1,3 +1,4 @@
+
 ## `CDPVault` Contract: Gas Optimization
 
 ### 1. Function: `_getQuotedTokensData`
@@ -49,14 +50,22 @@ function _getQuotedTokensData(
 [Link to Code](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L484-L495)
 
 ---
-### 2. Function: `liquidatePosition` 
-**Original Function Implementation:**
 
-The function makes two transferFrom calls where as one could be made
+### 2. Function: `liquidatePosition`
+
+The function makes two `transferFrom` calls to send funds from the user to the pool, whereas one can be made.
+
+- [Initial TransferFrom](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L539)
+- [Second TransferFrom](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L568)
+
 ---
 
-### 3. You can remove the calcAccruedInterest function not needed.
----
+### 3. Unused Function: `calcAccruedInterest`
 
-### 4. Initialization not needed 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L672
+The `calcAccruedInterest` function is not used and can be removed.
+
+**Permalink:**
+
+[Link to Function](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L716-L725)
+
+---
