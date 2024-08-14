@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xbepresent",
+  "risk": "3",
+  "title": "Malicious borrower can evade full liquidation in `CDPVault::liquidatePosition` by repaying small amounts of debt ",
+  "issueId": 528,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/528"
+}
