@@ -99,7 +99,7 @@ QA5. PositionAction.deposit() will first swap input tokens to the vault tokens f
 
 Mitigation: make sure they are the same token.
 
-QA. PositionAction4626._onWithdraw() is called to withdraw collateral from a vault during the process of reducing the leverage of a position. It provides the addtional option to redeem the underlying tokens for the withdrawn collateral ERC4626 tokens. However, in this case, it returns the wrong ```collateralWithdrawn```. Instead of returning the correct amount of withdrawn collateral, it returns the amount of redeemed underlying tokens instead. As a result, the user might receive less residual tokens,   loss of funds. 
+QA6. PositionAction4626._onWithdraw() is called to withdraw collateral from a vault during the process of reducing the leverage of a position. It provides the addtional option to redeem the underlying tokens for the withdrawn collateral ERC4626 tokens. However, in this case, it returns the wrong ```collateralWithdrawn```. Instead of returning the correct amount of withdrawn collateral, it returns the amount of redeemed underlying tokens instead. As a result, the user might receive less residual tokens,   loss of funds. 
 
 PositionAction4626._onWithdraw() is called to withdraw collateral from a vault during the process of reducing the leverage of a position.
 
@@ -107,3 +107,6 @@ PositionAction4626._onWithdraw() is called to withdraw collateral from a vault d
 
 However, it returns the wrong amount of ```collateralWithdrawn``` - it might return the amount of redeemed underlying tokens instead. As a result, the user might receive less residuel collateral tokens. 
 
+QA7. PositionAction._withdraw() fails to check whether ```collateralParams.auxSwap.assetIn = collateralParams.targetToken```. Instead, it only checks that collateralParams.auxSwap.assetIn != address(0). 
+
+[https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L537](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L537)
