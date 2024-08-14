@@ -523,3 +523,21 @@ Manual Analysis
 
 ### Recommended Mitigation steps
 Use msg.Sender all along
+
+## 9: Indexed strings/bytes in events can result in data loss
+
+Vulnerability details
+
+## Context:
+
+Indexed string and bytes variables in events can lead to unintended data loss. When these types are indexed, they are hashed into a 32-byte value, rather than preserving their actual contents. This hashing obscures the data, making it inaccessible to off-chain monitoring services. Unlike static variables or indexed primitive variables, the hashed representation of string and bytes variables prevents accurate data retrieval and monitoring, potentially complicating the tracking and analysis of event data. To maintain data transparency and usability, avoid indexing string and bytes variables in events and instead use non-indexed parameters for these data types.
+
+## Findings
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L133C1-L134C65
+```
+	event SetParameter(bytes32 indexed parameter, uint256 data);
+	event SetParameter(bytes32 indexed parameter, address data);
+```
+## Tools Used
+Manual Analysis
