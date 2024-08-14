@@ -541,3 +541,44 @@ https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7822
 ```
 ## Tools Used
 Manual Analysis
+
+## 10: Avoid floating pragma in non interface/library files
+
+Vulnerability details
+
+## Context:
+
+Avoid using floating pragmas in non-interface and non-library files to ensure contract compatibility and security. Floating pragmas like `pragma solidity ^0.8.0;` allow any compiler version that matches the specified range. While this can provide flexibility, it risks introducing unexpected behavior or vulnerabilities from future compiler versions. Instead, specify a fixed pragma version, such as `pragma solidity 0.8.0;`, to guarantee consistent behavior and security across deployments. This practice ensures that your contracts are tested and verified against a specific compiler version, reducing the risk of unforeseen issues and maintaining code reliability.
+	
+## Findings
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/Flashlender.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L4
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/Silo.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L1
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/VaultRegistry.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/ChainlinkOracle.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/BaseAction.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/ERC165Plugin.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PoolAction.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction20.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/PositionAction4626.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/SwapAction.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/TransferAction.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/GaugeV3.sol#L4
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/PoolQuotaKeeperV3.sol#L4
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/quotas/QuotasLogic.sol#L4
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/EligibilityDataProvider.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/RecoverERC20.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/utils/Math.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/utils/Pause.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/utils/Permission.sol#L2
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/vendor/AuraVault.sol#L2
+
+## Tools Used
+
+Manual Analysis
