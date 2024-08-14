@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Sungyu",
+  "risk": "2",
+  "title": "ChainlinkOracle.sol::spot() function will return the wrong price if the price of a token is outside the min/max range of the Chainlink Oracle that is used",
+  "issueId": 437,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/437"
+}
