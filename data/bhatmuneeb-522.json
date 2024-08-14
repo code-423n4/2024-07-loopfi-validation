@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "bhatmuneeb",
+  "risk": "2",
+  "title": "Unchecked Arithmetic in calcDecrease Function Can Lead to Integer Overflow/Underflow",
+  "issueId": 522,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/522"
+}
