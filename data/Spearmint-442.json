@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "3",
+  "title": "Some liquidations will clear the user's collateral to 0 BUT WILL NOT clear the debt to 0, this state of 0 collateral and non zero debt is not desirable and has multiple critical impacts",
+  "issueId": 442,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/442"
+}
