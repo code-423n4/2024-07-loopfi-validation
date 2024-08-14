@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "crypticdefense",
+  "risk": "2",
+  "title": "`PoolV3::maxWithdraw` and `PoolV3::maxWithdraw` are not ERC4626 compliant due to missing check for lock",
+  "issueId": 458,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/458"
+}
