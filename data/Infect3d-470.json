@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Infect3d",
+  "risk": "2",
+  "title": "Lack of Slippage Protection in `CDPVault::liquidatePosition`",
+  "issueId": 470,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/470"
+}
