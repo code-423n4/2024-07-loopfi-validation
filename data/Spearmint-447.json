@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Spearmint",
+  "risk": "3",
+  "title": "The liquidation penalty is wrongly minted as profit to the treasury, this causes a huge loss of funds for PoolV3 lenders",
+  "issueId": 447,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/447"
+}
