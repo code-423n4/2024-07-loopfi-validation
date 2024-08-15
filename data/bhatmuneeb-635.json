@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "bhatmuneeb",
+  "risk": "3",
+  "title": "Reentrancy Vulnerability in liquidatePosition Function Leading to Potential Fund Draining",
+  "issueId": 635,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/635"
+}
