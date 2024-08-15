@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "joaovwfreire",
+  "risk": "3",
+  "title": "PoolAction:transferAndJoin doesn't return the excess tokens back to the caller on Balancer joins",
+  "issueId": 604,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/604"
+}
