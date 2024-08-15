@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "pks_",
+  "risk": "3",
+  "title": "Malicious users can withdraw more the assets than he should to drain the poolv3 assets",
+  "issueId": 555,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/555"
+}
