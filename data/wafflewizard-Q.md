@@ -1,3 +1,4 @@
+1.)
 
 Title: Precision Loss in Fixed-Point Arithmetic Operations in deposit Function
 
@@ -63,8 +64,10 @@ Conclusion:
 
 While the precision loss identified in the deposit function may only lead to minor discrepancies, it is essential to address it to ensure the accuracy and integrity of the contract's financial calculations. Given the potential for cumulative impact, this finding is rated as Low Severity.
 
+2.)
 
 Title :Reentrancy Risk in SafeTransferFrom and SafeTransfer in ModifyCollateralAndDebt
+Severity:Non-critical
 
 The ModifyCollateralAndDebt function in this protocol includes calls to SafeTransferFrom and SafeTransfer, which, while generally safe, can introduce a reentrancy risk under certain conditions. Although the protocol does not utilize ERC-777 tokens (which are particularly vulnerable to reentrancy due to their tokensReceived hook), it is still important to adhere to best practices to mitigate any potential risks.
 
@@ -84,3 +87,50 @@ By implementing this pattern, you can further mitigate the risk of reentrancy, e
 
 Conclusion:
 While the current implementation is relatively safe, adopting the checks-effects-interactions pattern is a good practice to prevent potential reentrancy vulnerabilities in the future. The risk is assessed as non-critical due to the specific context of the protocol.
+
+
+3.)
+Title: Denial of Service (DoS) Risk in liquidatePositionBadDebt Function
+
+Severity:Low
+
+
+A potential Denial of Service (DoS) vulnerability has been identified in the liquidatePositionBadDebt function of the protocol. The issue arises from the use of the safeTransfer function to transfer collateral to the liquidator (msg.sender). If the liquidator is a contract that reverts upon receiving tokens, the entire liquidation process could fail, preventing the successful liquidation of an undercollateralized position.
+
+Affected Function:
+
+function liquidatePositionBadDebt(address owner, uint256 repayAmount) external whenNotPaused {
+    
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L626C7-L626C56
+}
+
+Impact:
+
+The impact of this vulnerability depends on the specific circumstances under which the liquidation process fails. If a DoS attack successfully halts the liquidation, it could prevent the protocol from clearing bad debt, potentially leading to financial losses or missed opportunities to liquidate at a favorable price.
+
+Likelihood:
+
+The likelihood of this issue being exploited is relatively low, especially given that the protocol does not use ERC-777 tokens, which are known to have reentrancy issues. However, if the protocol interacts with custom ERC-20 tokens or contracts with non-standard behavior, the risk may increase.
+
+Exploit Scenario:
+
+A liquidator could intentionally or unintentionally revert the transaction by using a contract with faulty or malicious code in the receive or fallback function. This could prevent the safeTransfer from completing successfully, causing the entire liquidation process to fail. If the protocol relies on timely liquidations, this could lead to the accumulation of bad debt or missed liquidation opportunities.
+
+Mitigation Recommendations:
+
+
+Consider a Pull Mechanism for Collateral Withdrawal:
+
+Instead of transferring collateral directly in the liquidation function, consider storing the collateral amount in a separate balance and allowing the liquidator to withdraw it later. This approach reduces the risk of reentrancy and ensures that the liquidation process cannot be halted by a single failed transfer.
+
+balances[msg.sender] += takeCollateral;
+
+function withdrawCollateral() external {
+    uint256 collateral = balances[msg.sender];
+    require(collateral > 0, "No collateral to withdraw");
+    balances[msg.sender] = 0;
+    token.safeTransfer(msg.sender, collateral);
+}
+
+Conclusion:
+While the identified DoS risk is not critical, it is recommended to address it by adopting best practice by considering alternative designs for handling collateral transfers. By implementing these mitigations, the protocol can reduce the likelihood of a DoS attack disrupting the liquidation process and maintain a robust defense against potential exploits.
