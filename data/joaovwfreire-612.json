@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "joaovwfreire",
+  "risk": "2",
+  "title": "updateRates at the PoolQuotaKeeperV3 is vulnerable to front-runs that harm the quota revenue amounts",
+  "issueId": 612,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/612"
+}
