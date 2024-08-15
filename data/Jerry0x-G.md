@@ -59,3 +59,109 @@ function lendCreditAccount(
 function mintProfit(uint256 amount) external creditManagerOnly {
 ```
 [Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/PoolV3.sol#L899)
+
+```solidity
+src/Silo.sol
+    function withdraw(address to, uint256 amount) external onlyStakingVault {
+        lpETH.safeTransfer(to, amount);
+    }
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/Silo.sol#L28)
+
+```solidity
+src/reward
+/ChefIncentivesController.sol
+function manualStopEmissionsFor(address _user, address[] memory _tokens) public isWhitelisted {
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/ChefIncentivesController.sol#L813)
+
+```solidity
+src/reward
+/ChefIncentivesController.sol
+function manualStopAllEmissionsFor(address _user) external isWhitelisted {
+        manualStopEmissionsFor(_user, registeredTokens);
+    }
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/ChefIncentivesController.sol#L844)
+
+```solidity
+src/quotas/GaugeV3.sol
+    function vote(
+        address user,
+        uint96 votes,
+        bytes calldata extraData
+    )
+        external
+        override
+        onlyVoter // U:[GA-02]
+    {
+        (address token, bool lpSide) = abi.decode(extraData, (address, bool)); // U:[GA-10,11,12]
+        _vote({user: user, token: token, votes: votes, lpSide: lpSide}); // U:[GA-10,11,12]
+    }
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/GaugeV3.sol#L133)
+
+```solidity
+src/quotas
+/GaugeV3.sol
+    function unvote(
+        address user,
+        uint96 votes,
+        bytes calldata extraData
+    )
+        external
+        override
+        onlyVoter // U:[GA-02]
+    {
+        (address token, bool lpSide) = abi.decode(extraData, (address, bool)); // U:[GA-10,11,13]
+        _unvote({user: user, token: token, votes: votes, lpSide: lpSide}); // U:[GA-10,11,13]
+    }
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/GaugeV3.sol#L176)
+
+```solidity
+src/quotas
+/PoolQuotaKeeperV3.sol
+    function addQuotaToken(
+        address token
+    )
+        external
+        override
+        gaugeOnly // U:[PQK-3]
+    {
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/PoolQuotaKeeperV3.sol#L166)
+
+```solidity
+src/quotas
+/PoolQuotaKeeperV3.sol
+
+```solidity
+src/quotas
+/PoolQuotaKeeperV3.sol
+```
+```solidity
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/PoolQuotaKeeperV3.sol#L186)
+
+```solidity
+src/proxy
+/PositionAction.sol
+    modifier onlyDelegatecall() {
+        if (address(this) == self) revert PositionAction__onlyDelegatecall();
+        _;
+    }
+
+    modifier onlyRegisteredVault(address vault) {
+        if (!vaultRegistry.isVaultRegistered(vault)) revert PositionAction__unregisteredVault();
+        _;
+    }
+```
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L194)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L206)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L214)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L228)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L243)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L260)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L273)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L302)
+[Link to code](https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L349)
