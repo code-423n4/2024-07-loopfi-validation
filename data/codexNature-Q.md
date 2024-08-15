@@ -1,76 +1,39 @@
-## `IBalancerVault`:`exitPool` function is meant to emit an event but no event was set up.
+## Not emitting event for an important state change.
 
-`IBalancerVault`:`exitPool` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
+## Vulnerability Details
+When changing state variables events are not emitted. EligibilityDataProvider (https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/EligibilityDataProvider.sol)
 
-### Proof of concept
+## Tools Used
+Manual Review
 
+## Impact
+The system doesn't record historical state changes.
 
-```diff
-+    event ExitedPool(address indexed recipeint, address[] assets, uint256[] maxAmountsIn, bytes userData);
-
-
-    function exitPool(
-        bytes32 poolId,
-        address sender,
-        address payable recipient,
-        ExitPoolRequest memory request
-    ) external{
-+        emit ExitedPool(recipeint, assets, maxAmountsIn, userData)
-    };
-```
-
-
-
-
-
-## `IBalancerVault`:`joinPool` function is meant to emit an event but no event was set up.
-
-`IBalancerVault`:`joinPool` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
-
-### Proof of concept
+## Recommendation
+It is recommended that an event be included for `EligibilityDataProvider:refresh` function, so changes made to the blockchain are easily recorded and tracked.
 
 ```diff
++   event EligibilityRefreshed(address indexed user); 
 
-+    event JoinedPool(address indexed sender, address[] assets, uint256[] maxAmountsIn, bytes userData);
+    function refresh(address user) external returns (bool currentEligibility) {
+        if (msg.sender != address(chef)) revert OnlyCIC();
+        if (user == address(0)) revert AddressZero();
 
+        updatePrice();
+        currentEligibility = isEligibleForRewards(user);/
+        if (currentEligibility && disqualifiedTime[user] != 0) {
+            disqualifiedTime[user] = 0;
+        }
+        lastEligibleStatus[user] = currentEligibility;
 
-    function joinPool(
-        bytes32 poolId,
-        address sender,
-        address recipient,
-        JoinPoolRequest memory request
-    ) external payable{
-+       emit JoinedPool(sender, assets, maxAmountsIn, userData)
-    };
-```
++       emit EligibilityRefreshed(user);
+    }
 
-
-
-
-
-## `IBalancerVault`:`swap` function is meant to emit an event but no event was set up.
-
-`IBalancerVault`:`swap` function is an external function that updates the state of the blockchain and needs to emit an event each time it is called.
-
-### Proof of concept
-
-```diff
-+     event Swapped(SwapKind kind, address assetIn, address assetOut, uint256 amount);
-
-       function swap(
-            SingleSwap memory singleSwap,
-            FundManagement memory funds,
-            uint256 limit,
-            uint256 deadline
-      )     external payable returns (uint256) {
-+           emit Swapped(singleSwap, assetIn, assetOut, amount)
-    };
-	
-```
 
 
 ## Define and use `constant` variables instead of using literals
 
+## Vulnerability Details
 If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.
 
 ### 11 Instances Found
