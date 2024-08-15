@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "monrel",
+  "risk": "3",
+  "title": "Wrong convertToShares() function leads to burn of profits",
+  "issueId": 710,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/710"
+}
