@@ -139,27 +139,101 @@ Or
 Preform looping in segment
 
 
-
-
-### [Low-] Little concern about _lockedUsdValue() of eligibleDataProvider
-### [Low-] Is here token transfered to proxy or collateralizer check
-Confused
-### [Low-] no fee considered in case of `onCreditFlashloan()`
-
-### [Low-] chainlinkAgrregator.lastestRoundData() related check refer PendleOracle.sol's L120
-
-
-
-
-
-
-
 ### [Low-] this hs no usecase, as it updated in _updateInterestRate() function
 PoolV3.updateQuotaRevenue
 
-### [Low-] liquidatePosition is subject to Front-runn attack
 
-### [Low-] liquidatePosition - should here takeCollateral calculated after - penalty 
+
+
+
+### [Low-] liquidatePosition is subject to Front-runn attack
+`liquidatePosition()` has a following require check
+
+```solidity
+if (takeCollateral > position.collateral) revert CDPVault__tooHighRepayAmount();
+```
+here Position.collateral is ovious collatera hold by positio
+where `takeCollateral` is based on liquidater's entered `repayAmount`
+```solidity
+        uint256 takeCollateral = wdiv(repayAmount, discountedPrice);
+```
+
+- Let consider a situation when a Position is liquidatable
+- A liquidator try to liqudate whole Position
+- So he entered `repayAmount`, when `takeCollateral` calculated based on it(repayAmount), result will be equal or near equal to position.collateral
+```solidity
+uint256 takeCollateral = wdiv(repayAmount, discountedPrice);
+```
+- Position holder or anyone see this Tx, And front-run liquidator's Tx and he partially(slightly) liquidate this position.
+- Now when Liquidators Tx comes into existance it will failed due to check
+```solidity
+if (takeCollateral > position.collateral) revert CDPVault__tooHighRepayAmount();
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L529-L532
+
+#### Mitigation
+Even if any frontrun appear, and position.collateral get reduced, allow liquidator to liquidate position
+
+A similar approch can taken that present in `liquiateBadDebt()`
+
+`repayamount` and `takecollateral` automatically adjusted according to `position.collateral`, if `takeCollateral > position.collateral` instead of reverting
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L601-L606
+
+
+
+
+
+### [Low-] Shouldn't here takeCollateral calculated after minusing penalty from repayAmount
+
+According to my understanding `During the liquidation process in the Loop protocol, penalties are applied to the position being liquidated to mitigate against profitable self-liquidations.`
+
+Here's how the penalty is calculated and applied:
+- specific percentage deducted from the repay amount during liquidation
+-  The penalty is calculated as a percentage of the amount the liquidator wants to repay. The specific percentage is defined in the LiquidationConfig of the CDPVault smart contract.
+
+while deep diving i see that
+- `takeCollateral`, amount of collateral that will transfered to a Liquidator is calculated based on `repayAmount`
+- after that deltaDebt
+- after that penalty calculated
+
+```solidity
+        uint256 takeCollateral = wdiv(repayAmount, discountedPrice);
+        uint256 deltaDebt = wmul(repayAmount, liqConfig_.liquidationPenalty); 
+        uint256 penalty = wmul(repayAmount, WAD - liqConfig_.liquidationPenalty);
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L529-L531
+
+- So basically Token In here
+
+```solidity
+poolUnderlying.safeTransferFrom(msg.sender, address(pool), repayAmount - penalty)
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L539
+
+```solidity
+poolUnderlying.safeTransferFrom(msg.sender, address(pool), penalty);
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L568
+
+Token Out here
+
+```solidity
+token.safeTransfer(msg.sender, takeCollateral);
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L565
+
+According to my understanding here penlty has no effect on `takeCollateral` calculation. As it calculated after takeCollateral calculation and token send to contract in 2 step.
+
+Liquidator getting `collateral` according to his entered repayAmount, so no penalty effect on `colateral` he receiving
+
+
+#### Mitigation
+I think `takeCollateral` should calculated after minusing penalty from repay amount like follow
+
+```solidity
++       uint256 penalty = wmul(repayAmount, WAD - liqConfig_.liquidationPenalty);
++       uint256 takeCollateral = wdiv(repayAmount - penalty, discountedPrice); 
+```
 
 
 ### [Low-]  In pendel case no deadline checks appear
@@ -454,7 +528,6 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L164-L18
 
 
 
-### [Low-] takeCollateral should considered after - penalty
 
 
 
@@ -497,6 +570,11 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
     }
 ```
 
+### [Low-] no fee considered in case of `onCreditFlashloan()`
+
+### [Low-] chainlinkAgrregator.lastestRoundData() related check refer PendleOracle.sol's L120
+
+
 ### [Low-] no need for +
 `calcDecrease()`
 
@@ -505,4 +583,3 @@ registeredTokens - rewardController - _updateRegisteredBalance()
 
 ### [Low-]Replay attack possible should include chainId L16 TransferAction.sol
 
-### [Low-] NC / G : only add where debt != 0 vaultRegistry.getUserTotalDebt()
