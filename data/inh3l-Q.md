@@ -1,5 +1,85 @@
 
-### 1. ChainlinkOracle.sol's `_authorizeUpgrade` doesn't perform a status check before upgrading.
+
+### 1. BalancerOracle.sol's constructor should not have the initializer modifier
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L74
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L98
+
+#### Impact
+
+For some reason, the constructor in BalancerOracle.sol has the initializer modifier. The initializer modifier in Openzeppelin's Initializable.sol is such that once it has been triggered, it is impossile to trigger it again.
+
+This means that upon deployment, calling the `initialize` functon will fail as the `initializer` modifier had been triggered. As a result, none of the roles can be granted, incliding the keeper role, as such, price cannot be updated and the contract is useless.
+
+```solidity
+    constructor(
+        address balancerVault_,
+        address chainlinkOracle_,
+        address pool_,
+        uint256 updateWaitWindow_,
+        uint256 stalePeriod_
+    ) initializer {
+
+//...
+
+    function initialize(address admin, address manager) external initializer {
+        // init. Access Control
+        __AccessControl_init();
+        // Role Admin
+        _grantRole(DEFAULT_ADMIN_ROLE, admin);
+        // Credit Manager
+        _grantRole(MANAGER_ROLE, manager);
+    }
+```
+
+To test this out, the contract below can be copied and pasted to remix.
+
+```solidity
+// contracts/Product.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/utils/Initializable.sol";
+
+
+contract Contract is Initializable {
+    uint256 public value;
+    uint256 public secondValue;
+
+    constructor(uint256 _value) initializer {
+        value = _value;
+    }
+
+    function initialize(uint256 _value) public initializer {
+        secondValue = _value;
+    }
+}
+```
+
+The following error is returned when the initialie function is called after deployment
+
+```md
+transact to Contract.initialize errored: Error occurred: revert.
+
+revert
+	The transaction has been reverted to the initial state.
+Error provided by the contract:
+InvalidInitialization
+Parameters:
+{}
+You may want to cautiously increase the gas limit if the transaction went out of gas.
+```
+
+#### Recommended Mitigation Steps
+
+Remove the initializer modifier from the constructor.
+
+***
+
+### 2. ChainlinkOracle.sol's `_authorizeUpgrade` doesn't perform a status check before upgrading.
 
 Links to affected code *
 
@@ -9,6 +89,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 #### Impact
 
+Status check is not performed when upgrading chainlink's implemetation, unlike is done in other oracles. This also goes against the comment.
 
 ```solidity
 
@@ -17,6 +98,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 
 As an additional result, this declared error is unused.
+
 ```solidity
 
     error ChainlinkOracle__authorizeUpgrade_validStatus();
@@ -30,7 +112,7 @@ Recommend checking for the status.
 
 
 
-### 2. No check for min-max values when handling chainlink prices
+### 3. No check for min-max values when handling chainlink prices
 
 Links to affected code *
 
@@ -67,36 +149,6 @@ ChainlinkOracle.sol and PendleOracle.sol both query token prices from chainlink.
 
 Recomend checking the returned answer against the minPrice/maxPrice and revert if the answer is outside of the bounds.
 
-
-
-***
-
-### 3. No check for roundid in ChainlinkOracle.sol
-
-Links to affected code *
-
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/ChainlinkOracle.sol#L95-L107
-
-#### Impact
-
-ChainlinkOracle.sol doesn't validate the round at which the answer is retuned like is done in [PendleLPOracle.sol](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/PendleLPOracle.sol#L120-L121)
-```solidity
-    function _fetchAndValidate(address token) internal view returns (bool isValid, uint256 price) {
-        Oracle memory oracle = oracles[token];
-        try AggregatorV3Interface(oracle.aggregator).latestRoundData() returns (
-            uint80 /*roundId*/,
-            int256 answer,
-            uint256 /*startedAt*/,
-            uint256 updatedAt,
-            uint80 /*answeredInRound*/
-        ) {
-            isValid = (answer > 0 && block.timestamp - updatedAt <= oracle.stalePeriod);
-            return (isValid, wdiv(uint256(answer), oracle.aggregatorScale));
-```
-
-#### Recommended Mitigation Steps
-
-Recommend introducing the check for roundid
 
 ***
 
@@ -146,17 +198,34 @@ Recommend using a cooldown id method instead. Mapping the id to the user, and to
 
 ***
 
-### 5. Consider introducing functions to cancel cooldowns too.
+### 5. No check for roundid in ChainlinkOracle.sol
 
 Links to affected code *
 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L104
-
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/StakingLPEth.sol#L117
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/ChainlinkOracle.sol#L95-L107
 
 #### Impact
 
-It can be useful incase users change their mind about unstaking.
+ChainlinkOracle.sol doesn't validate the round at which the answer is retuned like is done in [PendleLPOracle.sol](https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/PendleLPOracle.sol#L120-L121)
+```solidity
+    function _fetchAndValidate(address token) internal view returns (bool isValid, uint256 price) {
+        Oracle memory oracle = oracles[token];
+        try AggregatorV3Interface(oracle.aggregator).latestRoundData() returns (
+            uint80 /*roundId*/,
+            int256 answer,
+            uint256 /*startedAt*/,
+            uint256 updatedAt,
+            uint80 /*answeredInRound*/
+        ) {
+            isValid = (answer > 0 && block.timestamp - updatedAt <= oracle.stalePeriod);
+            return (isValid, wdiv(uint256(answer), oracle.aggregatorScale));
+```
+
+#### Recommended Mitigation Steps
+
+Recommend introducing the check for roundid
+
+***
 
 
 ### 6. Use of CREATE1 when deploying silos mKake deployment vulnerable to reorg issues
@@ -186,25 +255,9 @@ Recommend using CREATE2 instead with salt.
 
 ***
 
-### 7. `availableLiquidity` can be manipulated through donations
 
-Links to affected code *
 
-https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L202-L204
-
-#### Impact
-
-Due to tracking of balance of token, any user who wants to manipulate values depending on the `availableLiquidity` param can do so by sending the underlying token directly to the contract. It's more advisable to use intrnal accounting instead.
-
-```solidity
-    function availableLiquidity() public view override returns (uint256) {
-        return IERC20(underlyingToken).balanceOf(address(this)); // U:[LP-3]
-    }
-```
-
-***
-
-### 8. Getting tokens/user funds out of protocol should not be pausable
+### 7. Getting tokens/user funds out of protocol should not be pausable
 
 Links to affected code *
 
@@ -215,6 +268,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L323
 
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L518
+
 #### Impact
 
 In PoolV3.sol and CDPVault.sol, the `withdraw` and `redeem` functions can be paused. Ideally, this shouldn't be so because in case of an emergency, users should be able to get their funds out when the contract is paused. Also, if the admin gets malicious and pauses the contract while renouncing his admin role, the tokens risk being stuck in the contract forever. The same can also be observed in ChefIncentivesController.sol in which the `claim` function can also be paused.
@@ -259,7 +313,7 @@ In PoolV3.sol and CDPVault.sol, the `withdraw` and `redeem` functions can be pau
 Recommend removing the `whenNotPaused` modifier from the functions.
 ***
 
-### 9. `flashLoan` fee calculation and check can be optimized
+### 8. `flashLoan` fee calculation and check can be optimized
 
 Links to affected code *
 
@@ -299,7 +353,7 @@ In the `flashLoan` function, the function checks if token being flashloaned is t
 ```
 ***
 
-### 10. Querying curve's `get_virtual_price` should be done carefully due to its vulnerability to read-only reentrancy.
+### 9. Querying curve's `get_virtual_price` should be done carefully due to its vulnerability to read-only reentrancy.
 
 Links to affected code *
 
@@ -322,7 +376,7 @@ interface ICurvePool {
 Recommendation is to always call a reentrancy protected function on the Curve pool, e.g. `remove_liquidity` with zero amounts. This will revert if the Curve pool is locked and succeed when not locked without actually altering state in the Curve pool. This can be done before actually calling the `get_virtual_price` function, and for this reason, I'd recommend introducing it into the interface.
 ***
 
-### 11. Consider using safeTransfer instead of approval + safeTransferFrom
+### 10. Consider using safeTransfer instead of approval + safeTransferFrom
 
 Links to affected code *
 
@@ -357,6 +411,27 @@ Recommend just using the `safeTransfer` method instead.
     }
 ```
 ***
+
+
+
+### 11. `availableLiquidity` can be manipulated through donations
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L202-L204
+
+#### Impact
+
+Due to tracking of balance of token, any user who wants to manipulate values depending on the `availableLiquidity` param can do so by sending the underlying token directly to the contract. It's more advisable to use intrnal accounting instead.
+
+```solidity
+    function availableLiquidity() public view override returns (uint256) {
+        return IERC20(underlyingToken).balanceOf(address(this)); // U:[LP-3]
+    }
+```
+
+***
+
 
 ### 12. Calls to balancer's `getPoolTokens` should use reentrancy protection 
 
@@ -414,6 +489,8 @@ Recommend using the provided [balancer library](https://github.com/balancer/bala
 
 Links to affected code *
 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/oracle/BalancerOracle.sol#L98
+
 #### Impact
 
 During initialization of BalancerOracle.sol, we can see that the manager and admin roles are granted. The Keeper role is however skipped.
@@ -443,6 +520,7 @@ Recommend granting the role upon initialization.
 
 
 ***
+
 
 ### 14. Twap window should include a check to make sure its not less than 30 minutes, since its immutable and cannot be changed
 
@@ -487,3 +565,67 @@ But using the search functionality, we can see that it's not used anywhere (only
 
 ***
 
+### 16. `creditFlashLoan` can be brought up to EIP-3156 flash loan standard.
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/Flashlender.sol#L117-L137
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/interfaces/IFlashlender.sol#L71
+
+#### Impact
+
+The `onCreditFlashLoan` can be made to include the underlying token, just like the hash of the `CALLBACK_SUCCESS_CREDIT`. The same for the `CreditFlashLoan` event emitted - it can be made to also emit the underlying token as one of the emitted params.  It complies more with the standard that way.
+
+```solidity
+    function creditFlashLoan(
+        ICreditFlashBorrower receiver,
+        uint256 amount,
+        bytes calldata data
+    ) external override nonReentrant returns (bool) {
+        uint256 fee = wmul(amount, protocolFee);
+        uint256 total = amount + fee;
+
+        pool.lendCreditAccount(amount, address(receiver));
+
+        emit CreditFlashLoan(address(receiver), amount, fee);
+
+        if (receiver.onCreditFlashLoan(msg.sender, amount, fee, data) != CALLBACK_SUCCESS_CREDIT)
+            revert Flash__creditFlashLoan_callbackFailed();
+
+        // reverts if not enough Stablecoin have been send back
+        underlyingToken.transferFrom(address(receiver), address(pool), total);
+        pool.repayCreditAccount(total - fee, fee, 0);
+
+        return true;
+    }
+```
+
+
+***
+
+### 17. PoolV3.sol may not need the ERC20 permit inheritance
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L164
+
+#### Impact
+
+PoolV3.sol declares ERC20 permit, presumable to allow users to be able to deposit/mint at once without direct approvals first.
+
+```solidity
+        ERC20(name_, symbol_) // U:[LP-1B]
+        ERC20Permit(name_) // U:[LP-1B] //
+```
+
+The contract also include no so-called permit functions e.g deposit with permit, mint with permit and as such the permit inheritance is more or less not needed. Alos, according to the readme, WETH is the token to be used in the contract.
+> PoolV3 will use WETH (0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)
+
+WETH has a [phantom permit](https://media.dedaub.com/phantom-functions-and-the-billion-dollar-no-op-c56f062ae49f), which causes it to exhibit weird behaviour when used in conjuction with the permit function. 
+
+#### Recommended Mitigation Steps
+
+The contract may introduce deposit and mnt with permit functions since it inherits ERC20 permit functionality, or just remove it entirely.
+
+***
