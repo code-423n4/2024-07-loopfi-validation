@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "nadin",
+  "risk": "2",
+  "title": "Precision loss in the calculation of the `newAccRewardPerShare` inside the `_newRewards` function of the `ChefIncentivesController.sol` contract",
+  "issueId": 642,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/642"
+}
