@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "bhatmuneeb",
+  "risk": "3",
+  "title": "Lack of Fee Validation in flashLoan and creditFlashLoan Functions Could Result in Inaccurate Fees and Potential Losses",
+  "issueId": 709,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/709"
+}
