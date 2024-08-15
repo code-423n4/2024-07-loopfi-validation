@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "minglei-wang-3570",
+  "risk": "3",
+  "title": "In `PositionActionPendle::_onDecreaseLever`, `tokenOut` is implemented incorrectly.",
+  "issueId": 544,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/544"
+}
