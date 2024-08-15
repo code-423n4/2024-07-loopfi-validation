@@ -2,6 +2,60 @@
 
 ## 1: Spelling Errors
 
+Vulnerability details
+
+## Findings
+
+> Enusure can be changed to Ensure in the following comments.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L525
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L598
+
+> exhcange can be changed to exchange in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L257
+
+> cosistent can be changed to consistent in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L528
+
+> joinng can be changed to joining in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/proxy/SwapAction.sol#L331
+
+> Eligiblity can be changed to Eligibility  in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L196
+
+> elgiibility can be changed to eligibility in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L205
+
+> Eligibilty can be changed to eligibility in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L571
+
+> destibuted can be changed to distributed in the following comment. 
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L154
+
+> transfered can be changed to transferred in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L721
+
+> expried can be changed to expired in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L856
+
+> elgibility can be changed to eligibility in the following comment.
+
+https://github.com/jauvany/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/MultiFeeDistribution.sol#L885 
+
+## Tools Used
+
+Manual Analysis
+
+
 ## 2: Open TODO in comments
 
 Vulnerability details
