@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "pks_",
+  "risk": "3",
+  "title": "Users can be liquidated earlier because wrong underlying position calculation",
+  "issueId": 567,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/567"
+}
