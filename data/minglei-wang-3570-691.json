@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "minglei-wang-3570",
+  "risk": "2",
+  "title": "`VaultRegistry::getUserTotalDebt()`  is computed incorrectly because the pending interest is not added.",
+  "issueId": 691,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/691"
+}
