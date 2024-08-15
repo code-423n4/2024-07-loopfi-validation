@@ -214,9 +214,10 @@ https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a7
 
 https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/PoolV3.sol#L323
 
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/ChefIncentivesController.sol#L518
 #### Impact
 
-In PoolV3.sol and CDPVault.sol, the `withdraw` and `redeem` functions can be paused. Ideally, this shouldn't be so because in case of an emergency, users should be able to get their funds out when the contract is paused. Also, if the admin gets malicious and pauses the contract while renouncing his admin role, the tokens risk being stuck in the contract forever.
+In PoolV3.sol and CDPVault.sol, the `withdraw` and `redeem` functions can be paused. Ideally, this shouldn't be so because in case of an emergency, users should be able to get their funds out when the contract is paused. Also, if the admin gets malicious and pauses the contract while renouncing his admin role, the tokens risk being stuck in the contract forever. The same can also be observed in ChefIncentivesController.sol in which the `claim` function can also be paused.
 
 ```solidity
    function withdraw(
@@ -248,6 +249,11 @@ In PoolV3.sol and CDPVault.sol, the `withdraw` and `redeem` functions can be pau
     {
 ```
 
+```solidity
+    function claim(address _user, address[] memory _tokens) public whenNotPaused {
+//...
+    }
+```
 #### Recommended Mitigation Steps
 
 Recommend removing the `whenNotPaused` modifier from the functions.
@@ -480,3 +486,4 @@ But using the search functionality, we can see that it's not used anywhere (only
 <img width="1198" alt="search" src="https://gist.github.com/user-attachments/assets/a07b63be-2c6e-481c-a94e-7d02dfa4a21e">
 
 ***
+
