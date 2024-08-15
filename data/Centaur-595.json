@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Centaur",
+  "risk": "2",
+  "title": "Improper Handling of msg.value in ETH Pool Join Operations",
+  "issueId": 595,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/595"
+}
