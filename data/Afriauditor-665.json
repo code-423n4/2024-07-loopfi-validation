@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "Afriauditor",
+  "risk": "3",
+  "title": "Incorrect Use of convertToShares Instead of Custom _convertToShares in `repayCreditAccount` Function",
+  "issueId": 665,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/665"
+}
