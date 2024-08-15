@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "JC",
+  "risk": "2",
+  "title": "PoolV3.sol is not fully up to EIP-4626's specification",
+  "issueId": 746,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/746"
+}
