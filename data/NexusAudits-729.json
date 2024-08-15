@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "NexusAudits",
+  "risk": "2",
+  "title": "Race Condition in Price Validation can Lead to False Positives",
+  "issueId": 729,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/729"
+}
