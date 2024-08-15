@@ -152,7 +152,7 @@ Confused
 
 
 
-### [Low-] NC / G : only add where debt != 0 vaultRegistry.getUserTotalDebt()
+
 
 ### [Low-] this hs no usecase, as it updated in _updateInterestRate() function
 PoolV3.updateQuotaRevenue
@@ -161,30 +161,114 @@ PoolV3.updateQuotaRevenue
 
 ### [Low-] liquidatePosition - should here takeCollateral calculated after - penalty 
 
+
 ### [Low-]  In pendel case no deadline checks appear
-SwapAction.swap()
+In `SwapAction.swap()` preform swap via 3 protocol depending upon which `swapProtocol` type passed to the function
+- Balncer (balancerSwap)
+- UniswapV3 (UniswapV3)
+- Pendle (pendelJoin, pendelExit)
+
+unlike other 2 `(balancerSwap & uniV3Swap)`, PndleIn/pendleOut missing checks for Tx deadline.
+
+So if Tx ramain in mempool for significant amount of time then OutCome result may be quite different user expection.
+
+```solidity
+...
+...
+        } else if (swapParams.swapProtocol == SwapProtocol.PENDLE_IN) {
+            retAmount = pendleJoin(swapParams.recipient, swapParams.limit, swapParams.args);
+        } else if (swapParams.swapProtocol == SwapProtocol.PENDLE_OUT) {
+            retAmount = pendleExit(swapParams.recipient, swapParams.amount, swapParams.args);
+        } else revert SwapAction__swap_notSupported();
+        // Transfer any remaining tokens to the recipient
+        if (swapParams.swapType == SwapType.EXACT_OUT && swapParams.recipient != address(this)) {
+            IERC20(swapParams.assetIn).safeTransfer(swapParams.recipient, swapParams.limit - retAmount);
+        }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/SwapAction.sol#L134-L142
+
+#### Mitigation 
+Incorporate Tx deadline check in case of Pendle case in own (swapAction.sol) level
 
 
 
 ### [Low-] Registered vault check not present here
 increaseLever()
 
+
+
+
+
 ### [Low-] transferFrom() used flashlender.flashLoan()
 
+Instead use `safeTransferFrom()`
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/Flashlender.sol#L133
 
 
-### [Low-] before chainlink call ensure that token is != 0
-BalancerOracle - L172
+### [Low-] In `BalancerOracle` before making call to Chainlink ensure that token is != 0
+
+```solidity
+    function _getTokenPrice(uint256 index) internal view returns (uint256 price) {
+        address token;
+        if (index == 0) token = token0;
+        else if (index == 1) token = token1;
+        else if (index == 2) token = token2; // @audit 
+        else revert BalancerOracle__getTokenPrice_invalidIndex();
+
+        return chainlinkOracle.spot(token);
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/oracle/BalancerOracle.sol#L165-L172
+
+Here we see `index` used and depending on `index`, `token` get decided
+
+Here `token0`, `token1` and `token2` are Balancer Pool Token which are set in constructor as follows
+```solidity
+    ) initializer {
+        balancerVault = IVault(balancerVault_);
+        updateWaitWindow = updateWaitWindow_;
+        stalePeriod = stalePeriod_;
+        chainlinkOracle = IOracle(chainlinkOracle_);
+        pool = pool_;
+        poolId = IWeightedPool(pool).getPoolId();
+
+        (address[] memory tokens, , ) = balancerVault.getPoolTokens(poolId);
+
+        // store the tokens
+        uint256 len = tokens.length;
+        token0 = (len > 0) ? tokens[0] : address(0);
+        token1 = (len > 1) ? tokens[1] : address(0);
+        token2 = (len > 2) ? tokens[2] : address(0);
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/oracle/BalancerOracle.sol#L85-L89
+
+So its possible that depending on Pool type on balancer some indexed `tokens` could be 0address
+
+So Before making Chainlink call ensure that entered token is not address(0)
+
 
 ### [Low-] `setOracle()` don't have any duplication checks
-ChainlinkOracle - L45
+While setting Aggregator for different token via `setOracle()` there should be duplication check which ensure that no cases of overriding or duplicate settings
 
+```solidity
+    function setOracles(address[] calldata _tokens, Oracle[] calldata _oracles) external onlyRole(DEFAULT_ADMIN_ROLE) { // @audit L:: duplication check
+        for (uint256 i = 0; i < _tokens.length; i++) {
+            oracles[_tokens[i]] = _oracles[i];
+        }
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/oracle/ChainlinkOracle.sol#L45-L48
 
+### [Low-] Draft version used
+`IERC20Permit` imported in `TransferAction.sol` contract is a Draft version
+```solidity
+import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/TransferAction.sol#L5
 
-### [Low-] Balancer incompatible with chainlink oracle
-
-### [Low-] import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
-TransferAction- L5
+#### mitigation 
+Try to avoid use of Draft versions
 
 
 
@@ -420,3 +504,5 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
 registeredTokens - rewardController - _updateRegisteredBalance()
 
 ### [Low-]Replay attack possible should include chainId L16 TransferAction.sol
+
+### [Low-] NC / G : only add where debt != 0 vaultRegistry.getUserTotalDebt()
