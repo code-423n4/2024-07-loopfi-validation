@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "lian886",
+  "risk": "2",
+  "title": "The debt in EligibilityDataProvider::requiredUsdValue() needs to be converted into USD; otherwise, it is not a correct value comparison.",
+  "issueId": 588,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/588"
+}
