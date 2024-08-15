@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xpiken",
+  "risk": "3",
+  "title": "`newCumulativeIndex` is calculated incorrectly when portion of interest is repaid",
+  "issueId": 615,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/615"
+}
