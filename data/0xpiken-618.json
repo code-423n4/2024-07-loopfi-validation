@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xpiken",
+  "risk": "3",
+  "title": "The `loss` calculation in `CDPVault#liquidatePositionBadDebt‎()` is incorrect",
+  "issueId": 618,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/618"
+}
