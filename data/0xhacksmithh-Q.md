@@ -186,23 +186,175 @@ ChainlinkOracle - L45
 ### [Low-] import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
 TransferAction- L5
 
-### [Low-]Replay attack possible should include chainId L16 TransferAction.sol
-
-### [Low-] before deposit should check vault existance check
-L40, PositionAction20
 
 
-### [Low-] Execute a transfer from an EOA and then join via `PoolActionParams` // @audit L:: is it necessary to check caller is EOA or not
-L70 - PoolAction.sol
+### [Low-] Before deposit should check vault existance check 
+There is modifier `onlyRegisteredVault(vault)` which ensure that the vault already registered in `vaultRegistry contract`
 
-### [Low-] does this expect any eth, cause parent function `transferAndJoin()` is non-payable
-L172 - poolAction.sol
+when a callback came `_onDeposit()` should ensure that Vault exists
+
+So I think `_onDeposit()` should have `onlyRegisteredVault(vault)` incoporate with it
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction20.sol#L39
+
+#### Mitigation
+
+```diff
+-   function _onDeposit(address vault, address position, address /*src*/, uint256 amount) internal override returns (uint256) {
+
++   function _onDeposit(address vault, address position, address /*src*/, uint256 amount) internal onlyRegisteredVault(vault) override returns (uint256) {
+
+```
+
+
+### [Low-] Considering `NatSpec` Comments, Corresponding checks absent in function
+In `PoolAction.transferAndJoin()` there is a Comment that says 
+```
+/// @notice Execute a transfer from an EOA and then join via `PoolActionParams`
+```
+So I believe Here transfer occurs from a EOA, But corresponding ceck for it, like is here form address is an EOA or not not present in that function code.
+
+So here code is incompatible with code-comment.
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#L70
+
+#### Mitigation
+Implement Corresponding checks,
+
+
+
+### [Low-] `pendleRouter.addLiquiditySingleToken()` called with a msg.value, but its parent function `transferAndJoin()` is non-payable in nature
+- In `PoolAction.sol` contract it has a function `transferAndJoin()`
+which internally call `join()`
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#109
+- `join()` is a public payable function
+- `join()` internally calls `_pendleJoin()` when some condition met
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#L118
+- `_pendleJoin()` further call to `addliquiditySingleToken()` of `pendleRouter` as follows
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#L172
+```solidity
+    function _pendleJoin(PoolActionParams memory poolActionParams) internal {
+...
+...
+
+        pendleRouter.addLiquiditySingleToken{value: msg.value}(poolActionParams.recipient, market, poolActionParams.minOut, guessPtReceivedFromSy, input, limit); // @audit 
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#L159-L173
+
+Here we see that a `msg.value` parameter passed to call,
+
+But Point is when Tx initiated from `poolAction.transferAndJoin()` as it is not `payable` in nature tx will revert here
+
+#### Mitigation
+Make `poolAction.transferAndJoin()` `payable`
+
+
+### [Low-] Irregularities while setting `constants` variable
+
+Here we can see that above 3 `%` setted value differ from below 2
+
+Below 2 are set in BIPs, but not above one. This create Irregularity and confusion in calculation and could lead to some calculation mistakes.
+
+Set all under a single unit measurement.
+
+```solidity
+    uint256 public constant QUART = 25000; //  25%
+    uint256 public constant HALF = 65000; //  65%
+    uint256 public constant WHOLE = 100000; // 100%
+
+    uint256 public constant MAX_SLIPPAGE = 9000; //10% 
+    uint256 public constant PERCENT_DIVISOR = 10000; //100%
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/MultiFeeDistribution.sol#L37-L43
 
 ### [Low-] comment mismatched with code L42 - multiFeeDistribution.sol
+Like below other `constants` store value in BIPs and their respective comments shows that Percentage representation of those BIPs value
 
-### [Low-] No checks for staleness L374 - AuraVault.sol
+But in case of `MAX_SLIPPAGE` its 9000 which will be 90%, But Comment says 10%
 
-### [Low-] No check for prie L384 - Auravault
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/MultiFeeDistribution.sol#L42-L43
+
+```solidity
+
+    // Maximum slippage allowed to be set by users (used for compounding).
+    uint256 public constant MAX_SLIPPAGE = 9000; //10% // @audit L: wrong comment
+    uint256 public constant PERCENT_DIVISOR = 10000; //100%
+```
+
+### [Low-] No checks for staleness in AuraVault.sol
+
+In the `Aura Vault` contract, the protocol uses a ChainLink aggregator to fetch the `latestRoundData()`, but there is no check if the return value indicates stale data.
+The only check present is for the quoteAnswer to be > 0; however, this alone is not sufficient.
+
+```solidity
+    function _chainlinkSpot() private view returns (uint256 price) {
+        bool isValid;
+        try AggregatorV3Interface(BAL_CHAINLINK_FEED).latestRoundData() returns (
+            uint80 /*roundId*/,
+            int256 answer,
+            uint256 /*startedAt*/,
+            uint256 /*updatedAt*/,
+            uint80 /*answeredInRound*/
+        ) {
+            price = wdiv(uint256(answer), BAL_CHAINLINK_DECIMALS); // @audit no checks for staleness
+            isValid = (price > 0);
+        } catch {}
+
+        if (!isValid) revert AuraVault__chainlinkSpot_invalidPrice();
+    }
+```
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/vendor/AuraVault.sol#L367-L376
+
+### Mitigation
+```diff
+
+        try AggregatorV3Interface(BAL_CHAINLINK_FEED).latestRoundData() returns (
+-           uint80 /*roundId*/,
+-           int256 answer,
+-           uint256 /*startedAt*/,
+-           uint256 /*updatedAt*/,
+-           uint80 /*answeredInRound*/
+
++           uint80 roundId,
++           int256 answer,
++           uint256 startedAt,
++           uint256 updatedAt,
++           uint80 answeredInRound
+        ) {
+            price = wdiv(uint256(answer), BAL_CHAINLINK_DECIMALS);
+            isValid = (price > 0);
++           require(answeredInRound >= roundId, "Stale price!");
++           require(updatedAt != 0, "Round not complete!");
++           require(block.timestamp - updatedAt <= VALID_TIME_PERIOD);
+```
+
+### [Low-] No sanity checks for price and others like `Round completion`, `Stale Price` and `valide time period`
+
+```solidity
+    function _getAuraSpot() internal view returns (uint256 price) {
+        uint256 ethPrice;
+        (, int256 answer, , , ) = AggregatorV3Interface(ETH_CHAINLINK_FEED).latestRoundData();
+        ethPrice = wdiv(uint256(answer), ETH_CHAINLINK_DECIMALS); // @audit no checks for answer
+...
+...
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/vendor/AuraVault.sol#L383
+
+### Mitigation 
+Should have proper checks like below
+
+```diff
+
+-       (, int256 answer, , , ) = AggregatorV3Interface(ETH_CHAINLINK_FEED).latestRoundData();
+
++       (uint80 roundId, int256 answer, uint256 startedAt , uint256 updatedAt , uint80 answeredInRound) = AggregatorV3Interface(ETH_CHAINLINK_FEED).latestRoundData();
++           require(answer > 0);
++           require(answeredInRound >= roundId, "Stale price!");
++           require(updatedAt != 0, "Round not complete!");
++           require(block.timestamp - updatedAt <= VALID_TIME_PERIOD);
+```
 
 ### [Low-] No validation check parameters in `constructor` of `CDPVault.sol` 
 There should proper validation checks for `addresses` and `numarical values` while assigning values to state variables inside constructor
@@ -266,3 +418,5 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
 
 ### [Low-]  Check if it is ever increasing array or no
 registeredTokens - rewardController - _updateRegisteredBalance()
+
+### [Low-]Replay attack possible should include chainId L16 TransferAction.sol
