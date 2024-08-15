@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "rscodes",
+  "risk": "3",
+  "title": "Users of a pool can steal other user's rewards when one pool's `lastRewardTime` differs from another pool's `lastRewardTime`",
+  "issueId": 549,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/549"
+}
