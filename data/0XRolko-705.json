@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0XRolko",
+  "risk": "2",
+  "title": "DOS of `AuraVault::mint`, `AuraVault::deposit` and `AuraVault::claim` features due to lack of safeApprove to 0",
+  "issueId": 705,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/705"
+}
