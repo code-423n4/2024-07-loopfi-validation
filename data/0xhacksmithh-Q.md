@@ -139,13 +139,18 @@ Or
 Preform looping in segment
 
 
-### [Low-] no need for +
-`calcDecrease()`
 
-### [Low-]  Check if it is ever increasing array or no
-registeredTokens - rewardController - _updateRegisteredBalance()
 
 ### [Low-] Little concern about _lockedUsdValue() of eligibleDataProvider
+### [Low-] Is here token transfered to proxy or collateralizer check
+Confused
+### [Low-] no fee considered in case of `onCreditFlashloan()`
+
+### [Low-] chainlinkAgrregator.lastestRoundData() related check refer PendleOracle.sol's L120
+
+
+
+
 
 ### [Low-] NC / G : only add where debt != 0 vaultRegistry.getUserTotalDebt()
 
@@ -159,15 +164,14 @@ PoolV3.updateQuotaRevenue
 ### [Low-]  In pendel case no deadline checks appear
 SwapAction.swap()
 
-### [Low-] Is here token transfered to proxy or collateralizer check
-Confused
+
 
 ### [Low-] Registered vault check not present here
 increaseLever()
 
 ### [Low-] transferFrom() used flashlender.flashLoan()
 
-### [Low-] no fee considered in case of `onCreditFlashloan()`
+
 
 ### [Low-] before chainlink call ensure that token is != 0
 BalancerOracle - L172
@@ -175,7 +179,7 @@ BalancerOracle - L172
 ### [Low-] `setOracle()` don't have any duplication checks
 ChainlinkOracle - L45
 
-### [Low-] chainlinkAgrregator.lastestRoundData() related check refer PendleOracle.sol's L120
+
 
 ### [Low-] Balancer incompatible with chainlink oracle
 
@@ -187,7 +191,6 @@ TransferAction- L5
 ### [Low-] before deposit should check vault existance check
 L40, PositionAction20
 
-### [Low-] consider is there any case of slipage possible L161 PositionAction
 
 ### [Low-] Execute a transfer from an EOA and then join via `PoolActionParams` // @audit L:: is it necessary to check caller is EOA or not
 L70 - PoolAction.sol
@@ -257,3 +260,9 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
         }
     }
 ```
+
+### [Low-] no need for +
+`calcDecrease()`
+
+### [Low-]  Check if it is ever increasing array or no
+registeredTokens - rewardController - _updateRegisteredBalance()
