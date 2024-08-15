@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xmuxyz",
+  "risk": "2",
+  "title": "Due to lack of validation in the Flashlender#`flashLoan()`, a borrower can borrow the amount of a given `token` beyond the maximum borrowable amount of the given `token`",
+  "issueId": 540,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/540"
+}
