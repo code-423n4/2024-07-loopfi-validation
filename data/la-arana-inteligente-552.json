@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "la-arana-inteligente",
+  "risk": "3",
+  "title": "Zero-cost minting (due to inheritance from the implemented ERC4626 contract) could potentially give an attacker  a disproportionate share of StakingLPEth.sol",
+  "issueId": 552,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/552"
+}
