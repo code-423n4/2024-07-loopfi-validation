@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "pks_",
+  "risk": "3",
+  "title": "Wrong insolvent calculation can cause users borrow more or avoid be liquidated",
+  "issueId": 566,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/566"
+}
