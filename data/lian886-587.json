@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "lian886",
+  "risk": "2",
+  "title": "The modification in isWhitelisted within ChefIncentivesController.sol contains a logical error.",
+  "issueId": 587,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/587"
+}
