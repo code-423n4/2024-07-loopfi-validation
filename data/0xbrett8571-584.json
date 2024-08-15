@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xbrett8571",
+  "risk": "2",
+  "title": "Inconsistent Collateral Accounting in `modifyCollateralAndDebt()` Jeopardizes Vault Integrity",
+  "issueId": 584,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/584"
+}
