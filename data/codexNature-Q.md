@@ -1,3 +1,22 @@
+## Constants should be defined rather than using magic numbers
+
+(https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/reward/EligibilityDataProvider.sol#L274-L277)
+
+## Recommendation
+
+```diff
++    uint256 public constant DECIMALS = 10 ** 18;
+
+
+    function _lockedUsdValue(uint256 lockedLP) internal view returns (uint256) {
+        uint256 lpPrice = priceProvider.getLpTokenPriceUsd();
+-       return (lockedLP * lpPrice) / 10 ** 18;
++       return (lockedLP * lpPrice) / DECIMALS;
+    }
+```
+
+
+
 ## Not emitting event for an important state change.
 
 ## Vulnerability Details
