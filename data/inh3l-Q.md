@@ -458,3 +458,25 @@ When PendleLPOracle.sol is deloyed, the twap window is set. There's no check for
 
 Add a check to ensure that the `twap_` paramter is not less than 1800 seconds.
 ***
+
+
+### 15. Unused role can be removed
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-loopfi/blob/57871f64bdea450c1f04c9a53dc1a78223719164/src/CDPVault.sol#L53
+
+#### Impact
+
+In CDPVault.sol, the vault unwinder role is declared.
+
+```solidity
+bytes32 constant VAULT_UNWINDER_ROLE = keccak256("VAULT_UNWINDER_ROLE");
+
+```
+
+But using the search functionality, we can see that it's not used anywhere (only declared in CDPVault.sol) in the protocol making it redudndant and can be safely removed.
+
+<img width="1198" alt="search" src="https://gist.github.com/user-attachments/assets/a07b63be-2c6e-481c-a94e-7d02dfa4a21e">
+
+***
