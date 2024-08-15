@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "pks_",
+  "risk": "2",
+  "title": "Permit signature does not check the token is underlying token or not",
+  "issueId": 561,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/561"
+}
