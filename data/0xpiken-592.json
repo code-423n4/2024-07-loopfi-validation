@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xpiken",
+  "risk": "2",
+  "title": "The new reward calculation in `ChefIncentivesController.sol` is incorrect",
+  "issueId": 592,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/592"
+}
