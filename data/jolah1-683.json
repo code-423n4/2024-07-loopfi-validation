@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "jolah1",
+  "risk": "2",
+  "title": "whenNotPaused modifier can be bypassed.",
+  "issueId": 683,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/683"
+}
