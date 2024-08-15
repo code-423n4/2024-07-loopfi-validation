@@ -201,36 +201,59 @@ L172 - poolAction.sol
 
 ### [Low-] No check for prie L384 - Auravault
 
-### [Low-] No validation check constructor - CDPVault
+### [Low-] No validation check parameters in `constructor` of `CDPVault.sol` 
+There should proper validation checks for `addresses` and `numarical values` while assigning values to state variables inside constructor
+
+Its a very crusial step, if any wrong value stored it may cause
+- a several Tx to set those correctly, if possible
+- Contract deployment againg
+- Could cause some sorts of exploaitaion in future
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L164-L185
+
+
+
+
 
 ### [Low-] takeCollateral should considered after - penalty
 
-### [Low-]made prior checks before storing L773
 
-### [Low-] before transfer check for 0 address
 
-### [Low-]
 
-### [Low-]
 
-### [Low-]
 
-### [Low-]
+### [Low-] made prior checks before storing `newPoolQuotaKeeper` to storage that new value is not same as previous stored value
 
-### [Low-]
+```solidity
+    function setPoolQuotaKeeper(
+        address newPoolQuotaKeeper
+...
+...
+        if (IPoolQuotaKeeperV3(newPoolQuotaKeeper).pool() != address(this)) {
+            revert IncompatiblePoolQuotaKeeperException(); // U:[LP-23C]
+        }
 
-### [Low-]
+        poolQuotaKeeper = newPoolQuotaKeeper;
+```
 
-### [Low-]
+### [Low-] before transfer check for 0 amount
 
-### [Low-]
+before calling `silo.withdraw()` there should be a check which make sure that withdrawal amount is not 0.
 
-### [Low-]
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
 
-### [Low-]
+```solidity
+    function unstake(address receiver) external {
+        UserCooldown storage userCooldown = cooldowns[msg.sender];
+        uint256 assets = userCooldown.underlyingAmount;
 
-### [Low-]
+        if (block.timestamp >= userCooldown.cooldownEnd || cooldownDuration == 0) {
+            userCooldown.cooldownEnd = 0;
+            userCooldown.underlyingAmount = 0;
 
-### [Low-]
-
-### [Low-]
+            silo.withdraw(receiver, assets); // @audit L:: befoe trnaser check for zero amount check
+        } else {
+            revert InvalidCooldown();
+        }
+    }
+```
