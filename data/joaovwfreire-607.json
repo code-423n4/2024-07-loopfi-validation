@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "joaovwfreire",
+  "risk": "3",
+  "title": "The current bounds for liquidation make the protocol subject to bad debt liquidations earlier than it should",
+  "issueId": 607,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/607"
+}
