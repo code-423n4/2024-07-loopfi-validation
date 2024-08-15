@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "pks_",
+  "risk": "2",
+  "title": "Malicious users can open many small positions and borrow debt, liquidators has no profit to liquidate such positions",
+  "issueId": 553,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/553"
+}
