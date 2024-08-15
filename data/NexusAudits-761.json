@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "NexusAudits",
+  "risk": "2",
+  "title": "Preview Functions Don't Revert Appropriately According to ERC4626 standards",
+  "issueId": 761,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/761"
+}
