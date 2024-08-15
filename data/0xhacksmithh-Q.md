@@ -1,4 +1,4 @@
-### [Low-] When Protocol is in `paused` mode `Borrower` unable to repay their `Loans`
+### [Low-1] When Protocol is in `paused` mode `Borrower` unable to repay their `Loans`
 
 During `pause` mode a Borrower can't able to pay his debt.
 
@@ -35,64 +35,9 @@ OR,
 
 Crusial function like `Rapay()` should work as it is even in Pause mode, those functions should not effected by `whenNotPaused` modifier
 
- 
-
-### [Low-] Check Prev value before chage state
-
-```solidity
-    function setPermissionAgent(address agent, bool permitted) external {
-        _permittedAgents[msg.sender][agent] = permitted;
-        emit SetPermittedAgent(msg.sender, agent, permitted);
-    }
-```
-https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L57-L60
-
-```solidity
-    function modifyPermission(address owner, address caller, bool permitted) external {
-        if (owner != msg.sender && !_permittedAgents[owner][msg.sender])
-            revert Permission__modifyPermission_notPermitted();
-        _permitted[owner][caller] = permitted;
-        emit ModifyPermission(msg.sender, owner, caller, permitted);
-    }
-```
-https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L47-L52
 
 
-### [Low-] If `agent` goes malicious then he can set permission to any address who can Borrow max on behalf of Owner which subject to liquidation probability.
-
-In this situation Owner positions will be at risk, as permited address can max amount possible against the Owner which may cause to liquidation
-
-```solidity
- function setPermissionAgent(address agent, bool permitted) external {
-        _permittedAgents[msg.sender][agent] = permitted;
-        emit SetPermittedAgent(msg.sender, agent, permitted);
-    }
-```
-https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L57-L60
-
-### [Low-]  variable naming could be improved cause it could easily confused with cumulativeIndex
-```solidity
-    function _getTokenQuotaParamsOrRevert(
-        TokenQuotaParams storage tokenQuotaParams
-    ) internal view returns (uint16 rate, uint192 cumulativeIndexLU, uint16 quotaIncreaseFee) {
-        assembly {
-            let data := sload(tokenQuotaParams.slot)
-            rate := and(data, 0xFFFF)
-            cumulativeIndexLU := and(shr(16, data), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF) // @audit
-            quotaIncreaseFee := shr(208, data)
-        }
-
-```
-Here actually we fetching values for `Quota`
-so `quotaCumulativeIndexLU` could used instead of `cumulativeIndexLU`
-
-cause `cumulativeIndexLU` used multiple times in code base for Normal BaseInterst calculation.
-
-So it create much confusion in during code audits
-
-https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/PoolQuotaKeeperV3.sol#L268
-
-### [Low-] Value for `quotaIncreaseFee` variable during low level memory fetch not correct as there are more 3 more parameters present after `fee`
+### [Low-2] Value for `quotaIncreaseFee` variable during low level memory fetch not correct as there are more 3 more parameters present after `fee`
 
 Low level code is as follows 
 ```solidity
@@ -118,7 +63,7 @@ So technically here fetched `quotaIncreaseFee` value not correct.
 
 https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/PoolQuotaKeeperV3.sol#L269
 
-### [Low-] Could lead to dosed, only addition no removal in quotaTokenSet
+### [Low-3] Could lead to dosed, only addition no removal in quotaTokenSet
 In `PoolQuotaKeeperV3.sol` there is only method for addtion of `QuoteTokens` to contract but no removal method present.
 
 `addQuotaToken()` helps to add `QuotaToken` to `quotaTokensSet`
@@ -139,14 +84,8 @@ Or
 Preform looping in segment
 
 
-### [Low-] this hs no usecase, as it updated in _updateInterestRate() function
-PoolV3.updateQuotaRevenue
 
-
-
-
-
-### [Low-] liquidatePosition is subject to Front-runn attack
+### [Low-4] liquidatePosition is subject to Front-runn attack
 `liquidatePosition()` has a following require check
 
 ```solidity
@@ -183,7 +122,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L601-L60
 
 
 
-### [Low-] Shouldn't here takeCollateral calculated after minusing penalty from repayAmount
+### [Low-5] Shouldn't here takeCollateral calculated after minusing penalty from repayAmount
 
 According to my understanding `During the liquidation process in the Loop protocol, penalties are applied to the position being liquidated to mitigate against profitable self-liquidations.`
 
@@ -236,7 +175,7 @@ I think `takeCollateral` should calculated after minusing penalty from repay amo
 ```
 
 
-### [Low-]  In pendel case no deadline checks appear
+### [Low-6]  In pendel case no deadline checks appear
 In `SwapAction.swap()` preform swap via 3 protocol depending upon which `swapProtocol` type passed to the function
 - Balncer (balancerSwap)
 - UniswapV3 (UniswapV3)
@@ -266,21 +205,17 @@ Incorporate Tx deadline check in case of Pendle case in own (swapAction.sol) lev
 
 
 
-### [Low-] Registered vault check not present here
-increaseLever()
 
 
 
-
-
-### [Low-] transferFrom() used flashlender.flashLoan()
+### [Low-7] transferFrom() used flashlender.flashLoan()
 
 Instead use `safeTransferFrom()`
 
 https://github.com/code-423n4/2024-07-loopfi/blob/main/src/Flashlender.sol#L133
 
 
-### [Low-] In `BalancerOracle` before making call to Chainlink ensure that token is != 0
+### [Low-8] In `BalancerOracle` before making call to Chainlink ensure that token is != 0
 
 ```solidity
     function _getTokenPrice(uint256 index) internal view returns (uint256 price) {
@@ -322,7 +257,7 @@ So its possible that depending on Pool type on balancer some indexed `tokens` co
 So Before making Chainlink call ensure that entered token is not address(0)
 
 
-### [Low-] `setOracle()` don't have any duplication checks
+### [Low-9] `setOracle()` don't have any duplication checks
 While setting Aggregator for different token via `setOracle()` there should be duplication check which ensure that no cases of overriding or duplicate settings
 
 ```solidity
@@ -334,7 +269,7 @@ While setting Aggregator for different token via `setOracle()` there should be d
 ```
 https://github.com/code-423n4/2024-07-loopfi/blob/main/src/oracle/ChainlinkOracle.sol#L45-L48
 
-### [Low-] Draft version used
+### [Low-10] Draft version used
 `IERC20Permit` imported in `TransferAction.sol` contract is a Draft version
 ```solidity
 import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
@@ -346,7 +281,7 @@ Try to avoid use of Draft versions
 
 
 
-### [Low-] Before deposit should check vault existance check 
+### [Low-11] Before deposit should check vault existance check 
 There is modifier `onlyRegisteredVault(vault)` which ensure that the vault already registered in `vaultRegistry contract`
 
 when a callback came `_onDeposit()` should ensure that Vault exists
@@ -365,7 +300,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction2
 ```
 
 
-### [Low-] Considering `NatSpec` Comments, Corresponding checks absent in function
+### [Low-12] Considering `NatSpec` Comments, Corresponding checks absent in function
 In `PoolAction.transferAndJoin()` there is a Comment that says 
 ```
 /// @notice Execute a transfer from an EOA and then join via `PoolActionParams`
@@ -381,7 +316,7 @@ Implement Corresponding checks,
 
 
 
-### [Low-] `pendleRouter.addLiquiditySingleToken()` called with a msg.value, but its parent function `transferAndJoin()` is non-payable in nature
+### [Low-13] `pendleRouter.addLiquiditySingleToken()` called with a msg.value, but its parent function `transferAndJoin()` is non-payable in nature
 - In `PoolAction.sol` contract it has a function `transferAndJoin()`
 which internally call `join()`
 https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PoolAction.sol#109
@@ -408,7 +343,7 @@ But Point is when Tx initiated from `poolAction.transferAndJoin()` as it is not 
 Make `poolAction.transferAndJoin()` `payable`
 
 
-### [Low-] Irregularities while setting `constants` variable
+### [Low-14] Irregularities while setting `constants` variable
 
 Here we can see that above 3 `%` setted value differ from below 2
 
@@ -426,7 +361,7 @@ Set all under a single unit measurement.
 ```
 https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/MultiFeeDistribution.sol#L37-L43
 
-### [Low-] comment mismatched with code L42 - multiFeeDistribution.sol
+### [Low-15] comment mismatched with code L42 - multiFeeDistribution.sol
 Like below other `constants` store value in BIPs and their respective comments shows that Percentage representation of those BIPs value
 
 But in case of `MAX_SLIPPAGE` its 9000 which will be 90%, But Comment says 10%
@@ -440,7 +375,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/reward/MultiFeeDistri
     uint256 public constant PERCENT_DIVISOR = 10000; //100%
 ```
 
-### [Low-] No checks for staleness in AuraVault.sol
+### [Low-16] No checks for staleness in AuraVault.sol
 
 In the `Aura Vault` contract, the protocol uses a ChainLink aggregator to fetch the `latestRoundData()`, but there is no check if the return value indicates stale data.
 The only check present is for the quoteAnswer to be > 0; however, this alone is not sufficient.
@@ -488,7 +423,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/vendor/AuraVault.sol#
 +           require(block.timestamp - updatedAt <= VALID_TIME_PERIOD);
 ```
 
-### [Low-] No sanity checks for price and others like `Round completion`, `Stale Price` and `valide time period`
+### [Low-17] No sanity checks for price and others like `Round completion`, `Stale Price` and `valide time period`
 
 ```solidity
     function _getAuraSpot() internal view returns (uint256 price) {
@@ -514,7 +449,7 @@ Should have proper checks like below
 +           require(block.timestamp - updatedAt <= VALID_TIME_PERIOD);
 ```
 
-### [Low-] No validation check parameters in `constructor` of `CDPVault.sol` 
+### [Low-18] No validation check parameters in `constructor` of `CDPVault.sol` 
 There should proper validation checks for `addresses` and `numarical values` while assigning values to state variables inside constructor
 
 Its a very crusial step, if any wrong value stored it may cause
@@ -526,15 +461,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L164-L18
 
 
 
-
-
-
-
-
-
-
-
-### [Low-] made prior checks before storing `newPoolQuotaKeeper` to storage that new value is not same as previous stored value
+### [Low-19] made prior checks before storing `newPoolQuotaKeeper` to storage that new value is not same as previous stored value
 
 ```solidity
     function setPoolQuotaKeeper(
@@ -548,7 +475,7 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/CDPVault.sol#L164-L18
         poolQuotaKeeper = newPoolQuotaKeeper;
 ```
 
-### [Low-] before transfer check for 0 amount
+### [Low-20] before transfer check for 0 amount
 
 before calling `silo.withdraw()` there should be a check which make sure that withdrawal amount is not 0.
 
@@ -570,16 +497,96 @@ https://github.com/code-423n4/2024-07-loopfi/blob/main/src/StakingLPEth.sol#L96
     }
 ```
 
-### [Low-] no fee considered in case of `onCreditFlashloan()`
+### [Low-21] no fee considered in case of `onCreditFlashloan()`
+unlike `onFlashLoan()` here amount and fee not taken into consideration
 
-### [Low-] chainlinkAgrregator.lastestRoundData() related check refer PendleOracle.sol's L120
+at the end of function approval given to flashlender as follows
+```solidity
+       underlyingToken.forceApprove(address(flashlender), subDebt); 
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L447
+
+where subDebt is 
+```solidity
+        uint256 subDebt = leverParams.primarySwap.amount;
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L445
+
+its not necessary that `subDebt` will equal to `amount + fee` from `creditFlashLoan()`
+
+```solidity
+    function creditFlashLoan(
+...
+    ) external override nonReentrant returns (bool) {
+        uint256 fee = wmul(amount, protocolFee);
+        uint256 total = amount + fee;
+...
+...
+
+        if (receiver.onCreditFlashLoan(msg.sender, amount, fee, data) != CALLBACK_SUCCESS_CREDIT)
+            revert Flash__creditFlashLoan_callbackFailed();
+
+        underlyingToken.transferFrom(address(receiver), address(pool), total);
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L123
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/PositionAction.sol#L129
+
+#### Mitigation
+`onCreditFlashLoan()` also have checks like `onFlashLoan()` which ensure that approval amount to `flashlender` i.e subDebt == amount + fee.
+
+### [Low-22] Check Prev value before chage state
+
+```solidity
+    function setPermissionAgent(address agent, bool permitted) external {
+        _permittedAgents[msg.sender][agent] = permitted;
+        emit SetPermittedAgent(msg.sender, agent, permitted);
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L57-L60
+
+```solidity
+    function modifyPermission(address owner, address caller, bool permitted) external {
+        if (owner != msg.sender && !_permittedAgents[owner][msg.sender])
+            revert Permission__modifyPermission_notPermitted();
+        _permitted[owner][caller] = permitted;
+        emit ModifyPermission(msg.sender, owner, caller, permitted);
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L47-L52
 
 
-### [Low-] no need for +
-`calcDecrease()`
+### [Low-23] If `agent` goes malicious then he can set permission to any address who can Borrow max on behalf of Owner which subject to liquidation probability.
 
-### [Low-]  Check if it is ever increasing array or no
-registeredTokens - rewardController - _updateRegisteredBalance()
+In this situation Owner positions will be at risk, as permited address can max amount possible against the Owner which may cause to liquidation
 
-### [Low-]Replay attack possible should include chainId L16 TransferAction.sol
+```solidity
+ function setPermissionAgent(address agent, bool permitted) external {
+        _permittedAgents[msg.sender][agent] = permitted;
+        emit SetPermittedAgent(msg.sender, agent, permitted);
+    }
+```
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/utils/Permission.sol#L57-L60
+
+### [Low-24]  variable naming could be improved cause it could easily confused with cumulativeIndex
+```solidity
+    function _getTokenQuotaParamsOrRevert(
+        TokenQuotaParams storage tokenQuotaParams
+    ) internal view returns (uint16 rate, uint192 cumulativeIndexLU, uint16 quotaIncreaseFee) {
+        assembly {
+            let data := sload(tokenQuotaParams.slot)
+            rate := and(data, 0xFFFF)
+            cumulativeIndexLU := and(shr(16, data), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF) // @audit
+            quotaIncreaseFee := shr(208, data)
+        }
+
+```
+Here actually we fetching values for `Quota`
+so `quotaCumulativeIndexLU` could used instead of `cumulativeIndexLU`
+
+cause `cumulativeIndexLU` used multiple times in code base for Normal BaseInterst calculation.
+
+So it create much confusion in during code audits
+
+https://github.com/code-423n4/2024-07-loopfi/blob/main/src/quotas/PoolQuotaKeeperV3.sol#L268
 
