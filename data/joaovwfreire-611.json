@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "joaovwfreire",
+  "risk": "2",
+  "title": "BalancerOracle's totalSupply utilization is not correct in all cases",
+  "issueId": 611,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/611"
+}
