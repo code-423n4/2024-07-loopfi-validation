@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xpiken",
+  "risk": "2",
+  "title": " A user cannot claim their previously pending reward once they become ineligible",
+  "issueId": 623,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/623"
+}
