@@ -61,4 +61,26 @@ Avoid Premature Scaling: Reassess the use of tokenScale and consider whether it 
 
 Conclusion:
 
-While the precision loss identified in the deposit function may only lead to minor discrepancies, it is essential to address it to ensure the accuracy and integrity of the contract's financial calculations. Given the potential for cumulative impact, this finding is rated as Low Severity
+While the precision loss identified in the deposit function may only lead to minor discrepancies, it is essential to address it to ensure the accuracy and integrity of the contract's financial calculations. Given the potential for cumulative impact, this finding is rated as Low Severity.
+
+
+Title :Reentrancy Risk in SafeTransferFrom and SafeTransfer in ModifyCollateralAndDebt
+
+The ModifyCollateralAndDebt function in this protocol includes calls to SafeTransferFrom and SafeTransfer, which, while generally safe, can introduce a reentrancy risk under certain conditions. Although the protocol does not utilize ERC-777 tokens (which are particularly vulnerable to reentrancy due to their tokensReceived hook), it is still important to adhere to best practices to mitigate any potential risks.
+
+Details:
+
+The function modifies a position’s collateral and debt balances by transferring tokens either to or from the user’s account.
+The token transfer operations (safeTransferFrom and safeTransfer) occur after certain state variables are updated. Although the protocol’s token does not have reentrancy hooks, it’s generally safer to ensure that all state changes are completed before interacting with external contracts.
+The current implementation is less likely to be exploited because it doesn’t involve ERC-777 tokens or other complex token standards with hooks that can be triggered during transfers. However, using the checks-effects-interactions pattern would further enhance security.
+
+Recommendation:
+To adhere to best practices, it is recommended to structure the modifyCollateralAndDebt function following the checks-effects-interactions pattern:
+
+Checks: Perform all necessary validations and checks.
+Effects: Update state variables to reflect the changes.
+Interactions: Transfer tokens or interact with external contracts.
+By implementing this pattern, you can further mitigate the risk of reentrancy, even if the protocol’s environment changes in the future.
+
+Conclusion:
+While the current implementation is relatively safe, adopting the checks-effects-interactions pattern is a good practice to prevent potential reentrancy vulnerabilities in the future. The risk is assessed as non-critical due to the specific context of the protocol.
