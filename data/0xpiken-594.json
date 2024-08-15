@@ -1,0 +1,8 @@
+{
+  "contest": 415,
+  "handle": "0xpiken",
+  "risk": "2",
+  "title": "`lastRPS` could be set to `0` accidentally",
+  "issueId": 594,
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/594"
+}
