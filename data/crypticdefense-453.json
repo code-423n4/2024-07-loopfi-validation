@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Liquidation discount incentivizes self-liquidations to avoid paying full debt, causing a loss for the protocol and lenders",
   "issueId": 453,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/453"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/453",
+  "validatedIssueId": 400,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/400"
 }
