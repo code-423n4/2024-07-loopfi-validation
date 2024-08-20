@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Chainlink can return stale price in `AuraVault::_chainlinkSpot()` and `AuraVault::_getAuraSpot()`",
   "issueId": 752,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/752"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/752",
+  "validatedIssueId": 260,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/260"
 }
