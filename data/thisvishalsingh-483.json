@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Incorrect debt calculation in `calcDecrease` leading to improper liquidations and asset loss",
   "issueId": 483,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/483"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/483",
+  "validatedIssueId": 379,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/379"
 }
