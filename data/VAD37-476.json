@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`CDPVault` did not handle external rewards from `PENDLE-LP`",
   "issueId": 476,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/476"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/476",
+  "validatedIssueId": 383,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/383"
 }
