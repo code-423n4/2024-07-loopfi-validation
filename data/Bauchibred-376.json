@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Non-flexible update window forces an ingestion of de/in-flated prices across protocol",
   "issueId": 376,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/376"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/376",
+  "validatedIssueId": 432,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/432"
 }
