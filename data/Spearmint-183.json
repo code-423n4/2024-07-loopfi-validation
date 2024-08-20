@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Attackers can frontrun reward accumulation in the StakingLPEth contract to steal rewards unfairly from users currently in the pool",
   "issueId": 183,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/183"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/183",
+  "validatedIssueId": 230,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/230"
 }
