@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "absence of access control in `AuraVault`",
   "issueId": 406,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/406"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/406",
+  "validatedIssueId": 421,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/421"
 }
