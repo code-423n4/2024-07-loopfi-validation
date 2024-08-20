@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Liquidity pool is not registering protocol's profit on healthy repayment",
   "issueId": 62,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/62"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/62",
+  "validatedIssueId": 515,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/515"
 }
