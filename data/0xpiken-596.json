@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Portion of the `rdntToken` reward might be not accounted when `vestTokens()` is called",
   "issueId": 596,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/596"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/596",
+  "validatedIssueId": 328,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/328"
 }
