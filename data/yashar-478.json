@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "StakingLPEth will be DoSed using a small donation",
   "issueId": 478,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/478"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/478",
+  "validatedIssueId": 382,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/382"
 }
