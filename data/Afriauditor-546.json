@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Cooldown Period Extension on Subsequent Staking",
   "issueId": 546,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/546"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/546",
+  "validatedIssueId": 354,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/354"
 }
