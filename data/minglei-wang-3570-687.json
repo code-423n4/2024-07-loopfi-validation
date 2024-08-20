@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`VaultRegistry::getUserTotalDebt()` does not normalize debt amount to 18 decimals.",
   "issueId": 687,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/687"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/687",
+  "validatedIssueId": 138,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/138"
 }
