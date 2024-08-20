@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Partial repayments of accrued interest are inflated",
   "issueId": 600,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/600"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/600",
+  "validatedIssueId": 326,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/326"
 }
