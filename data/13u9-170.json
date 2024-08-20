@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "When protocolFee is present in the flashLender contract, the 'decreaseLever' function always reverts to 'insufficient allowance'",
   "issueId": 170,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/170"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/170",
+  "validatedIssueId": 487,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/487"
 }
