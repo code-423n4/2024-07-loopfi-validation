@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`PoolV3::repayCreditAccount` doesn't take into account the `profit` when updating the `expected liquidity`, causing incorrect accounting",
   "issueId": 457,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/457"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/457",
+  "validatedIssueId": 398,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/398"
 }
