@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Liquidation Allowed with Insufficient Collateral",
   "issueId": 207,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/207"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/207",
+  "validatedIssueId": 478,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/478"
 }
