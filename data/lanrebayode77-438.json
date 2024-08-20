@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Positions liquidated with badDebt leading to loss of protocol shares should be excluded from reward",
   "issueId": 438,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/438"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/438",
+  "validatedIssueId": 178,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/178"
 }
