@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Users can still deposit and withdraw in the CDPVAULT even when the contract is paused.",
   "issueId": 334,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/334"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/334",
+  "validatedIssueId": 444,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/444"
 }
