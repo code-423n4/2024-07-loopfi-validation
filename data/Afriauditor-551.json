@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Incorrect Supply Rate Calculation in CDPVault",
   "issueId": 551,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/551"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/551",
+  "validatedIssueId": 352,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/352"
 }
