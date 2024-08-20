@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`vestTokens` bug in MultiFeeDistribution.sol causes new incentives to erase previous incentives",
   "issueId": 765,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/765"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/765",
+  "validatedIssueId": 126,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/126"
 }
