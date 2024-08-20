@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Attacker can DoS last withdrawer by depositing 1 wei and make their funds locked in the contract forever in `StakingLPEth`",
   "issueId": 695,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/695"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/695",
+  "validatedIssueId": 281,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/281"
 }
