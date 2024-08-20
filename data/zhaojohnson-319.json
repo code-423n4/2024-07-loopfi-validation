@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Incorrect deposit/withdraw position in PositionAction4626",
   "issueId": 319,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/319"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/319",
+  "validatedIssueId": 450,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/450"
 }
