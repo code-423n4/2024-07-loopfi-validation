@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The implementation of the LiquidatePosition function is not efficient and liquidators will earn above the slated 3-4% by the Docs.",
   "issueId": 367,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/367"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/367",
+  "validatedIssueId": 436,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/436"
 }
