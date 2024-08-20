@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "The inflation attack to the  AuraVault ",
   "issueId": 491,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/491"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/491",
+  "validatedIssueId": 377,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/377"
 }
