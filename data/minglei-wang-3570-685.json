@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "AuraVault is vulnerable to ERC4626 inflation attack",
   "issueId": 685,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/685"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/685",
+  "validatedIssueId": 285,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/285"
 }
