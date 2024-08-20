@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "BalancerOracle uses wrong supply value to compute price",
   "issueId": 648,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/648"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/648",
+  "validatedIssueId": 143,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/143"
 }
