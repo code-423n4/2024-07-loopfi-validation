@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The modification in isWhitelisted within ChefIncentivesController.sol contains a logical error.",
   "issueId": 587,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/587"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/587",
+  "validatedIssueId": 334,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/334"
 }
