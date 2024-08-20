@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "PoolV3's interest rate breaks if credit account is repaid with profit",
   "issueId": 681,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/681"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/681",
+  "validatedIssueId": 288,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/288"
 }
