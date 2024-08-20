@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Providing only one liquidation ratio puts the borrower at high risk of liquidation",
   "issueId": 624,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/624"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/624",
+  "validatedIssueId": 311,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/311"
 }
