@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "DoS when calling `PositionAction4626::increaseLever`, due to double spending on the flashloan receiver",
   "issueId": 213,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/213"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/213",
+  "validatedIssueId": 476,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/476"
 }
