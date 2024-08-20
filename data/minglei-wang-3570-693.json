@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Reward and incentive computation missing interest calculation when computing debt/user balance.",
   "issueId": 693,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/693"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/693",
+  "validatedIssueId": 136,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/136"
 }
