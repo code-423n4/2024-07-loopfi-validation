@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "User able to unlock tokens 2 days earlier instead of the intended 1 day, due to the way the protocol rounds",
   "issueId": 550,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/550"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/550",
+  "validatedIssueId": 157,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/157"
 }
