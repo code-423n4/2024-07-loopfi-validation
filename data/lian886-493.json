@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "In ChefIncentivesController, if depositedRewards is insufficient, users will receive fewer rewards than they are entitled to.",
   "issueId": 493,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/493"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/493",
+  "validatedIssueId": 169,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/169"
 }
