@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "User's funds may be stolen via permitTransferFrom",
   "issueId": 338,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/338"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/338",
+  "validatedIssueId": 442,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/442"
 }
