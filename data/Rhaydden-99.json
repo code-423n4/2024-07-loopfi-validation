@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`maxFlashLoan` calculation ignores protocol fee, risking pool insolvency and flash loan failures",
   "issueId": 99,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/99"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/99",
+  "validatedIssueId": 236,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/236"
 }
