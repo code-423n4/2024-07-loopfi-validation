@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "PoolAction.sol#exit(...) can be used by an attacker to exit other users because the exit(...) function accepts  `from` parameter as input from users to use in the ERC20.transferFrom",
   "issueId": 661,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/661"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/661",
+  "validatedIssueId": 141,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/141"
 }
