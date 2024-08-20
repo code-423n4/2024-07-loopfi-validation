@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Lack of `whenNotPaused` modifier in `CDPVault::_modifyPosition`, `CDPVault::modifyCollateralAndDebt`, `CDPVault::borrow` could cause protocol to accumulate bad debt.",
   "issueId": 195,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/195"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/195",
+  "validatedIssueId": 481,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/481"
 }
