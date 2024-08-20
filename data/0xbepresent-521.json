@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Inadequate update of repayment amount post-swap",
   "issueId": 521,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/521"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/521",
+  "validatedIssueId": 369,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/369"
 }
