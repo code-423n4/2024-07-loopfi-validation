@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Based on implementation Repay should never revert but this function and liquidate functions makes externals call and can revert.",
   "issueId": 339,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/339"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/339",
+  "validatedIssueId": 441,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/441"
 }
