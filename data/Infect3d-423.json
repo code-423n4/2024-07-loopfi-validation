@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "AuraVault `_chainlinkSpot` and `_getAuraSpot` Can Provide Stale Prices",
   "issueId": 423,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/423"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/423",
+  "validatedIssueId": 414,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/414"
 }
