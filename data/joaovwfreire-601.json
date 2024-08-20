@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "transferAndJoin at the PoolAction contract lacks access control",
   "issueId": 601,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/601"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/601",
+  "validatedIssueId": 325,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/325"
 }
