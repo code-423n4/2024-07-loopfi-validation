@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Users interacting with `TransferAction::_transferFrom` via proxy with approval type `permit` can lose their funds.",
   "issueId": 590,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/590"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/590",
+  "validatedIssueId": 332,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/332"
 }
