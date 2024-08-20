@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Miscalculation of the interest rate and a mismatch with the documentation",
   "issueId": 627,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/627"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/627",
+  "validatedIssueId": 147,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/147"
 }
