@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "In PoolV3, the ratio of assert to share is always 1:1. When the entire protocol incurs a loss, the users who withdraw their assets first are protected, while those who withdraw later bear all the losses.",
   "issueId": 471,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/471"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/471",
+  "validatedIssueId": 388,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/388"
 }
