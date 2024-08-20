@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Malicious actor can use `StakingLPEth:::_checkMinShares` to DoS other users `StakingLPEth:::_withdraw`",
   "issueId": 517,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/517"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/517",
+  "validatedIssueId": 370,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/370"
 }
