@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Lack of validation to check the minimum borrowing amount, which allow a malicious actor to create a lot of `too small` debt positions, which is difficult to be liquidated - due to less incentive for liquidators to liquidate these `too small` debt positions",
   "issueId": 570,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/570"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/570",
+  "validatedIssueId": 343,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/343"
 }
