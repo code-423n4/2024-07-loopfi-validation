@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Inaccurate pool quota revenue calculation causes underreported earnings in `PoolQuotaKeeperV3`",
   "issueId": 644,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/644"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/644",
+  "validatedIssueId": 144,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/144"
 }
