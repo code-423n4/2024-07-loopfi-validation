@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`PoolAction::_balancerExit` returns wrong token out amount",
   "issueId": 76,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/76"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/76",
+  "validatedIssueId": 239,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/239"
 }
