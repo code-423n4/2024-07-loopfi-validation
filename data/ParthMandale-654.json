@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "In `CDPVault.sol` Position might be liquidated right after taking maximal debt",
   "issueId": 654,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/654"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/654",
+  "validatedIssueId": 142,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/142"
 }
