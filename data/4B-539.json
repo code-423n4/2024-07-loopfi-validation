@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "lastDebtUpdate should be block.timestamp instead ",
   "issueId": 539,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/539"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/539",
+  "validatedIssueId": 357,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/357"
 }
