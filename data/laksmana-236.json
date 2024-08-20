@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "attackers may lock users' funds once they expire.",
   "issueId": 236,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/236"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/236",
+  "validatedIssueId": 220,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/220"
 }
