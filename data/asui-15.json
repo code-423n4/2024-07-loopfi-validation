@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The last user to withdraw will be DOS and unexpectedly revert due to the _checkMinShares in the StakingLPEth contract.",
   "issueId": 15,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/15"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/15",
+  "validatedIssueId": 528,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/528"
 }
