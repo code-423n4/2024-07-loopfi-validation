@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "In CDPVault::liquidatePositionBadDebt(), the calculation of `loss` is incorrect.",
   "issueId": 400,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/400"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/400",
+  "validatedIssueId": 190,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/190"
 }
