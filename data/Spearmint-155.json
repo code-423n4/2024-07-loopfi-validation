@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The protocol does not handle the case where ptOracle is not initialized for the required twapWindow in PendleLPOracle.sol",
   "issueId": 155,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/155"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/155",
+  "validatedIssueId": 232,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/232"
 }
