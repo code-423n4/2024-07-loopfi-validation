@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Debt is counted twice everytime modifyCollateralAndDebt is invoked",
   "issueId": 414,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/414"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/414",
+  "validatedIssueId": 187,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/187"
 }
