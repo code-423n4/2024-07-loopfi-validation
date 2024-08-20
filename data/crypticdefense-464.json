@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Inconsistent invariant check for `bad debt` allows users to call `CDPVault::liquidatePositionBadDebt` on positions that do not have bad debt, breaking protocol invariant",
   "issueId": 464,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/464"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/464",
+  "validatedIssueId": 395,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/395"
 }
