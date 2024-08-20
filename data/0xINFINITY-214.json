@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`Transferaction::_transferFrom` is vulnerable via DOS if the approval type is `PERMIT`",
   "issueId": 214,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/214"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/214",
+  "validatedIssueId": 475,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/475"
 }
