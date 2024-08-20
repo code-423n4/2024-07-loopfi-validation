@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "liquidationDiscount will make position worse off than before, and may even invite bad debt.",
   "issueId": 360,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/360"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/360",
+  "validatedIssueId": 199,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/199"
 }
