@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Users can claim more rewards than the corresponding deposited WETH",
   "issueId": 651,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/651"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/651",
+  "validatedIssueId": 302,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/302"
 }
