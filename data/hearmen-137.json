@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Missing to invoke `convertToShares` first when function `mintProfit` invoking `_mint`",
   "issueId": 137,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/137"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/137",
+  "validatedIssueId": 234,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/234"
 }
