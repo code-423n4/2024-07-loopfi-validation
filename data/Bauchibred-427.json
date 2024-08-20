@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Current AURA distribution calculation leads to loss of rewards at the end of cliffs",
   "issueId": 427,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/427"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/427",
+  "validatedIssueId": 184,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/184"
 }
