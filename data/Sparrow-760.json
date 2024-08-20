@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Potential for ETH to be Locked in Contract When Joining Balancer Pools",
   "issueId": 760,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/760"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/760",
+  "validatedIssueId": 254,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/254"
 }
