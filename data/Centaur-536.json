@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Omission of ::msg.value Handling in internal Pool Functions",
   "issueId": 536,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/536"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/536",
+  "validatedIssueId": 360,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/360"
 }
