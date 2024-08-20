@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Wrong debt accouting in liquidatePosition()",
   "issueId": 779,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/779"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/779",
+  "validatedIssueId": 250,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/250"
 }
