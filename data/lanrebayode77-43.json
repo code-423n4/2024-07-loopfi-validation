@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Unequal splitting of rewards in ChefIncentivescontroller",
   "issueId": 43,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/43"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/43",
+  "validatedIssueId": 246,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/246"
 }
