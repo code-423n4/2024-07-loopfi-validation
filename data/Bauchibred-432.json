@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Users are unfairly locked off from placing multiple cooldown attempts essentially DOSing from their assets potentially for as long as `cooldownDuration` for every attempted withdrawal",
   "issueId": 432,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/432"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/432",
+  "validatedIssueId": 180,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/180"
 }
