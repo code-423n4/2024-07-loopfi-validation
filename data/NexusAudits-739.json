@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Index Misalignment in updateLeverJoin Function",
   "issueId": 739,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/739"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/739",
+  "validatedIssueId": 267,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/267"
 }
