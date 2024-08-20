@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Malicious Borrower Cycle Exploits to Inflate Interest Rates",
   "issueId": 735,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/735"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/735",
+  "validatedIssueId": 129,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/129"
 }
