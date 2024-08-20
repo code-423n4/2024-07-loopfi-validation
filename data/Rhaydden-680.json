@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Incorrect quota revenue update in `liquidatePositionBadDebt` function",
   "issueId": 680,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/680"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/680",
+  "validatedIssueId": 140,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/140"
 }
