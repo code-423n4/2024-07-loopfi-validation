@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Inconsistent Bad Debt Checks Allow Overlap in Liquidation Function Usage",
   "issueId": 743,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/743"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/743",
+  "validatedIssueId": 265,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/265"
 }
