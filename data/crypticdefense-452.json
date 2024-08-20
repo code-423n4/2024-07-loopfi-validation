@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`AuraVault::claim` reward calculation does not deduct fees from reward amount, causing DoS or extra rewards lost",
   "issueId": 452,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/452"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/452",
+  "validatedIssueId": 401,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/401"
 }
