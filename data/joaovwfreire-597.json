@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Liquidating positions may make its health factor worse than before and target the position to bigger than expected liquidations",
   "issueId": 597,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/597"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/597",
+  "validatedIssueId": 327,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/327"
 }
