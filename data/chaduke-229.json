@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "CDPVault.liquidatePosition() does not scale ```takeCollateral``` with ```tokenScale``, therefore, it might send the wrong amount of collateral to the liquidator when tokenScale ! = 1 ether. ",
   "issueId": 229,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/229"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/229",
+  "validatedIssueId": 223,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/223"
 }
