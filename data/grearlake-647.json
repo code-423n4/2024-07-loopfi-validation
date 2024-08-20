@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Reward is not updated in multiple actions",
   "issueId": 647,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/647"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/647",
+  "validatedIssueId": 304,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/304"
 }
