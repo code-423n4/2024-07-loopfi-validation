@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Wrong conversion of shares in PoolV3 so lenders dont earn yield",
   "issueId": 61,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/61"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/61",
+  "validatedIssueId": 244,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/244"
 }
