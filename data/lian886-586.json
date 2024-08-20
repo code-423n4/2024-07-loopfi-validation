@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "The inflation attack on the StakingLPEth vault causes a Denial of Service (DoS).",
   "issueId": 586,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/586"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/586",
+  "validatedIssueId": 335,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/335"
 }
