@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "A malicious user can steal all token approvals granted to the SwapAction.sol contract",
   "issueId": 233,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/233"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/233",
+  "validatedIssueId": 221,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/221"
 }
