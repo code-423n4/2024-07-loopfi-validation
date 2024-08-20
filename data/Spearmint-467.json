@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "An attacker can frontrun calls to all functions that call `_transferFrom()` with a permit, by directly calling the permit function on the token contract to ensure Tx always reverts",
   "issueId": 467,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/467"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/467",
+  "validatedIssueId": 392,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/392"
 }
