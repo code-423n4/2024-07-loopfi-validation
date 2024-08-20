@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Collateral Tokens with less than 18 Decimals break liquidation logic ",
   "issueId": 206,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/206"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/206",
+  "validatedIssueId": 479,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/479"
 }
