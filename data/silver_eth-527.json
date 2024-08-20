@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The addition of liquidation penalty could leave a debt position completely uncollaterized ",
   "issueId": 527,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/527"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/527",
+  "validatedIssueId": 364,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/364"
 }
