@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "BalancerOracle.update() wrongly assumes that all of the weighted pools uses totalSupply",
   "issueId": 317,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/317"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/317",
+  "validatedIssueId": 451,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/451"
 }
