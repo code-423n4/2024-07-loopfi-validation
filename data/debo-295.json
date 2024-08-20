@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Improper Vote Validation in the GaugeV3 contract",
   "issueId": 295,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/295"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/295",
+  "validatedIssueId": 210,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/210"
 }
