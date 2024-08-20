@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Improper bad debt process in PoolV3",
   "issueId": 309,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/309"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/309",
+  "validatedIssueId": 457,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/457"
 }
