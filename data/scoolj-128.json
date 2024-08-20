@@ -4,5 +4,7 @@
   "risk": "3",
   "title": " Using TWAP Instead of Spot Price (Potential Oracle Failure + Inaccurate Liquidations)",
   "issueId": 128,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/128"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/128",
+  "validatedIssueId": 499,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/499"
 }
