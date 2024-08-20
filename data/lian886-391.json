@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "The payback operation to the flashlender in PositionAction::onCreditFlashLoan() is missing the fee.",
   "issueId": 391,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/391"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/391",
+  "validatedIssueId": 427,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/427"
 }
