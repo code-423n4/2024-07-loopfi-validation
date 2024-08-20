@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Malicious actor can abuse the minimum shares check in `StakingLPEth` and cause locked funds for the last user that withdraws",
   "issueId": 187,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/187"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/187",
+  "validatedIssueId": 228,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/228"
 }
