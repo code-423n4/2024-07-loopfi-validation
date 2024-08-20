@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Incorrect Debt Repayment Calculation in `CDPVault::liquidatePosition` due to which updateQuotaRevenue keeps the bad debt value updating.",
   "issueId": 703,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/703"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/703",
+  "validatedIssueId": 278,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/278"
 }
