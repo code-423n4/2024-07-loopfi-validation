@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Multi-Token Permit Vulnerability: Silent Failures and Signature Mismatches in TransferAction",
   "issueId": 303,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/303"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/303",
+  "validatedIssueId": 209,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/209"
 }
