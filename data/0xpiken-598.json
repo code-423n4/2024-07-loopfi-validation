@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Unclaimed reward could become stuck in `MultiFeeDistribution` once the reward token is removed",
   "issueId": 598,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/598"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/598",
+  "validatedIssueId": 153,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/153"
 }
