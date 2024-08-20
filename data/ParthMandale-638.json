@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`PoolV3.sol::redeem` & `PoolV3.sol::withdraw` function are prone to make underlying token depositor in overall loss while redeeming/withdrawing their underlying token which they deposited in the beginning.",
   "issueId": 638,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/638"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/638",
+  "validatedIssueId": 145,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/145"
 }
