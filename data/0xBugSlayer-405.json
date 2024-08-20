@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "User accumulates the full interest of the loan when partially repaying/liquidating a loan ",
   "issueId": 405,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/405"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/405",
+  "validatedIssueId": 422,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/422"
 }
