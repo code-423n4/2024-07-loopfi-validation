@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "`BalancerOracle#spot()` returns non-spot price",
   "issueId": 379,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/379"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/379",
+  "validatedIssueId": 194,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/194"
 }
