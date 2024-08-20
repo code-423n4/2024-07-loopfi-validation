@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Missing profit when function liquidatePositionBadDebt invoking pool.repayCreditAccount will cause less profit minted to the treasury",
   "issueId": 119,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/119"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/119",
+  "validatedIssueId": 503,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/503"
 }
