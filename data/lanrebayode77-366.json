@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Partial liquidation leading to bad debts",
   "issueId": 366,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/366"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/366",
+  "validatedIssueId": 437,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/437"
 }
