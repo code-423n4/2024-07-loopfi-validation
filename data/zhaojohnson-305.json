@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "pause functionality can be bypassed in CDPVault via modifyCollateralAndDebt()",
   "issueId": 305,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/305"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/305",
+  "validatedIssueId": 459,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/459"
 }
