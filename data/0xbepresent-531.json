@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Unutilized `upFrontAmount` in `PositionAction::increaseLever` swap potentially causes token locking",
   "issueId": 531,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/531"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/531",
+  "validatedIssueId": 161,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/161"
 }
