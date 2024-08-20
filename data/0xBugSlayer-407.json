@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Bad price staleness check in the AuraVault",
   "issueId": 407,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/407"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/407",
+  "validatedIssueId": 420,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/420"
 }
