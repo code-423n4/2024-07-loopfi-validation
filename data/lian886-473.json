@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "The calculation of tokenOut in the PositionActionPendle::_onDecreaseLever() function is incorrect.## Links to affected code",
   "issueId": 473,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/473"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/473",
+  "validatedIssueId": 386,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/386"
 }
