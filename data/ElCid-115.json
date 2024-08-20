@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "It's possible to deposit/withdraw when protocol is Paused",
   "issueId": 115,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/115"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/115",
+  "validatedIssueId": 505,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/505"
 }
