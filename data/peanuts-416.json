@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Users can bypass the pause modifier in CDPVault.deposit and withdraw by directly calling modifyCollateralAndDebt",
   "issueId": 416,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/416"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/416",
+  "validatedIssueId": 417,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/417"
 }
