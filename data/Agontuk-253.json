@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Insufficient Repay Amount Handling in Liquidation Process Can Lead to Bad Debt (`CDPVault::liquidatePosition`)",
   "issueId": 253,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/253"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/253",
+  "validatedIssueId": 466,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/466"
 }
