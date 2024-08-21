@@ -4,5 +4,7 @@
   "risk": "Q",
   "title": "QA Report",
   "issueId": 455,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/455"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/455",
+  "validatedIssueId": 539,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/539"
 }
