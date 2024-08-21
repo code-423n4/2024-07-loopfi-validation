@@ -1,0 +1,2 @@
+issue,title,primary finding,validator comment,status,root cause (URL),size
+validation-619,Unused asset is transferred to the wrong recipient,validation-619,primary,Satisfactory,https://github.com/code-423n4/2024-07-loopfi/blob/main/src/proxy/SwapAction.sol#L141,205
