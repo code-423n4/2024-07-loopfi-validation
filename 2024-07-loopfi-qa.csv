@@ -1,0 +1,92 @@
+issue,title,validator comment,status,size,Best
+findings-90,QA Report,"    https://github.com/code-423n4/2024-07-loopfi-findings/blob/main/data/pkqs90-Q.md#l-06-in-stakinglpeth-the-cooldown-time-always-updates-to-the-last-cooldown-action --> dup of validation-432
+    https://github.com/code-423n4/2024-07-loopfi-findings/blob/main/data/pkqs90-Q.md#l-09-pendleoracle-still-uses-answeredinround-but-it-is-deprecated-for-chainlink-aggregator --> dup of validation-121
+    https://github.com/code-423n4/2024-07-loopfi-findings/blob/main/data/pkqs90-Q.md#l-22-positionaction20positionaction4626positionactionpendle-onwithdraw-dont-use-correct-token-scale --> dup of findings-42",Satisfactory,730,
+validation-200,Gas Optimizations,no gas pot in this contest,Unsatisfactory,1,
+validation-105,QA Report,no value,Unsatisfactory,84,
+validation-18,Gas Optimizations,no gas pot in this contest,Unsatisfactory,5,
+validation-126,QA Report,,Unsatisfactory,141,
+validation-13,QA Report,no value,Unsatisfactory,11,
+validation-90,Gas Optimizations,no gas pot in this contest,Unsatisfactory,17,
+validation-167,QA Report,,Unsatisfactory,1,
+validation-168,QA Report,,Unsatisfactory,70,
+validation-205,QA Report,"QA2 --> dup of validation-325
+QA3 --> dup of validation-137
+QA4 --> dup of findings-96",Satisfactory,112,
+validation-266,QA Report,"not so bright too. 
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Agontuk-Q.md#l-07-lack-of-validation-in-setinterestratemodel-may-allow-setting-of-incompatible-models --> dup of validation-707",Satisfactory,286,
+validation-290,QA Report,"not so satisfactory. 
+https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/K42-Q.md#l-14poolv3sol --> dup of validation-435",Satisfactory,827,
+validation-301,QA Report,instead stale price perioid is utilized as a more governing approach,Unsatisfactory,10,
+validation-14,Gas Optimizations,no gas pot in this contest,Unsatisfactory,44,
+validation-308,QA Report,,Unsatisfactory,639,
+validation-335,QA Report,[L02] --> dup of validation-323 - not satisfactory in total,Satisfactory,89,
+validation-70,Gas Optimizations,no gas pot in this contest,Unsatisfactory,72,
+validation-390,QA Report,"
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/atoko-Q.md#l-05-incorrect-prices-returned-during-flash-crashes --> dup of validation-727",Satisfactory,632,
+validation-415,QA Report,"5/8 issues are dups - not so bright. 
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/peanuts-Q.md#l-01-oracle-in-cdpvault-can-never-change-which-will-be-an-issue-if-the-oracle-fails --> dup of validation-148
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/peanuts-Q.md#l-02-min-max-answer-not-checked-in-chainlinkoraclesol --> dup of validation-727
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/peanuts-Q.md#l-05-reducing-max-cooldown-in-stakinglpethsol-is-not-fair-for-users-with-the-original-cool-down --> dup of validation-513
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/peanuts-Q.md#l-06-poolv3repaycreditaccount-calls-_updatebaseinterestexpectedliquiditydelta-with-wrong-input --> dup of validation-441
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/peanuts-Q.md#l-08-liquidation-and-repayment-in-cdpvault-should-not-be-affected-by-pausing-mechanism --> dup of validation-231",Satisfactory,227,
+validation-433,QA Report,"    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Bauchibred-Q.md#qa-08-fallback-oracles-should-be-implemented-in-the-cdpvault --> dup of validation-148
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Bauchibred-Q.md#qa-11-no-checks-for-minmax-circuit-breakers-while-querying-chainlink-data --> dup of validation-727
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Bauchibred-Q.md#qa-16-lack-of-slippage-protection-in-auravaults-mintdeposit --> dup of validation-279
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Bauchibred-Q.md#qa-19-users-can-be-liquidated-in-the-next-block --> dup of validation-654",Satisfactory,1236,
+validation-454,QA Report,,Unsatisfactory,2626,
+validation-455,QA Report,,Satisfactory,121,
+validation-48,QA Report,no real added value to the sponsors - marking satisfactory for the respect of bot development,Satisfactory,13570,
+validation-489,QA Report,"https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Infect3d-Q.md#-l02---vulnerable-to-permit-front-run-causing-a-revert --> dup of validation-323
+
+https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/Infect3d-Q.md#-l03---poolaction_balancerjoin-should-return-excess-funds-as-proxy-gets-maxamountin-but-consume-only-assetsin --> dup of validation-604",Satisfactory,174,
+validation-5,QA Report,dup of validation-432,Satisfactory,19,
+validation-51,QA Report,L04 --> partial of validation-189 // but the whole report is not satisfactory,Satisfactory,122,
+validation-658,Gas Optimizations,no gas pot in this contest,Unsatisfactory,177,
+validation-54,QA Report,,Unsatisfactory,289,
+validation-124,Gas Optimizations,no gas pot in this contest,Unsatisfactory,204,
+validation-548,QA Report,"
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/inh3l-Q.md#1-balanceroraclesols-constructor-should-not-have-the-initializer-modifier --> partial dup of validation-189
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/inh3l-Q.md#2-chainlinkoraclesols-_authorizeupgrade-doesnt-perform-a-status-check-before-upgrading --> dup of validation-228
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/inh3l-Q.md#3-no-check-for-min-max-values-when-handling-chainlink-prices --> dup of validation-727
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/inh3l-Q.md#4-cooldown-period-design-overwirtes-previous-periods-and-can-lead-to-longer-times-for-users --> dup of validation-432
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/inh3l-Q.md#9-querying-curves-get_virtual_price-should-be-done-carefully-due-to-its-vulnerability-to-read-only-reentrancy --> dup of validation-192",Satisfactory,632,
+validation-574,QA Report,,Unsatisfactory,210,
+validation-585,QA Report,includes dup of validation-727 // overall not satisfactory,Satisfactory,216,
+validation-599,QA Report,"
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-1-when-protocol-is-in-paused-mode-borrower-unable-to-repay-their-loans --> dup of validation-231
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-4-could-lead-to-dosed-only-addition-no-removal-in-quotatokenset --> dup of validation-186
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-7--in-pendel-case-no-deadline-checks-appear --> dup of findings-71
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-12-before-deposit-should-check-vault-existance-check --> dup of validation-520
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-14-pendlerouteraddliquiditysingletoken-called-with-a-msgvalue-but-its-parent-function-transferandjoin-is-non-payable-in-nature --> dup of validation-306
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-17-no-checks-for-staleness-in-auravaultsol --> dup of validation-459
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/0xhacksmithh-Q.md#low-22-no-fee-considered-in-case-of-oncreditflashloan --> dup of validation-396",Satisfactory,608,
+validation-633,QA Report,,Unsatisfactory,223,
+validation-66,QA Report,insufficient proof,Unsatisfactory,28,
+validation-63,Gas Optimizations,no gas pot in this contest,Unsatisfactory,303,
+validation-660,QA Report,dup of validation-155,Satisfactory,39,
+validation-666,QA Report,insufficient proof,Unsatisfactory,19,
+validation-667,QA Report,,Unsatisfactory,39,
+validation-67,QA Report,not so bright,Satisfactory,196,
+validation-696,QA Report,"
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/minglei-wang-3570-Q.md#l-03-without-try-catch-permit-can-be-dosed - dup of validation-323
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/minglei-wang-3570-Q.md#l-05-improper-slippage-control-on-pool-deposit --> dup of validation-279
+    https://github.com/code-423n4/2024-07-loopfi-validation/blob/main/data/minglei-wang-3570-Q.md#l-07-the-reward-related-contracts-are-forked-from-radiant-protocol-and-comments-are-not-updated --> dup of validation-588",Satisfactory,1,
+validation-768,QA Report,"includes dup of validation-769, validation-186",Satisfactory,81,
+validation-773,QA Report,,Unsatisfactory,71,
+validation-775,QA Report,,Satisfactory,29,
+validation-776,QA Report,"not so bright, half of them are dupes including own submissions (submitted twice), no formatting at all. 
+
+    [L-4] --> dup of validation-513
+    [L-5] --> dup of validation-432
+    [L-6] --> dup of validation-187
+    [L-8] --> dup of validation-605
+    [L-10] --> dup of validation-325
+    [L-11] --> dup of validation-707 (the warden submitted the same issue twice)",Satisfactory,326,
+validation-49,Gas Optimizations,no gas pot in this contest,Unsatisfactory,12750,
+validation-79,QA Report,,Unsatisfactory,86,
+validation-348,QA Report,,Unsatisfactory,17,
+validation-275,QA Report,same of 4nalyzer,Unsatisfactory,116,
+validation-107,QA Report,spammer,Unsatisfactory,158,
+validation-102,QA Report,invalid,Unsatisfactory,377,
+validation-726,QA Report,,Satisfactory,1387,
