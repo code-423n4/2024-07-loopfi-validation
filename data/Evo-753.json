@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Lack of Vote Decay in GaugeV3 Contract",
   "issueId": 753,
-  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/753"
+  "issueUrl": "https://github.com/code-423n4/2024-07-loopfi-validation/issues/753",
+  "validatedIssueId": 570,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-loopfi-findings/issues/570"
 }
